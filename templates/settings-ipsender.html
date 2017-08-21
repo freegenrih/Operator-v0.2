@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block title %}Setings{% endblock title %}
+{% block extralink %}
+
+{% endblock extralink %}
+
+{% block leftmenuhead %}
+    <center><h4>Settings</h4></center>{% endblock leftmenuhead %}
+{% block leftmenu %}
+    {% include 'left-settings-menus.html' %}
+{% endblock leftmenu %}
+
+{% block centermenuhead %}
+    <center><h4>IP Sender</h4></center>
+{% endblock centermenuhead %}
+
+{% block centermenu %}
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <center>Create</center>
+                    </div>
+                    <div class="panel-body" style="height:230px;">
+                        <form method="POST" action="/settings-ipsender">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control input-sm" placeholder="Name IP I.O"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="key" class="form-control input-sm" placeholder="Key" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control input-sm"
+                                       placeholder="Admin Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-success btn-block" type="submit" name="submit" value="Create IPS">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <center>Deletete</center>
+                    </div>
+                    <div class="panel-body" style="height:230px;">
+                        <form method="POST" action="/settings-ipsender">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control input-sm" placeholder="Name IP I.O"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="key" class="form-control input-sm" placeholder="Key" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control input-sm"
+                                       placeholder="Admin Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-danger btn-block" type="submit" name="submit" value="Delete IPS">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <center>Errors</center>
+                    </div>
+                    <div class="panel-body" style="height:230px;">
+                        {% if errors_ipsender %}
+                            <div class="alert alert-danger"
+                            <ul>
+                                {% if errors_ipsender.name %}
+                                    <li>{{ errors_ipsender.name }}</li>
+                                {% endif %}
+                                {% if errors_ipsender.password_BD %}
+                                    <li>{{ errors_ipsender.password_BD }}</li>
+                                {% endif %}
+                                {% if errors_ipsender.password %}
+                                    <li>{{ errors_ipsender.password }}</li>
+                                {% endif %}
+                                {% if errors_ipsender.key %}
+                                    <li>{{ errors_ipsender.key }}</li>
+                                {% endif %}
+                            </ul>
+                            </div>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <center>Info</center>
+                </div>
+                <div class="panel-body" style="height:230px;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <center>IPS List</center>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div class="table-responsive">
+                    <table class="table" style="height: 100%;width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name Sender</th>
+                            <th>Key Sender</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if ipsender_list %}
+
+                            {% for row in ipsender_list %}
+                                <tr>
+                                    <th>{{ row.id }}</th>
+                                    <th>{{ row.name_ipsender }}</th>
+                                    <th>{{ row.key_ipsender }}</th>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock centermenu %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block extralink %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.canvasjs.min.js') }}"></script>
+{% endblock extralink %}
+{% block title %}Monitoring{% endblock title %}
+
+{% block leftmenuhead %}
+    <center><h4>Monitoring</h4></center>{% endblock leftmenuhead %}
+{% block leftmenu %}
+    {% include 'left-monitoring-menu.html' %}
+{% endblock leftmenu %}
+
+{% block centermenuhead %}
+    <center><h4>Monitoring Online</h4></center>
+{% endblock centermenuhead %}
+
+{% block centermenu %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-1">
+                <div id="chartContainer" style="height: 90%; width: 90%;"></div>
+            </div>
+            <div class="col-sm-6">
+                {%if data  %}
+
+                {%endif  %}
+            </div>
+        </div>
+    </div>
+{% endblock centermenu %}

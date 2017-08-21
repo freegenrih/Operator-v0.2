@@ -1,0 +1,61 @@
+body {
+  background-color: #C2CEEE;
+}
+.glyphicon {
+    font-size: 30px;
+}
+
+.glyphicon.glyphicon-user {
+    font-size: 20px;
+}
+
+.wraper{
+
+}
+.left-menu{
+
+    height: 100%;
+    width: 15%;
+    float:left;
+    border-radius:5px;
+}
+
+.center-menu{
+    background-color: #C1CEEA;
+    height: 100%;
+    width: 70%;
+    float:left;
+    border-radius:5px;
+    padding-left:2px;
+    padding-right:2px;
+}
+.right-menu{
+
+    height: 100%;
+    width: 15%;
+    float:left;
+    border-radius:5px;
+}
+#clock{
+    height: 40px;
+	color: white;
+	font-weight: bold;
+	font-size: 28px;
+
+
+}
+
+#errors{
+
+    border-color:red;
+    border-style: solid;
+    height: 100%;
+    border-radius: 5px;
+
+}
+.tableusers{
+    height: 100px;
+    width: 100px;
+
+}
+

@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+{%block extralink%}
+{%endblock extralink%}
+{%block title%}Инженер{%endblock title%}
+
+
+
+{%block leftmenu%}
+<div class="btn btn-danger btn-block">Заявки ОПР</div>
+<div class="btn btn-danger btn-block">Заявки ЭЛМ</div>
+<div class="btn btn-danger btn-block">Отчет Тестов</div>
+
+{%endblock leftmenu%}
+
+{%block centermenuhead%}
+<h4 class="text-center">Журнал заявок инженеру от оператора</h4>
+{%endblock centermenuhead%}
+
+{%block centermenu%}
+
+    <table class="table table-striped">
+        <thead>
+        <tr class="info">
+            <th width="10%" class="text-center">Дата</th>
+            <th width="3%" class="text-center">Оператор</th>
+            <th width="3%" class="text-center">Пульт</th>
+            <th width="2%" class="text-center">Объект</th>
+            <th width="70%" class="text-center">Описание</th>
+            <th width="1%" class="text-center">ОК</th>
+            <th width="3%" class="text-center">Выполнить</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form>
+            <tr class="success">
+                <td class="text-center">2017-10-08 12:03:07</td>
+                <td class="text-center">8</td>
+                <td class="text-center">Грифон</td>
+                <td class="text-center">2260</td>
+                <td class="text-center">Убрать из 220</td>
+                <td class="text-center">
+                    <label style="padding-left: 5px; padding-top: 6px;">
+                        <input type="radio" name="optradio" required>
+                    </label>
+                </td>
+                <td class="text-center">
+                    <button type="submit" class="btn btn-success">Отработать</button>
+                </td>
+            </tr>
+        </form>
+        </tbody>
+    </table>
+
+{%endblock centermenu%}
+
+{%block rightmenuhead%}
+<h4 class="text-center">Инженер</h4>
+{%endblock rightmenuhead%}

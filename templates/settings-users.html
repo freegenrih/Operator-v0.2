@@ -1,0 +1,201 @@
+{%extends 'base.html'%}
+{%block title%}Setings{%endblock title%}
+{%block extralink%}
+
+{%endblock extralink%}
+
+{%block leftmenu%}
+{%include 'left-settings-menus.html'%}
+{%endblock leftmenu%}
+
+{%block centermenuhead%}
+<h4 class="text-center">Настройки пользователей</h4>
+{%endblock centermenuhead%}
+
+{%block centermenu%}
+<br>
+<center>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 ">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Create</div>
+                    <div class="panel-body" style="height:230px;">
+                        <div class="form-group">
+                            <form method="post" action="/settings-users">
+                                <select class="btn-block" name="statusadmin">
+                                    <option value="User">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUser&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    </option>
+                                    <option value="Admin">
+                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAdmin&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    </option>
+                                </select>
+                                <input type="email" class="form-control input-sm" name="email" placeholder="Email"
+                                       required>
+                                <input type="text" class="form-control input-sm" name="username" placeholder="Username"
+                                       required>
+                                <input type="password" class="form-control input-sm" name="password"
+                                       placeholder="Password"
+                                       required>
+                                <input type="password" class="form-control input-sm" name="re_password"
+                                       placeholder="RepeatPassword"
+                                       required>
+                                <input class="btn btn-success btn-block" type="submit" name="submit"
+                                       value="RegisterUser">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-3 ">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Update</div>
+                    <div class="panel-body" style="height:230px;">
+                        <form method="post" action="/settings-users">
+                            <input type="text" class="form-control input-sm" name="email"
+                                   placeholder="Email">
+                            <input type="text" class="form-control input-sm" name="username"
+                                   placeholder="Username">
+                            <input type="password" class="form-control input-sm" name="old_password"
+                                   placeholder="Old Password">
+                            <input type="password" class="form-control input-sm" name="newpassword"
+                                   placeholder="New Password">
+                            <input type="password" class="form-control input-sm" name="re_newpassword"
+                                   placeholder="Repeat New Password">
+                            <input class="btn btn-warning btn-block" type="submit" name="submit"
+                                   value="Update Password">
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3  ">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Delete</div>
+                    <div class="panel-body" style="height:230px;">
+                        <form method="post" action="/settings-users">
+                            <div class="form-group">
+                                <input type="email" class="form-control input-sm" name="email" placeholder="Email Users"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control input-sm" name="password"
+                                       placeholder="Admin Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control input-sm" name="re_password"
+                                       placeholder="Return Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn btn-danger btn-block" type="submit" name="submit" value="DeleteUser">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <center>Errors</center>
+                    </div>
+                    <div class="panel-body" style="height:230px;">
+
+                        {%if errors%}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {%if errors.username%}
+                                <li style="color:red;">{{errors.username}}</li>
+                                {%endif%}
+                                {%if errors.email%}
+                                <li style="color:red;">{{errors.email}}</li>
+                                {%endif%}
+                                {%if errors.emailbd%}
+                                <li style="color:red;">{{errors.emailbd}}</li>
+                                {%endif%}
+                                {%if errors.password%}
+                                <li style="color:red;">{{errors.password}}</li>
+                                {%endif%}
+                            </ul>
+                        </div>
+                        {%endif%}
+
+                        {%if errors_edit%}
+                        <div class="alert alert-danger">
+
+                            {%if errors_edit.password%}
+                            <a style="color:red;">{{errors_edit.password}}</a>
+                            {%endif%}
+                            {%if errors_edit.username%}
+                            <a style="color:red;">{{errors_edit.username}}</a>
+                            {%endif%}
+
+                        </div>
+                        {%endif%}
+
+                        {%if errors_delete%}
+                        <div class="alert alert-danger">
+
+                            {%if errors_delete.password%}
+                            <a style="color:red;">{{errors_delete.password}}</a>
+                            {%endif%}
+                            {%if errors_delete.email%}
+                            <a style="color:red;">{{errors_delete.email}}</a>
+                            {%endif%}
+
+                        </div>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <center>Users List</center>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table class="table" style="height: 100%;width: 100%;">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>User Name</th>
+                        <th>Password</th>
+                        <th>Admin</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%if data%}
+                    {%for row in data%}
+                    <tr>
+                        <th>{{row['id']}}</th>
+                        <th>{{row['email']}}</th>
+                        <th>{{row['username']}}</th>
+                        <th>{{row['password']}}</th>
+                        <th>{{row['statusadmin']}}</th>
+                    </tr>
+                    {%endfor%}
+                    {%endif%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock centermenu%}
+
+{%block rightmenuhead%}
+<h4 class="text-center">Settings</h4>
+{%endblock rightmenuhead%}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
+    <title>Вход</title>
+</head>
+<body style="background-color: #C2CEEE;">
+<div class="container" style="margin-left: 35%; margin-top: 5%;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 ">
+                <div class="panel  panel-primary">
+                    <div class="panel-heading">
+                        <div class="text-center">GHR</div>
+                        <div class="text-center">Systems Control</div>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-signin" method="POST" action="/">
+
+                            <div class="form-group">
+                                <label for="sel1">Тип Пользователя:</label>
+                                <select class="form-control" name="typeUser" id="sel1">
+                                    <option>Оператор</option>
+                                    <option>Инженер</option>
+                                    <option>Администратор</option>
+                                    <option>ЭК-№1</option>
+                                    <option>ЭК-№7</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputUserName" >Имя пользователя:</label>
+                                <input type="name" name="user_name" id="inputUserName" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword" >Пароль:</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                            </div>
+                            {%if signin_errors%}
+                            <div class="alert alert-danger">
+                                {%if signin_errors.password%}
+                                {{signin_errors.password}}
+                                {%endif%}
+
+                                {%if signin_errors.emailBD%}
+                                {{signin_errors.emailBD}}
+                                {%endif%}
+                            </div>
+                            {%endif%}
+                            <button class="btn btn-danger btn-block btn-lg" type="submit">Войти</button>
+                        </form>
+                    </div>
+                    <div class="panel-heading">
+                        <div class="text-center">&nbsp</div>
+                        <div class="text-center">&nbsp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
