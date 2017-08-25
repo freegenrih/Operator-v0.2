@@ -1,16 +1,16 @@
 <div class="text-center">
     <br class="nav navbar-nav navbar-left">
-    <form>
+    <form method="post" action="{{ url_for('settings_users') }}">
         <input type="submit" class="btn btn-danger btn-block" value="Пользователи">
     </form>
-    <form>
+    <form method="post" action="{{ url_for('settings_phone') }}">
         <input type="submit" class="btn btn-danger btn-block" value="ТЛ" style=" margin-top: 4px;">
 
-        <form>
+        <form method="post" action="{{ url_for('settings_users') }}">
             <input type="submit" class="btn btn-danger btn-block" value="Заявки ОПР" style=" margin-top: 4px;">
         </form>
     </form>
-    <form>
+    <form method="post" action="{{ url_for('settings_users') }}">
         <input type="submit" class="btn btn-danger btn-block" value="Заявки ЭЛМ" style=" margin-top: 4px;">
     </form>
 </div>

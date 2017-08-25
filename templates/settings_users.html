@@ -1,0 +1,228 @@
+{%extends 'base.html'%}
+{%block title%}Setings{%endblock title%}
+
+{%block extralink%}
+{%endblock extralink%}
+
+{%block leftmenuhead%}
+<div class="text-center"><h4>Settings</h4></div>
+{%endblock leftmenuhead%}
+
+{%block leftmenu%}
+{%include 'left-settings-menus.html'%}
+{%endblock leftmenu%}
+
+
+{%block centermenuhead%}
+<h4 class="text-center">Настройки Пользователей</h4>
+{%endblock centermenuhead%}
+
+{%block centermenu%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="text-center">Система Регистрации</div>
+                </div>
+                <div class="panel-body" style="min-height:300px;">
+                    <!------------------------------------------------------------------------------------>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="text-center">
+                                <!-- Trigger the modal with a button -->
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                                        data-target="#myModal1"
+                                        data-placement="right"
+                                        title="Нажать левую кнопку мыши для регистрации нового пользователя">Нового
+                                    Пользователя
+                                </button>
+                            </div>
+
+                            <div class="text-center" style="padding-top: 10px;">
+                                <!-- Trigger the modal with a button -->
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                                        data-target="#myModal2"
+                                        data-placement="right"
+                                        title="Нажать левую кнопку мыши для регистрации типа пользователя">Типа
+                                    пользователя
+                                </button>
+                            </div>
+                            <!-- Modal Регистрации Нового Пользователя -->
+                            <div class="modal fade" id="myModal1" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Регистрация Нового Пользователя: </h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post" action="">
+                                                <div class="form-group">
+                                                    <label for="sel1">Тип Пользователя:</label>
+                                                    <select class="form-control" name="user_type" id="sel1">
+                                                        {%if type_user%}
+                                                        {%for row in type_user%}
+                                                        <option class="text-center">{{row.user_type}}</option>
+                                                        {%endfor%}
+                                                        {%endif%}
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputUserName">Имя пользователя:</label>
+                                                    <input type="text" name="user_name" id="inputUserName"
+                                                           class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputUserPassword">Пароль:</label>
+                                                    <input type="password" name="user_password" id="inputUserPassword"
+                                                           class="form-control"
+                                                           required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputUserRePassword">Повторить Пароль:</label>
+                                                    <input type="password" name="user_repassword"
+                                                           id="inputUserRePassword"
+                                                           class="form-control" required>
+                                                </div>
+
+                                                <input class="btn btn-success btn-block" type="submit" name="submit"
+                                                       value="Зарегестрировать Пользователя">
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal Регистрации Нового Типа Пользователя -->
+                            <div class="modal fade" id="myModal2" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Регистрация Нового Типа Пользователя: </h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post" action="">
+                                                <div class="form-group">
+                                                    <label for="inputUserNameType">Название Типа Пользователя:</label>
+                                                    <input type="text" name="user_name_type" id="inputUserNameType"
+                                                           class="form-control" required>
+                                                </div>
+
+                                                <input class="btn btn-success btn-block" type="submit" name="submit"
+                                                       value="Зарегестрировать Новый Типа Пользователя">
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------>
+
+
+        </div>
+
+
+        <div class="col-xs-3 ">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="text-center">Список Типа Пользователя</div>
+                </div>
+                <div class="panel-body" style="min-height:300px;">
+
+
+                    <table class="table">
+                        <thead>
+                        <tr class="info">
+                            <th width="10%" class="text-center">Тип Пользователя</th>
+                        </tr>
+                        </thead>
+                        {%if type_user%}
+                        {%for row in type_user%}
+                        <tbody>
+                        <tr class="success">
+                            <td width="10%" class="text-center">{{row.user_type}}</td>
+                        </tr>
+                        </tbody>
+                        {%endfor%}
+                        {%endif%}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="panel panel-info"
+            ">
+            <div class="panel-heading">
+                <div class="text-center">Список Пользователей</div>
+            </div>
+            <div class="panel-body" style="min-height:300px;">
+                <table class="table">
+                    <thead>
+                    <tr class="info">
+                        <th width="10%" class="text-center">Дата Регистрации</th>
+                        <th width="10%" class="text-center">Имя Пользователя</th>
+                        <th width="3%" class="text-center">Тип Пользователя</th>
+                        <th width="1%" class="text-center">OK</th>
+                        <th width="1%" class="text-center">Выполнить</th>
+
+                    </tr>
+                    </thead>
+                    {%if users%}
+                    {%for row in users%}
+                    <tbody>
+                    <form method="post" action="">
+                        <tr class="success">
+                            <td class="text-center">{{row.date_register_user}}</td>
+                            <td class="text-center">{{row.user_name}}</td>
+                            <td class="text-center">{{row.user_type}}</td>
+                            <td class="text-center">
+                                <label style="padding-left: 5px; padding-top: 6px;">
+                                    <input type="radio" name="optradio" value="{{row.id}}" required>
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <button type="submit" name="submit" value="delete_user" class="btn btn-danger btn-sm"
+                                data-placement="right" title="Нажать левую кнопку мыши для удаления пользователя">
+                                    Удалить
+                                </button>
+                            </td>
+                        </tr>
+                    </form>
+                    </tbody>
+                    {%endfor%}
+                    {%endif%}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{%endblock centermenu%}
+
+
+{%block rightmenuhead%}
+<h4 class="text-center">Админ</h4>
+{%endblock rightmenuhead%}
+
+
+{%block rightmenu%}
+{%endblock rightmenu%}

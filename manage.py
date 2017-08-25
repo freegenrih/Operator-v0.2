@@ -20,7 +20,6 @@ def create_db():
           "ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;" \
           "CREATE TABLE `user_type` (`id` int(2) NOT NULL AUTO_INCREMENT,`user_type` text NOT NULL, PRIMARY KEY (`id`))" \
           "ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;"
-
     wraper_write(sql)
     print('Database Create!!!')
 

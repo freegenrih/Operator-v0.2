@@ -54,7 +54,6 @@ def operator():
                                                                                + ' ' + str(request.form['add_comment']))
 
         wraper_write(sql)
-
         return redirect(url_for('operator'))
 
     elif request.method == 'POST' and request.form['submit'] == 'delete':
@@ -66,9 +65,25 @@ def operator():
 
     else:
         sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
-        # sql = "SELECT * FROM `dbo_operator_application`  ORDER BY `dbo_operator_application`.`id` DESC "
         return render_template('operator.html', application_operator=wraper_read(sql))
 
 
 def admin():
     return render_template('admin.html')
+
+'''
+INSERT INTO `dbo_users` (`id`, `date_register_user`, `user_name`, `user_password`, `user_type`) VALUES (NULL, '111', '11', '111', 'Администратор');
+'''
+def settings_users():
+    sql = "SELECT * FROM `dbo_users`"
+    sql_type_user ="SELECT * FROM `user_type`"
+    if request.method == 'POST':
+        return render_template('settings_users.html', users=wraper_read(sql), type_user=wraper_read(sql_type_user))
+    else:
+        return render_template('settings_users.html', users=wraper_read(sql), type_user=wraper_read(sql_type_user))
+
+
+
+
+def settings_phone():
+    return render_template('settings_phone.html')
