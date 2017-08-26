@@ -20,14 +20,14 @@
                 <div class="text-center">
                     <ul class="nav navbar-nav">
                         <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-
                         {%block navbar%} {%endblock%}
-                        </ul>
+                    </ul>
                 </div>
             </div>
+
             <div class="col-sm-1 col-sm-offset-7">
                 <ul class="nav navbar-nav">
-                    <li><a href="/"><span class="glyphicon glyphicon-random"></span></a></li>
+                    <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-random"></span></a></li>
                 </ul>
             </div>
         </div>
@@ -73,7 +73,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <footer class="container-fluid text-center"></footer>
 </body>

@@ -5,9 +5,6 @@ body {
     font-size: 30px;
 }
 
-.glyphicon.glyphicon-user {
-    font-size: 20px;
-}
 
 .wraper{
 
@@ -15,7 +12,7 @@ body {
 .left-menu{
 
     height: 100%;
-    width: 15%;
+    width: 13%;
     float:left;
     border-radius:5px;
 }
@@ -23,7 +20,7 @@ body {
 .center-menu{
 
     height: 100%;
-    width: 70%;
+    width: 74%;
     float:left;
     border-radius:5px;
     padding-left:2px;
@@ -32,7 +29,7 @@ body {
 .right-menu{
 
     height: 100%;
-    width: 15%;
+    width: 13%;
     float:left;
     border-radius:5px;
 }

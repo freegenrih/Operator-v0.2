@@ -11,9 +11,12 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 ">
+            <div class="col-sm-5 ">
                 <div class="panel  panel-primary">
                     <div class="panel-heading">
+                        <div class="text-center">
+                            <img src="static/img/bg.jpg" style="height: 30px; height: 30px;border-radius: 3px;">
+                        </div>
                         <div class="text-center">GHR</div>
                         <div class="text-center">Systems Control</div>
                     </div>
@@ -22,11 +25,11 @@
                             <div class="form-group">
                                 <label for="sel1">Тип Пользователя:</label>
                                 <select class="form-control" name="user_type" id="sel1">
-                                    <option>Оператор</option>
-                                    <option>Инженер</option>
-                                    <option>Администратор</option>
-                                    <option>ЭК-№1</option>
-                                    <option>ЭК-№7</option>
+                                     {%if type_user%}
+                                     {%for row in type_user%}
+                                     <option>{{row.user_type}}</option>
+                                    {%endfor%}
+                                    {%endif%}
                                 </select>
                             </div>
                             <div class="form-group">

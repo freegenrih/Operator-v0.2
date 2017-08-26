@@ -23,29 +23,28 @@
         <div class="col-xs-3">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <div class="text-center">Система Регистрации</div>
+                    <div class="text-center">Зарегестрировать</div>
                 </div>
-                <div class="panel-body" style="min-height:300px;">
+                <div class="panel-body" style="min-height:200px;">
                     <!------------------------------------------------------------------------------------>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="text-center">
                                 <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                         data-target="#myModal1"
                                         data-placement="right"
-                                        title="Нажать левую кнопку мыши для регистрации нового пользователя">Нового
+                                        title="Нажать левую кнопку мыши для регистрации нового пользователя">
                                     Пользователя
                                 </button>
                             </div>
 
                             <div class="text-center" style="padding-top: 10px;">
                                 <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal"
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                         data-target="#myModal2"
                                         data-placement="right"
-                                        title="Нажать левую кнопку мыши для регистрации типа пользователя">Типа
-                                    пользователя
+                                        title="Нажать левую кнопку мыши для регистрации типа пользователя">Тип Ползователя
                                 </button>
                             </div>
                             <!-- Modal Регистрации Нового Пользователя -->
@@ -59,7 +58,7 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            <form method="post" action="">
+                                            <form method="post" action="{{url_for('settings_users')}}">
                                                 <div class="form-group">
                                                     <label for="sel1">Тип Пользователя:</label>
                                                     <select class="form-control" name="user_type" id="sel1">
@@ -110,20 +109,18 @@
                                             <h4 class="modal-title">Регистрация Нового Типа Пользователя: </h4>
                                         </div>
                                         <div class="modal-body">
-
                                             <form method="post" action="">
                                                 <div class="form-group">
                                                     <label for="inputUserNameType">Название Типа Пользователя:</label>
                                                     <input type="text" name="user_name_type" id="inputUserNameType"
                                                            class="form-control" required>
                                                 </div>
-
                                                 <input class="btn btn-success btn-block" type="submit" name="submit"
-                                                       value="Зарегестрировать Новый Типа Пользователя">
+                                                       value="Зарегестрировать Новый Тип Пользователя">
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть
+                                            <button type="button" class="btn btn-default " data-dismiss="modal">Закрыть
                                             </button>
                                         </div>
                                     </div>
@@ -139,81 +136,98 @@
         </div>
 
 
-        <div class="col-xs-3 ">
+        <div class="col-xs-6 ">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <div class="text-center">Список Типа Пользователя</div>
+                    <div class="text-center">Типы Пользователей</div>
                 </div>
-                <div class="panel-body" style="min-height:300px;">
-
-
-                    <table class="table">
-                        <thead>
-                        <tr class="info">
-                            <th width="10%" class="text-center">Тип Пользователя</th>
-                        </tr>
-                        </thead>
-                        {%if type_user%}
-                        {%for row in type_user%}
-                        <tbody>
-                        <tr class="success">
-                            <td width="10%" class="text-center">{{row.user_type}}</td>
-                        </tr>
-                        </tbody>
-                        {%endfor%}
-                        {%endif%}
-                    </table>
+                <div class="panel-body" style="min-height:200px;">
+                    <div class="table-responsive" style="height:150px;overflow-y:scroll;;">
+                        <table class="table">
+                            <thead>
+                            {%if type_user%}
+                            {%for row in type_user%}
+                            <tbody>
+                            <form method="post" action="">
+                            <tr class="success">
+                                <td width="80%" class="text-center" style="font-size: 12px;">{{row.user_type}}</td>
+                                <td width="1%">
+                                    <input type="radio" name="optradio" value="{{row.id}}" required>
+                                </td>
+                                <td width="10%">
+                                    <button type="submit" name="submit" value="delete_user_type"
+                                            class="btn btn-danger btn-sm"
+                                            data-placement="right"
+                                            title="Нажать левую кнопку мыши для удаления типа пользователя">
+                                        Удалить
+                                    </button>
+                                </td>
+                            </tr>
+                            </form>
+                            </tbody>
+                            {%endfor%}
+                            {%endif%}
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-6">
-            <div class="panel panel-info"
-            ">
-            <div class="panel-heading">
-                <div class="text-center">Список Пользователей</div>
-            </div>
-            <div class="panel-body" style="min-height:300px;">
-                <table class="table">
-                    <thead>
-                    <tr class="info">
-                        <th width="10%" class="text-center">Дата Регистрации</th>
-                        <th width="10%" class="text-center">Имя Пользователя</th>
-                        <th width="3%" class="text-center">Тип Пользователя</th>
-                        <th width="1%" class="text-center">OK</th>
-                        <th width="1%" class="text-center">Выполнить</th>
 
-                    </tr>
-                    </thead>
-                    {%if users%}
-                    {%for row in users%}
-                    <tbody>
-                    <form method="post" action="">
-                        <tr class="success">
-                            <td class="text-center">{{row.date_register_user}}</td>
-                            <td class="text-center">{{row.user_name}}</td>
-                            <td class="text-center">{{row.user_type}}</td>
-                            <td class="text-center">
-                                <label style="padding-left: 5px; padding-top: 6px;">
-                                    <input type="radio" name="optradio" value="{{row.id}}" required>
-                                </label>
-                            </td>
-                            <td class="text-center">
-                                <button type="submit" name="submit" value="delete_user" class="btn btn-danger btn-sm"
-                                data-placement="right" title="Нажать левую кнопку мыши для удаления пользователя">
-                                    Удалить
-                                </button>
-                            </td>
-                        </tr>
-                    </form>
-                    </tbody>
-                    {%endfor%}
-                    {%endif%}
-                </table>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-7">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="text-center">Список Пользователей</div>
+                </div>
+                <div class="panel-body" style="min-height:300px;">
+                    <div class="table-responsive" style="height:250px;overflow-y:scroll;;">
+                        <table class="table">
+                            <thead>
+                            <tr class="info">
+                                <th class="text-center" style="font-size: 12px;">Создан</th>
+                                <th class="text-center" style="font-size: 12px;">Имя</th>
+                                <th class="text-center" style="font-size: 12px;">Тип</th>
+                                <th class="text-center" style="font-size: 12px;">ok</th>
+                                <th class="text-center" style="font-size: 12px;">Выполнить</th>
+                            </tr>
+                            </thead>
+                            {%if users%}
+                            {%for row in users%}
+                            <tbody>
+                            <form method="post" action="">
+                                <tr class="success">
+                                    <td class="text-center" style="width:2%;font-size: 12px;">{{row.date_register_user}}</td>
+                                    <td class="text-center" style="font-size: 12px;">{{row.user_name}}</td>
+                                    <td class="text-center" style="font-size: 12px;">{{row.user_type}}</td>
+                                    <td class="text-center">
+                                        <label style="padding-left: 5px; padding-top: 6px;">
+                                            <input type="radio" name="optradio" value="{{row.id}}" required>
+                                        </label>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="submit" name="submit" value="delete_user"
+                                                class="btn btn-danger btn-sm"
+                                                data-placement="right"
+                                                title="Нажать левую кнопку мыши для удаления пользователя">
+                                            Удалить
+                                        </button>
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                            {%endfor%}
+                            {%endif%}
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 {%endblock centermenu%}
