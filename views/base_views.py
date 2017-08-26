@@ -9,9 +9,15 @@ from flask import (render_template,
 
 from sqlrw import wraper_write, wraper_read
 
+from views.executor import (EngineerList,
+                            EngineerUpdate,
+                            OperatorCreate)
+
+
 def type_user():
     sql_type_user = "SELECT * FROM `user_type`"
     return wraper_read(sql_type_user)
+
 
 def get_sesion_user():
     if escape(session['username']):
@@ -50,32 +56,24 @@ def semple_page():
 
 def engineer():
     if request.method == 'POST' and request.form['submit'] == 'completion':
-        newsql = "UPDATE `dbo_operator_application` " \
-                 "SET `checked_engineer` = '1', `date_of_completion` = '{}', `name_engineer_completion` = '21' " \
-                 "WHERE `dbo_operator_application`.`id` = {}".format(str(datetime.now())[0:-7],
-                                                                     int(request.form['optradio']))
-        wraper_write(newsql)
+        EngineerUpdate(request.form['optradio'], get_sesion_user()).update_note()
         return redirect(url_for('engineer'))
 
     else:
-        sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         return render_template('engineer.html',
-                               application_engineer=wraper_read(sql),
+                               application_engineer=EngineerList().get_list_note(),
                                user=get_sesion_user())
 
 
 def operator():
     if request.method == 'POST' and request.form['submit'] == 'create_note':
-        sql = "INSERT INTO `dbo_operator_application` " \
-              "(`id`, `date_of_creation`, `name_operator`, `name_pult`, `number_object`, `message`," \
-              "`checked_engineer`, `date_of_completion`, `name_engineer_completion`) " \
-              "VALUES (NULL, '{}', '{}', '{}', '{}', '{}',0, '', ' ');".format(str(datetime.now())[0:-7], str('21'),
-                                                                               str(request.form['select_pult']),
-                                                                               str(request.form['number_object']),
-                                                                               str(request.form['select_operation'])
-                                                                               + ' ' + str(request.form['add_comment']))
+        OperatorCreate(get_sesion_user(),
+                       request.form['select_pult'],
+                       request.form['number_object'],
+                       request.form['select_operation'],
+                       request.form['add_comment']
+                       ).create_note()
 
-        wraper_write(sql)
         return redirect(url_for('operator'))
 
     elif request.method == 'POST' and request.form['submit'] == 'delete':
@@ -94,11 +92,6 @@ def operator():
 
 def admin():
     return render_template('admin.html', user=get_sesion_user())
-
-
-'''
-INSERT INTO `dbo_users` (`id`, `date_register_user`, `user_name`, `user_password`, `user_type`) VALUES (NULL, '111', '11', '111', 'Администратор');
-'''
 
 
 def settings_users():
@@ -128,8 +121,8 @@ def settings_users():
         return redirect(url_for('settings_users'))
 
     elif request.method == 'POST' and request.form['submit'] == 'Зарегестрировать Новый Тип Пользователя':
-        sql_reg_type_user="INSERT INTO `user_type` (`id`, `user_type`) " \
-                          "VALUES (NULL, '{}')".format(str(request.form['user_name_type']))
+        sql_reg_type_user = "INSERT INTO `user_type` (`id`, `user_type`) " \
+                            "VALUES (NULL, '{}')".format(str(request.form['user_name_type']))
         wraper_write(sql_reg_type_user)
         return redirect(url_for('settings_users'))
 
