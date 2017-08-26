@@ -29,5 +29,5 @@ from views.error_handlers import page_not_found
 app.register_error_handler(404, page_not_found)
 
 if __name__ == '__main__':
-    app.run(#host='192.168.0.105',
+    app.run(host='192.168.0.105',
             debug=True)
