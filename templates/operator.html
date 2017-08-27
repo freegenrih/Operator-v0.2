@@ -19,13 +19,13 @@
         <div class="text-center">
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
-                    data-toggle="tooltip"
-            data-placement="right" title="Нажать левую кнопку мыши для создания заявки инженеру"> Заявка Инженеру
+                    data-placement="right" title="Нажать левую кнопку мыши для создания заявки инженеру"> Заявка
+                Инженеру
             </button>
 
             <a href="{{ url_for('operator') }}">
                 <button type="button" class="btn btn-info btn-lg"
-                        data-placement="right" title="Нажать левую кнопку мыши для обновления информации" >
+                        data-placement="right" title="Нажать левую кнопку мыши для обновления информации">
                     Обновить Информацию
                 </button>
             </a>
@@ -50,7 +50,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="number_object">Ввести № объекта :</label>
+                                    <label for="number_object">Ввести номер объекта :</label>
                                     <input class="form-control" name="number_object" id="number_object">
                                 </div>
                                 <div class="form-group">
@@ -96,45 +96,45 @@
 
 <div style="padding-top: 10px;">
 
-<div style="height:550px;overflow-y:scroll;;">
-    <table class="table">
-        <thead>
-        <tr class="info">
-            <th width="10%" class="text-center">Дата создания</th>
-            <th width="3%" class="text-center">Оператор</th>
-            <th width="3%" class="text-center">Пульт</th>
-            <th width="2%" class="text-center">Объект</th>
-            <th width="70%" class="text-center">Описание</th>
-            <th width="1%" class="text-center">ОК</th>
-            <th width="3%" class="text-center">Выполнить</th>
-        </tr>
-        </thead>
-        {%if application_operator%}
-        {%for row in application_operator%}
-        <tbody>
-        <form method="post" action="/operator">
-            <tr class="success">
-                <td class="text-center">{{row.date_of_creation}}</td>
-                <td class="text-center">{{row.name_operator}}</td>
-                <td class="text-center">{{row.name_pult}}</td>
-                <td class="text-center">{{row.number_object}}</td>
-                <td class="text-center">{{row.message}}</td>
-                <td class="text-center">
-                    <label style="padding-left: 5px; padding-top: 6px;">
-                        <input type="radio" name="optradio" value="{{row.id}}" required>
-                    </label>
-                </td>
-                <td class="text-center">
-
-                    <button type="submit" name="submit" value="delete" class="btn btn-danger">Удалить</button>
-                </td>
+    <div style="height:550px;overflow-y:scroll;;">
+        <table class="table">
+            <thead>
+            <tr class="info">
+                <th width="10%" class="text-center">Дата создания</th>
+                <th width="3%" class="text-center">Оператор</th>
+                <th width="3%" class="text-center">Пульт</th>
+                <th width="2%" class="text-center">Объект</th>
+                <th width="70%" class="text-center">Описание</th>
+                <th width="1%" class="text-center">ОК</th>
+                <th width="3%" class="text-center">Выполнить</th>
             </tr>
-        </form>
-        </tbody>
-        {%endfor%}
-        {%endif%}
-    </table>
-</div>
+            </thead>
+            {%if application_operator%}
+            {%for row in application_operator%}
+            <tbody>
+            <form method="post" action="/operator">
+                <tr class="success">
+                    <td class="text-center">{{row.date_of_creation}}</td>
+                    <td class="text-center">{{row.name_operator}}</td>
+                    <td class="text-center">{{row.name_pult}}</td>
+                    <td class="text-center">{{row.number_object}}</td>
+                    <td class="text-center">{{row.message}}</td>
+                    <td class="text-center">
+                        <label style="padding-left: 5px; padding-top: 6px;">
+                            <input type="radio" name="optradio" value="{{row.id}}" required>
+                        </label>
+                    </td>
+                    <td class="text-center">
+
+                        <button type="submit" name="submit" value="delete" class="btn btn-danger">Удалить</button>
+                    </td>
+                </tr>
+            </form>
+            </tbody>
+            {%endfor%}
+            {%endif%}
+        </table>
+    </div>
 </div>
 
 {%endblock centermenu%}
