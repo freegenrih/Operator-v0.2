@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="comment">Добавить текст если нужно:</label>
-                                    <textarea class="form-control" name="add_comment" rows="5" id="comment"></textarea>
+                                    <textarea class="form-control" name="add_comment" rows="5" id="comment" > </textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" name="submit" value="create_note" class="btn btn-warning">
@@ -114,11 +114,11 @@
             <tbody>
             <form method="post" action="/operator">
                 <tr class="success">
-                    <td class="text-center">{{row.date_of_creation}}</td>
+                    <td class="text-center"><strong>{{row.date_of_creation}}</strong></td>
                     <td class="text-center">{{row.name_operator}}</td>
                     <td class="text-center">{{row.name_pult}}</td>
-                    <td class="text-center">{{row.number_object}}</td>
-                    <td class="text-center">{{row.message}}</td>
+                    <td class="text-center"><strong>{{row.number_object}}</strong></td>
+                    <td class="text-center"><strong>{{row.message}}</strong></td>
                     <td class="text-center">
                         <label style="padding-left: 5px; padding-top: 6px;">
                             <input type="radio" name="optradio" value="{{row.id}}" required>

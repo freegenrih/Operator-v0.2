@@ -14,7 +14,7 @@ config_debug_local = {'host': 'localhost',
 config_debug_105 = {'host': '192.168.0.105',
                     'debug': 'True'}
 
-config_debug_my_work = {'host': '192.168.100.35',
+config_debug_my_work = {'host': '192.168.100.181',
                         'debug': 'True'}
 
 config_no_debug = {'debug': 'False'}

@@ -23,7 +23,6 @@ class Validators:
         elif self.name_type_valid == 'password':
             self.valid_password()
 
-
         elif self.name_type_valid == 'name':
             self.valid_name()
 
@@ -93,8 +92,7 @@ class Validators:
         else:
             result_valid_name = False
 
-        return  result_valid_name
-
+        return result_valid_name
 
 
 if __name__ == '__main__':
@@ -130,15 +128,15 @@ if __name__ == '__main__':
 
     # ------------------------------------------------------------------------------------------------------------------
 
-    #Validator name-----------------------------------------------------------------------------------------------------
-    name1= 'Андрей' # len=6
-    name2= 'Григорий' # len=8
-    name3= 'SELECT' # len=6
+    # Validator name-----------------------------------------------------------------------------------------------------
+    name1 = 'Андрей'  # len=6
+    name2 = 'Григорий'  # len=8
+    name3 = 'SELECT'  # len=6
 
     nm1 = Validators(name1, 'name', min_len=4, max_len=10)
     nm2 = Validators(name2, 'name', min_len=9, max_len=12)
     nm3 = Validators(name3, 'name', min_len=7, max_len=10)
-    #-------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------------------
 
     # validation id
     print('=' * 15, 'ID', '=' * 15)
@@ -157,7 +155,7 @@ if __name__ == '__main__':
     print(password5, psw5.valid_password())
     print(password6, psw6.valid_password())
 
-    #validation name
+    # validation name
     print('=' * 15, 'Name', '=' * 15)
     print(name1, nm1.valid_name())
     print(name2, nm2.valid_name())
