@@ -19,6 +19,8 @@ from views.executor import (EngineerGet,
 
 from views.validators import Validators
 
+# !!! need create settings min max size password, usertype and ...
+
 def type_user():
     # Get type user list
     return UsersGet().get_type_user()
@@ -122,26 +124,38 @@ def admin():
 def settings_users():
     # Create new user
     if request.method == 'POST' and request.form['submit'] == 'Зарегестрировать Пользователя':
-        SettingsUsersRegUser(request.form['user_name'],
-                             request.form['user_password'],
-                             request.form['user_type']).reg_user()
-        return redirect(url_for('settings_users'))
-
+        if Validators(request.form['user_name'], 'name', min_len=3, max_len=10).valid_name()\
+                and Validators(request.form['user_password'], 'password', min_len=5, max_len=10).valid_password() \
+                and Validators(request.form['user_type'], 'name', min_len=3, max_len=15).valid_name()== True:
+                SettingsUsersRegUser(request.form['user_name'],
+                                     request.form['user_password'],
+                                     request.form['user_type']).reg_user()
+                return redirect(url_for('settings_users'))
+        else:
+            return redirect(url_for('settings_users'))
     # Delete user
     elif request.method == 'POST' and request.form['submit'] == 'delete_user':
-        SettingsUsersDel(request.form['optradio']).delete_users()
-        return redirect(url_for('settings_users'))
+        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+            SettingsUsersDel(request.form['optradio']).delete_users()
+            return redirect(url_for('settings_users'))
+        else:
+            return redirect(url_for('settings_users'))
 
     # Delete user type
     elif request.method == 'POST' and request.form['submit'] == 'delete_user_type':
-        SettingsUsersDel(request.form['optradio']).delete_user_type()
-        return redirect(url_for('settings_users'))
+        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+            SettingsUsersDel(request.form['optradio']).delete_user_type()
+            return redirect(url_for('settings_users'))
+        else:
+            return redirect(url_for('settings_users'))
 
     # Create user type
     elif request.method == 'POST' and request.form['submit'] == 'Зарегестрировать Новый Тип Пользователя':
-        SettingsUsersRegType(request.form['user_name_type']).reg_new_type()
-        return redirect(url_for('settings_users'))
-
+        if Validators(request.form['user_name_type'], 'name', min_len=3, max_len=10).valid_name() == True:
+            SettingsUsersRegType(request.form['user_name_type']).reg_new_type()
+            return redirect(url_for('settings_users'))
+        else:
+            return redirect(url_for('settings_users'))
     else:
         return render_template('settings_users.html',
                                users=UsersGet().get_list_user(),

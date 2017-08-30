@@ -1,5 +1,5 @@
 import re
-
+import unittest
 
 class Validators:
     '''
@@ -15,6 +15,7 @@ class Validators:
         self.name_type_valid = name_type_valid
         self.min_len = min_len
         self.max_len = max_len
+        # need more type valid
         self.script_injection = ('SELECT', '\'SELECT', '\"SELECT', 'INSERT', 'DELETE', 'WHEARE', '<SCRIPT')
 
         if self.name_type_valid == 'id':
@@ -95,20 +96,17 @@ class Validators:
         return result_valid_name
 
 
-if __name__ == '__main__':
-    # tests validators id ----------------------------------------------------------------------------------------------
-    idn = 947
-    text1 = 'sdkijfgjfgjh'
-    text2 = '\'SELECT * FROM'
-    text3 = 'DELETE'
-    text4 = 'select 857 '
 
-    id = Validators(idn, 'id')
-    id_1 = Validators(text1, 'id')
-    id_2 = Validators(text2, 'id')
-    id_3 = Validators(text3, 'id')
-    id_4 = Validators(text4, 'id')
 
+
+class TestUM(unittest.TestCase):
+    # Name -------------------------------------------------------------------------------------------------------------
+    name1 = 'Андрей'  # len=6
+    name2 = 'Григорий'  # len=8
+    name3 = 'SELECT *'  # len=6
+    nm1 = Validators(name1, 'name', min_len=4, max_len=10) # True
+    nm2 = Validators(name2, 'name', min_len=9, max_len=12) # False
+    nm3 = Validators(name3, 'name', min_len=7, max_len=10) # False
     # ------------------------------------------------------------------------------------------------------------------
 
     # test valodators password -----------------------------------------------------------------------------------------
@@ -117,46 +115,74 @@ if __name__ == '__main__':
     password3 = 'SELECT'
     password4 = 'select'
     password5 = '<script'
-    password6 = '1234567891'
+    password6 = '123456789'
 
-    psw1 = Validators(password1, 'password', min_len=5, max_len=10)
-    psw2 = Validators(password2, 'password', min_len=5, max_len=10)
-    psw3 = Validators(password3, 'password', min_len=5, max_len=10)
-    psw4 = Validators(password4, 'password', min_len=5, max_len=10)
-    psw5 = Validators(password5, 'password', min_len=5, max_len=10)
-    psw6 = Validators(password6, 'password', min_len=6, max_len=9)
+    psw1 = Validators(password1, 'password', min_len=5, max_len=10) # False
+    psw2 = Validators(password2, 'password', min_len=5, max_len=10) # True
+    psw3 = Validators(password3, 'password', min_len=5, max_len=10) # False
+    psw4 = Validators(password4, 'password', min_len=5, max_len=10) # False
+    psw5 = Validators(password5, 'password', min_len=5, max_len=10) # False
+    psw6 = Validators(password6, 'password', min_len=6, max_len=9)  # True
+    # ------------------------------------------------------------------------------------------------------------------
+
+    # tests validators id ----------------------------------------------------------------------------------------------
+    idn = 947
+    text1 = 'sdkijfgjfgjh'
+    text2 = '\'SELECT * FROM'
+    text3 = 'DELETE'
+    text4 = 'select 857 '
+
+    id = Validators(idn, 'id')     # True
+    id_1 = Validators(text1, 'id') # False
+    id_2 = Validators(text2, 'id') # False
+    id_3 = Validators(text3, 'id') # False
+    id_4 = Validators(text4, 'id') # False
 
     # ------------------------------------------------------------------------------------------------------------------
 
-    # Validator name-----------------------------------------------------------------------------------------------------
-    name1 = 'Андрей'  # len=6
-    name2 = 'Григорий'  # len=8
-    name3 = 'SELECT'  # len=6
 
-    nm1 = Validators(name1, 'name', min_len=4, max_len=10)
-    nm2 = Validators(name2, 'name', min_len=9, max_len=12)
-    nm3 = Validators(name3, 'name', min_len=7, max_len=10)
-    # -------------------------------------------------------------------------------------------------------------------
+    def test_id_1(self):
+        self.assertEqual(self.id.valid_id(), True)
 
-    # validation id
-    print('=' * 15, 'ID', '=' * 15)
-    print(idn, ':', id.valid_id())
-    print(text1, ':', id_1.valid_id())
-    print(text2, ':', id_2.valid_id())
-    print(text3, ':', id_3.valid_id())
-    print(text4, ':', id_4.valid_id())
+    def test_id_2(self):
+        self.assertEqual(self.id_1.valid_id(), False)
 
-    # validation password
-    print('=' * 15, 'PASSWORD', '=' * 15)
-    print(password1, psw1.valid_password())
-    print(password2, psw2.valid_password())
-    print(password3, psw3.valid_password())
-    print(password4, psw4.valid_password())
-    print(password5, psw5.valid_password())
-    print(password6, psw6.valid_password())
+    def test_id_3(self):
+        self.assertEqual(self.id_2.valid_id(), False)
 
-    # validation name
-    print('=' * 15, 'Name', '=' * 15)
-    print(name1, nm1.valid_name())
-    print(name2, nm2.valid_name())
-    print(name3, nm3.valid_name())
+    def test_id_4(self):
+        self.assertEqual(self.id_3.valid_id(), False)
+
+    def test_id_5(self):
+        self.assertEqual(self.id_4.valid_id(), False)
+
+    def test_name_1(self):
+        self.assertEqual( self.nm1.valid_name(), True)
+
+    def test_name_2(self):
+        self.assertEqual( self.nm2.valid_name(), False)
+
+    def test_name_3(self):
+        self.assertEqual( self.nm3.valid_name(), False)
+
+    def test_password_1(self):
+        self.assertEqual(self.psw1.valid_password(), False)
+
+    def test_password_2(self):
+        self.assertEqual(self.psw2.valid_password(), True)
+
+    def test_password_3(self):
+        self.assertEqual(self.psw3.valid_password(), False)
+
+    def test_password_4(self):
+        self.assertEqual(self.psw4.valid_password(), False)
+
+    def test_password_5(self):
+        self.assertEqual(self.psw5.valid_password(), False)
+
+    def test_password_6(self):
+        self.assertEqual(self.psw6.valid_password(), True)
+
+
+if __name__ == '__main__':
+    unittest.main()
