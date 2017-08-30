@@ -1,6 +1,117 @@
 <div class="text-center">
     <br class="nav navbar-nav navbar-left">
-    <button class="btn btn-info btn-block" >Телефоны<br>Пульта</button>
-    <button class="btn btn-info btn-block" >Инфо<br>Оборудования</button>
-    <button class="btn btn-info btn-block" >Система<br>Перезапуска УСП</button>
+    <button class="btn btn-info btn-block" data-toggle="modal" data-target="#myModalLine"
+            data-placement="right" title="Нажать левую кнопку мыши для просмотра линий свзи">Линии<br>Связи
+    </button>
+
+
+    <button class="btn btn-info btn-block" data-toggle="modal" data-target="#myModalInfo"
+            data-placement="right" title="Нажать левую кнопку мыши для просмотра ссылок">Ссылки на<br>Оборудования
+    </button>
+
+    <button class="btn btn-info btn-block" data-toggle="modal" data-target="#myModalReload"
+            data-placement="right" title="Нажать левую кнопку мыши для просмотра линий свзи">Система
+        <br>Перезапуска
+    </button>
 </div>
+
+<!-- Modal  Линии связи ----------------------------------------------------------------------------------------------->
+<div class="modal fade" id="myModalLine" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Линии связи ПЦН </h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center"> Линии связи ПЦН</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- Modal  Ссылки на оборудование------------------------------------------------------------------------------------->
+<div class="modal fade" id="myModalInfo" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Ссылки на оборудование</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <a href="https://www.google.com.ua" style="text-decoration: none ;" target="_blank">
+                        <button class="btn btn-info btn-block" >GOOGLE MAIL</button>
+                    </a>
+                    <br>
+                    <a href="https://ajax.systems/ru/" style="text-decoration: none ;" target="_blank">
+                        <button class="btn btn-info btn-block" >Ajax</button>
+                    </a>
+                    <br>
+                    <a href="http://p-sec.eu/zagruzit/" style="text-decoration: none ; padding-top:" target="_blank">
+                        <button class="btn btn-info btn-block">Лунь</button>
+                    </a>
+                    <br>
+                    <a href="http://ai-grifon.com.ua/index.php/ru/okhrannye-ppk" style="text-decoration: none ;"
+                       target="_blank">
+                        <button class="btn btn-info btn-block">Грифон</button>
+                    </a>
+                    <br>
+                    <a href="http://tiras.ua/" style="text-decoration: none ;"
+                       target="_blank">
+                        <button class="btn btn-info btn-block">Тирас</button>
+                    </a>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- Modal  Reload ----------------------------------------------------------------------------------------------->
+<div class="modal fade" id="myModalReload" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Система перезапуска пультового оборудования</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <button type="button" class="btn btn-success">Выкл/Вкл все</button>
+                    <button type="button" class="btn btn-success">УСП2</button>
+                    <button type="button" class="btn btn-success">УСП3</button>
+                    <button type="button" class="btn btn-success">ЛУНЬ</button>
+                    <button type="button" class="btn btn-success">VGT</button>
+                    <br>
+                    <div>JS переключать цвета на кнопках</div>
+                    <br>
+                    <button type="button" class="btn btn-danger">Выкл/Вкл все</button>
+                    <button type="button" class="btn btn-danger">УСП2</button>
+                    <button type="button" class="btn btn-danger">УСП3</button>
+                    <button type="button" class="btn btn-danger">ЛУНЬ</button>
+                    <button type="button" class="btn btn-danger">VGT</button>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
