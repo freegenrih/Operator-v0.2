@@ -20,7 +20,7 @@ from views.executor import (EngineerGet,
 from views.validators import Validators
 
 # !!! need create settings min max size password, usertype and ...
-
+# !!! need create exeption try: exeption: finally:
 def type_user():
     # Get type user list
     return UsersGet().get_type_user()
