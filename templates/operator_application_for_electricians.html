@@ -60,18 +60,18 @@
 
                                 <div class="form-group">
                                     <label for="comment">Адресс объекта :</label>
-                                    <input class="form-control" type="text"name="add_comment" id="comment"
+                                    <input class="form-control" type="text" name="add_comment" id="comment"
                                            required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment">Название объекта :</label>
                                     <input class="form-control" type="text" name="add_comment" id="comment"
-                                    required>
+                                           required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment">От кого Заявка :</label>
                                     <input class="form-control" type="text" name="add_comment" id="comment"
-                                    required>
+                                           required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment_comment">Описание заявки:</label>
@@ -100,27 +100,38 @@
 <!--------------------------------------------------------------------------------------------------------------------->
 <div style="padding-top: 10px;">
 
-    <div style="height:550px;overflow-y:scroll;;">
+    <div style="height:550px;overflow-y:scroll; width:100%;overflow-x :scroll;">
         <table class="table">
             <thead>
+
             <tr class="info">
-                <th width="10%" class="text-center">Дата создания</th>
-                <th width="3%" class="text-center">Оператор</th>
-                <th width="3%" class="text-center">Пульт</th>
-                <th width="2%" class="text-center">Объект</th>
-                <th width="70%" class="text-center">Описание</th>
-                <th width="1%" class="text-center">ОК</th>
-                <th width="3%" class="text-center">Выполнить</th>
+
+                <th width="1%" class="text-center">Дата <br>создания</th>
+                <th width="1%" class="text-center">Оператор</th>
+                <th width="1%" class="text-center">Объект</th>
+                <th width="1%" class="text-center">На какое число</th>
+                <th width="2%" class="text-center">Название<br>объекта</th>
+                <th width="2%" class="text-center">Адресс</th>
+                <th width="2%" class="text-center">От кого заявка</th>
+                <th width="10%" class="text-center">Описание<br>заявки</th>
+                <th width="1%" class="text-center text-danger">ОК</th>
+                <th width="1%" class="text-center text-danger">Выполнить</th>
             </tr>
             </thead>
+            {%if app%}
+            {%for row in app%}
+
             <tbody>
             <form method="post" action="">
                 <tr class="success">
-                    <td class="text-center"><strong></strong></td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
-                    <td class="text-center"><strong></strong></td>
-                    <td class="text-center"><strong></strong></td>
+                    <td class="text-center"><strong>{{row.date_of_creation}}</strong></td>
+                    <td class="text-center"><strong>{{row.name_operator}}</strong></td>
+                    <td class="text-center"><strong>{{row.number_object}}</strong></td>
+                    <td class="text-center"><strong>{{row.on_which_date }}</strong></td>
+                    <td class="text-center"><strong>{{row.name_object}}</strong></td>
+                    <td class="text-center"><strong>{{row.address_object}}</strong></td>
+                    <td class="text-center"><strong>{{row.from_whom_application}}</strong></td>
+                    <td class="text-center"><strong>{{row.application_description}}</strong></td>
                     <td class="text-center">
                         <label style="padding-left: 5px; padding-top: 6px;">
                             <input type="radio" name="optradio" value="" required>
@@ -133,9 +144,12 @@
                 </tr>
             </form>
             </tbody>
+            {%endfor%}
+            {%endif%}
         </table>
     </div>
 </div>
+
 
 
 {%endblock centermenu%}

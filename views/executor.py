@@ -47,10 +47,16 @@ class OperatorCreate:
         return wraper_write(self.sql_insert_note)
 
 
+
 class OperatorGet:
     def get_list_note(self):
         self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         return wraper_read(self.sql_get_list_note)
+
+    def get_list_electritian_application(self):
+        self.sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
+                                                    "WHERE `checked_electrician`=0"
+        return wraper_read(self.sql_get_list_electrician_application)
 
 
 class OperatorDel:

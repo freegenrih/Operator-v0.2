@@ -114,7 +114,8 @@ def operator():
                                user=get_sesion_user())
 
 def operator_application_for_electricians():
-    return render_template('operator_application_for_electricians.html', user=get_sesion_user())
+    application = OperatorGet().get_list_electritian_application()
+    return render_template('operator_application_for_electricians.html', user=get_sesion_user(), app=application)
 
 def operator_test():
     return render_template('operator_test.html', user=get_sesion_user())
