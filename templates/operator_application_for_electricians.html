@@ -18,7 +18,7 @@
 {%endblock centermenuhead%}
 
 {%block centermenu%}
-<!------------------------------------------------------------------------------------>
+<!--------------------------------------------------------------------------------------------------------------------->
 <div class="container-fluid">
     <div class="row">
         <div class="text-center">
@@ -27,8 +27,7 @@
                     data-placement="right" title="Нажать левую кнопку мыши для создания заявки элм"> Заявка
                 ЭЛМ
             </button>
-
-            <a href="{{ url_for('operator_application_for_electricians') }}">
+            <a href="{{ url_for('operator_application_for_electricians')}}">
                 <button type="button" class="btn btn-info btn-lg"
                         data-placement="right" title="Нажать левую кнопку мыши для обновления информации">
                     Обновить Информацию
@@ -49,20 +48,35 @@
                             <form method="post" action="{{ url_for('operator') }}">
                                 <div class="form-group">
                                     <label for="number_object">Ввести номер объекта :</label>
-                                    <input class="form-control" type="number" name="number_object" id="number_object">
+                                    <input class="form-control" type="number" name="number_object" id="number_object"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="comment_date">На какое число :</label>
+                                    <input class="form-control" type="date" name="number_object" id="comment_date"
+                                           required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="comment">Адресс объекта :</label>
-                                    <textarea class="form-control" name="add_comment" rows="1" id="comment"> </textarea>
+                                    <input class="form-control" type="text"name="add_comment" id="comment"
+                                           required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment">Название объекта :</label>
-                                    <textarea class="form-control" name="add_comment" rows="1" id="comment"> </textarea>
+                                    <input class="form-control" type="text" name="add_comment" id="comment"
+                                    required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="comment">Описание заявки:</label>
-                                    <textarea class="form-control" name="add_comment" rows="5" id="comment"> </textarea>
+                                    <label for="comment">От кого Заявка :</label>
+                                    <input class="form-control" type="text" name="add_comment" id="comment"
+                                    required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment_comment">Описание заявки:</label>
+                                    <textarea class="form-control" name="add_comment" rows="5"
+                                              id="comment_comment"> </textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" name="submit" value="create_note" class="btn btn-warning">
@@ -81,6 +95,45 @@
 
         </div>
 
+    </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------------------->
+<div style="padding-top: 10px;">
+
+    <div style="height:550px;overflow-y:scroll;;">
+        <table class="table">
+            <thead>
+            <tr class="info">
+                <th width="10%" class="text-center">Дата создания</th>
+                <th width="3%" class="text-center">Оператор</th>
+                <th width="3%" class="text-center">Пульт</th>
+                <th width="2%" class="text-center">Объект</th>
+                <th width="70%" class="text-center">Описание</th>
+                <th width="1%" class="text-center">ОК</th>
+                <th width="3%" class="text-center">Выполнить</th>
+            </tr>
+            </thead>
+            <tbody>
+            <form method="post" action="">
+                <tr class="success">
+                    <td class="text-center"><strong></strong></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"><strong></strong></td>
+                    <td class="text-center"><strong></strong></td>
+                    <td class="text-center">
+                        <label style="padding-left: 5px; padding-top: 6px;">
+                            <input type="radio" name="optradio" value="" required>
+                        </label>
+                    </td>
+                    <td class="text-center">
+
+                        <button type="submit" name="submit" value="delete" class="btn btn-danger">Удалить</button>
+                    </td>
+                </tr>
+            </form>
+            </tbody>
+        </table>
     </div>
 </div>
 
