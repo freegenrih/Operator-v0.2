@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: localhost:3306
-- Generation Time: Aug 31, 2017 at 03:45 PM
+- Generation Time: Sep 02, 2017 at 12:38 AM
 - Server version: 5.7.19-0ubuntu0.17.04.1
 - PHP Version: 7.0.22-0ubuntu0.17.04.1
 -->
@@ -30,7 +30,7 @@
                   `on_which_date` text NOT NULL,
                   `application_description` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_operator_application">
                 CREATE TABLE `dbo_operator_application` (
@@ -54,14 +54,14 @@
                   `user_password` text NOT NULL,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user_type">
                 CREATE TABLE `user_type` (
                   `id` int(2) NOT NULL AUTO_INCREMENT,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
             </pma:table>
         </pma:database>
     </pma:structure_schemas>
@@ -71,7 +71,31 @@
     -->
     <database name="Pult">
         <!-- Table dbo_electrician_application -->
+        <table name="dbo_electrician_application">
+            <column name="id">13</column>
+            <column name="date_of_creation">2017-09-02 00:27:59</column>
+            <column name="name_operator">1111</column>
+            <column name="number_object">2006</column>
+            <column name="name_object">ЧД</column>
+            <column name="address_object">ильича 17</column>
+            <column name="from_whom_application">Иваненко</column>
+            <column name="checked_electrician">0</column>
+            <column name="date_checked"> </column>
+            <column name="on_which_date">21-02-2017 18:00</column>
+            <column name="application_description">сработка зоны 4 БB </column>
+        </table>
         <!-- Table dbo_operator_application -->
+        <table name="dbo_operator_application">
+            <column name="id">33</column>
+            <column name="date_of_creation">2017-09-02 00:30:20</column>
+            <column name="name_operator">admin@admin.ru</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">2007</column>
+            <column name="message">Убрать из 220  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-09-02 00:30:35</column>
+            <column name="name_engineer_completion">admin@admin.ru</column>
+        </table>
         <table name="dbo_operator_application">
             <column name="id">81</column>
             <column name="date_of_creation">2017-08-26 15:12:29</column>
@@ -223,9 +247,9 @@
             <column name="name_pult">Грифон</column>
             <column name="number_object">1111</column>
             <column name="message">Добавить  </column>
-            <column name="checked_engineer">0</column>
-            <column name="date_of_completion"></column>
-            <column name="name_engineer_completion"> </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-08-31 15:52:11</column>
+            <column name="name_engineer_completion">admin@admin.ru</column>
         </table>
         <table name="dbo_operator_application">
             <column name="id">107</column>
@@ -284,24 +308,10 @@
         </table>
         <!-- Table dbo_users -->
         <table name="dbo_users">
-            <column name="id">5</column>
-            <column name="date_register_user">2017-08-26 00:45:29</column>
-            <column name="user_name">21</column>
-            <column name="user_password">123456</column>
-            <column name="user_type">Администратор</column>
-        </table>
-        <table name="dbo_users">
-            <column name="id">11</column>
-            <column name="date_register_user">2017-08-26 16:43:26</column>
+            <column name="id">2</column>
+            <column name="date_register_user">2017-09-02 00:38:04</column>
             <column name="user_name">admin@admin.ru</column>
-            <column name="user_password">admins</column>
-            <column name="user_type">Оператор</column>
-        </table>
-        <table name="dbo_users">
-            <column name="id">15</column>
-            <column name="date_register_user">2017-08-30 09:42:21</column>
-            <column name="user_name">jkdfkj</column>
-            <column name="user_password">123456</column>
+            <column name="user_password">11111111</column>
             <column name="user_type">Оператор</column>
         </table>
         <!-- Table user_type -->

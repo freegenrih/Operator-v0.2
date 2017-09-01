@@ -9,6 +9,7 @@ from flask import (render_template,
 from views.executor import (EngineerGet,
                             EngineerUpdate,
                             OperatorCreate,
+                            OperatorCreateElectrician,
                             OperatorGet,
                             OperatorDel,
                             SettingsUsersRegUser,
@@ -113,9 +114,36 @@ def operator():
                                application_operator=OperatorGet().get_list_note(),
                                user=get_sesion_user())
 
+
 def operator_application_for_electricians():
-    application = OperatorGet().get_list_electritian_application()
-    return render_template('operator_application_for_electricians.html', user=get_sesion_user(), app=application)
+
+    if request.method == 'POST' and request.form['submit'] == 'delete':
+        print(request.form['optradio'])
+        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+            OperatorDel(request.form['optradio']).delete_note_electrician()
+            return redirect(url_for('operator_application_for_electricians'))
+        else:
+            return redirect(url_for('operator_application_for_electricians'))
+
+    elif request.method == 'POST' and request.form['submit'] == 'create_note':
+        print(request.form['submit'])
+
+        OperatorCreateElectrician(str(get_sesion_user()),
+                                  request.form['number_object'],
+                                  request.form['name_object'],
+                                  request.form['address_object'],
+                                  request.form['from_whom_application'],
+                                  request.form['on_which_date'],
+                                  request.form['application_description']
+                                  ).create_note_electrician()
+
+        return redirect(url_for('operator_application_for_electricians'))
+
+    else:
+        application = OperatorGet().get_list_electritian_application()
+        print(application)
+        return render_template('operator_application_for_electricians.html', user=get_sesion_user(), app=application)
+
 
 def operator_test():
     return render_template('operator_test.html', user=get_sesion_user())
@@ -142,7 +170,7 @@ def admin():
 def settings_users():
     # Create new user
     if request.method == 'POST' and request.form['submit'] == 'Зарегестрировать Пользователя':
-        if Validators(request.form['user_name'], 'name', min_len=3, max_len=10).valid_name() \
+        if Validators(request.form['user_name'], 'name', min_len=3, max_len=20).valid_name() \
                 and Validators(request.form['user_password'], 'password', min_len=5, max_len=10).valid_password() \
                 and Validators(request.form['user_type'], 'name', min_len=3, max_len=15).valid_name() == True:
             SettingsUsersRegUser(request.form['user_name'],

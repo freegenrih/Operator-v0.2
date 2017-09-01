@@ -24,6 +24,17 @@ class EngineerGet:
         return wraper_read(sql)
 
 
+class OperatorGet:
+    def get_list_note(self):
+        self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
+        return wraper_read(self.sql_get_list_note)
+
+    def get_list_electritian_application(self):
+        self.sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
+                                                    "WHERE `checked_electrician`=0"
+        return wraper_read(self.sql_get_list_electrician_application)
+
+
 class OperatorCreate:
     def __init__(self, name_user: str, select_pult: str, number_object: str, select_operation: str, add_comment: str):
         self.name_user = name_user
@@ -47,16 +58,43 @@ class OperatorCreate:
         return wraper_write(self.sql_insert_note)
 
 
+class OperatorCreateElectrician:
+    def __init__(self, name_operator: str,
+                 namber_object: str,
+                 name_object: str,
+                 address_object: str,
+                 from_whom_application: str,
+                 on_which_date: str,
+                 application_description: str):
+        self.name_operator = name_operator
+        self.namber_object = namber_object
+        self.name_object = name_object
+        self.address_object = address_object
+        self.from_whom_application = from_whom_application
+        self.on_which_date = on_which_date
+        self.application_description = application_description
 
-class OperatorGet:
-    def get_list_note(self):
-        self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
-        return wraper_read(self.sql_get_list_note)
+        self.sql_insert_note_electrician = \
+            "INSERT INTO `dbo_electrician_application` (`id`, `date_of_creation`, " \
+            "`name_operator`, `number_object`, `name_object`, `address_object`, " \
+            "`from_whom_application`, `checked_electrician`, `date_checked`, " \
+            "`on_which_date`, `application_description`) " \
+            "VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');" \
+                .format(
+                str(datetime.now())[0:-7],
+                str(self.name_operator),
+                str(self.namber_object),
+                str(self.name_object),
+                str(self.address_object),
+                str(self.from_whom_application),
+                str('0'),
+                str(' '),
+                str(self.on_which_date),
+                str(self.application_description),
+            )
 
-    def get_list_electritian_application(self):
-        self.sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
-                                                    "WHERE `checked_electrician`=0"
-        return wraper_read(self.sql_get_list_electrician_application)
+    def create_note_electrician(self):
+        return wraper_write(self.sql_insert_note_electrician)
 
 
 class OperatorDel:
@@ -65,8 +103,26 @@ class OperatorDel:
         self.sql_delete_note = "DELETE FROM `dbo_operator_application` " \
                                "WHERE `dbo_operator_application`.`id` = {};".format(int(self.id))
 
+        self.sql_delete_note_electrician = "DELETE FROM `dbo_electrician_application` " \
+                                           "WHERE `dbo_electrician_application`.`id` = {};".format(int(self.id))
+
     def delete_note(self):
         return wraper_write(self.sql_delete_note)
+
+    def delete_note_electrician(self):
+        return wraper_write(self.sql_delete_note_electrician)
+
+
+class UsersGet:
+    def __init__(self):
+        self.sql_type_user = "SELECT * FROM `user_type`"
+        self.sql_list_users = "SELECT * FROM `dbo_users`"
+
+    def get_type_user(self):
+        return wraper_read(self.sql_type_user)
+
+    def get_list_user(self):
+        return wraper_read(self.sql_list_users)
 
 
 class SettingsUsersRegUser:
@@ -85,6 +141,16 @@ class SettingsUsersRegUser:
         return wraper_write(self.sql_reg_user)
 
 
+class SettingsUsersRegType:
+    def __init__(self, name_type: str):
+        self.name_type = name_type
+        self.sql_reg_new_type_user = "INSERT INTO `user_type` (`id`, `user_type`) " \
+                                     "VALUES (NULL, '{}')".format(str(self.name_type))
+
+    def reg_new_type(self):
+        return wraper_write(self.sql_reg_new_type_user)
+
+
 class SettingsUsersDel:
     def __init__(self, id: int):
         self.id = id
@@ -97,25 +163,3 @@ class SettingsUsersDel:
 
     def delete_user_type(self):
         return wraper_write(self.sql_delete_user_type)
-
-
-class SettingsUsersRegType:
-    def __init__(self, name_type: str):
-        self.name_type = name_type
-        self.sql_reg_new_type_user = "INSERT INTO `user_type` (`id`, `user_type`) " \
-                                     "VALUES (NULL, '{}')".format(str(self.name_type))
-
-    def reg_new_type(self):
-        return wraper_write(self.sql_reg_new_type_user)
-
-
-class UsersGet:
-    def __init__(self):
-        self.sql_type_user = "SELECT * FROM `user_type`"
-        self.sql_list_users = "SELECT * FROM `dbo_users`"
-
-    def get_type_user(self):
-        return wraper_read(self.sql_type_user)
-
-    def get_list_user(self):
-        return wraper_read(self.sql_list_users)

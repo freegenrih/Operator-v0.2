@@ -44,8 +44,7 @@
                             <h4 class="modal-title">Заявка Электромонтеру </h4>
                         </div>
                         <div class="modal-body">
-
-                            <form method="post" action="{{ url_for('operator') }}">
+                            <form method="post" action="{{ url_for('operator_application_for_electricians') }}">
                                 <div class="form-group">
                                     <label for="number_object">Ввести номер объекта :</label>
                                     <input class="form-control" type="number" name="number_object" id="number_object"
@@ -54,28 +53,28 @@
 
                                 <div class="form-group">
                                     <label for="comment_date">На какое число :</label>
-                                    <input class="form-control" type="date" name="number_object" id="comment_date"
+                                    <input class="form-control" type="date" name="on_which_date" id="comment_date"
                                            required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="comment">Адресс объекта :</label>
-                                    <input class="form-control" type="text" name="add_comment" id="comment"
+                                    <label for="comment_address">Адресс объекта :</label>
+                                    <input class="form-control" type="text" name="address_object" id="comment_address"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="comment">Название объекта :</label>
-                                    <input class="form-control" type="text" name="add_comment" id="comment"
+                                    <label for="comment_name">Название объекта :</label>
+                                    <input class="form-control" type="text" name="name_object" id="comment_name"
                                            required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment">От кого Заявка :</label>
-                                    <input class="form-control" type="text" name="add_comment" id="comment"
+                                    <input class="form-control" type="text" name="from_whom_application" id="comment"
                                            required>
                                 </div>
                                 <div class="form-group">
                                     <label for="comment_comment">Описание заявки:</label>
-                                    <textarea class="form-control" name="add_comment" rows="5"
+                                    <textarea class="form-control" name="application_description" rows="5"
                                               id="comment_comment"> </textarea>
                                 </div>
                                 <div class="form-group">
@@ -122,7 +121,7 @@
             {%for row in app%}
 
             <tbody>
-            <form method="post" action="">
+            <form method="post" action="{{url_for('operator_application_for_electricians')}}">
                 <tr class="success">
                     <td class="text-center"><strong>{{row.date_of_creation}}</strong></td>
                     <td class="text-center"><strong>{{row.name_operator}}</strong></td>
@@ -134,11 +133,10 @@
                     <td class="text-center"><strong>{{row.application_description}}</strong></td>
                     <td class="text-center">
                         <label style="padding-left: 5px; padding-top: 6px;">
-                            <input type="radio" name="optradio" value="" required>
+                            <input type="radio" name="optradio" value="{{row.id}}" required>
                         </label>
                     </td>
                     <td class="text-center">
-
                         <button type="submit" name="submit" value="delete" class="btn btn-danger">Удалить</button>
                     </td>
                 </tr>
@@ -149,8 +147,6 @@
         </table>
     </div>
 </div>
-
-
 
 {%endblock centermenu%}
 
