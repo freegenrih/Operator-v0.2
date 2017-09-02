@@ -3,9 +3,14 @@
 {%block extralink%}
 {%endblock extralink%}
 
-{%block navbar%}
 
+{%block navbar1%}
+ <li><a href="#" title="Орератор"><span class="glyphicon glyphicon-object-align-right"></span></a></li>
 {%endblock%}
+{%block navbar2%}
+ <li><a href="#" title="ЭЛМ"><span class="glyphicon glyphicon-bed"></span></a></li>
+{%endblock%}
+
 
 {%block title%}Инженер{%endblock title%}
 
@@ -15,7 +20,6 @@
 <div class="btn btn-danger btn-block">Заявки ЭЛМ</div>
 <div class="btn btn-danger btn-block">Тесты</div>
 <div class="btn btn-danger btn-block">Отчет Тестов</div>
-
 {%endblock leftmenu%}
 
 {%block centermenuhead%}
@@ -29,45 +33,46 @@
     </a>
 </div>
 <div style="padding-top: 10px;">
-<div style=" height:550px;overflow-y:scroll;;">
-    <table class="table table-striped">
-        <thead>
-        <tr class="info">
-            <th width="10%" class="text-center">Дата</th>
-            <th width="3%" class="text-center">Оператор</th>
-            <th width="3%" class="text-center">Пульт</th>
-            <th width="2%" class="text-center">Объект</th>
-            <th width="70%" class="text-center">Описание</th>
-            <th width="1%" class="text-center">ОК</th>
-            <th width="3%" class="text-center">Выполнить</th>
-        </tr>
-        </thead>
-
-        {%if application_engineer%}
-        {%for row in application_engineer%}
-        <tbody>
-        <form method="post" action="{{ url_for('engineer') }}">
-            <tr class="success">
-                <td class="text-center"><strong>{{row.date_of_creation}}</strong></td>
-                <td class="text-center">{{row.name_operator}}</td>
-                <td class="text-center">{{row.name_pult}}</td>
-                <td class="text-center"><strong>{{row.number_object}}</strong></td>
-                <td class="text-center"><strong>{{row.message}}</strong></td>
-                <td class="text-center">
-                    <label style="padding-left: 5px; padding-top: 6px;">
-                        <input type="radio" name="optradio" value="{{row.id}}" required>
-                    </label>
-                </td>
-                <td class="text-center">
-                    <button type="submit" name="submit" value="completion" class="btn btn-success">Отработать</button>
-                </td>
+    <div style=" height:550px;overflow-y:scroll;;">
+        <table class="table table-striped">
+            <thead>
+            <tr class="info">
+                <th width="10%" class="text-center">Дата</th>
+                <th width="3%" class="text-center">Оператор</th>
+                <th width="3%" class="text-center">Пульт</th>
+                <th width="2%" class="text-center">Объект</th>
+                <th width="70%" class="text-center">Описание</th>
+                <th width="1%" class="text-center">ОК</th>
+                <th width="3%" class="text-center">Выполнить</th>
             </tr>
-        </form>
-        </tbody>
-        {%endfor%}
-        {%endif%}
-    </table>
-</div>
+            </thead>
+
+            {%if application_engineer%}
+            {%for row in application_engineer%}
+            <tbody>
+            <form method="post" action="{{ url_for('engineer') }}">
+                <tr class="success">
+                    <td class="text-center"><strong>{{row.date_of_creation}}</strong></td>
+                    <td class="text-center">{{row.name_operator}}</td>
+                    <td class="text-center">{{row.name_pult}}</td>
+                    <td class="text-center"><strong>{{row.number_object}}</strong></td>
+                    <td class="text-center"><strong>{{row.message}}</strong></td>
+                    <td class="text-center">
+                        <label style="padding-left: 5px; padding-top: 6px;">
+                            <input type="radio" name="optradio" value="{{row.id}}" required>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <button type="submit" name="submit" value="completion" class="btn btn-success">Отработать
+                        </button>
+                    </td>
+                </tr>
+            </form>
+            </tbody>
+            {%endfor%}
+            {%endif%}
+        </table>
+    </div>
 </div>
 
 {%endblock centermenu%}
