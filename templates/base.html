@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/body.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,7 +9,6 @@
     {% block extralink %}
     {% endblock extralink %}
     <title>{% block title %}{% endblock title %}</title>
-
 </head>
 <body>
 <footer class="container-fluid text-center">
@@ -39,7 +37,6 @@
                     <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-random"></span></a></li>
                 </ul>
             </div>
-
         </div>
     </div>
 </footer>
@@ -67,7 +64,6 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 {% block rightmenuhead %}
-
                 {% endblock rightmenuhead %}
             </div>
             <div class="panel-body" style="min-height: 670px;">

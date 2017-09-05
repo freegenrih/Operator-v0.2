@@ -212,3 +212,6 @@ def settings_users():
 
 def settings_phone():
     return render_template('settings_phone.html', user=get_sesion_user())
+# test page
+def test():
+    return render_template('testpage.html')
