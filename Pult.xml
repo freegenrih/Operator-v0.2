@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: localhost:3306
-- Generation Time: Sep 02, 2017 at 12:38 AM
+- Generation Time: Sep 06, 2017 at 05:45 PM
 - Server version: 5.7.19-0ubuntu0.17.04.1
 - PHP Version: 7.0.22-0ubuntu0.17.04.1
 -->
@@ -30,7 +30,17 @@
                   `on_which_date` text NOT NULL,
                   `application_description` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="dbo_no_tests">
+                CREATE TABLE `dbo_no_tests` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `date_no_test` text NOT NULL,
+                  `object_number` text NOT NULL,
+                  `name_operator` text NOT NULL,
+                  `why_there_is_no_test` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_operator_application">
                 CREATE TABLE `dbo_operator_application` (
@@ -44,7 +54,7 @@
                   `date_of_completion` text NOT NULL,
                   `name_engineer_completion` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_users">
                 CREATE TABLE `dbo_users` (
@@ -54,14 +64,14 @@
                   `user_password` text NOT NULL,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user_type">
                 CREATE TABLE `user_type` (
                   `id` int(2) NOT NULL AUTO_INCREMENT,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
             </pma:table>
         </pma:database>
     </pma:structure_schemas>
@@ -72,17 +82,25 @@
     <database name="Pult">
         <!-- Table dbo_electrician_application -->
         <table name="dbo_electrician_application">
-            <column name="id">13</column>
-            <column name="date_of_creation">2017-09-02 00:27:59</column>
-            <column name="name_operator">1111</column>
+            <column name="id">28</column>
+            <column name="date_of_creation">2017-09-06 16:29:40</column>
+            <column name="name_operator">21</column>
             <column name="number_object">2006</column>
-            <column name="name_object">ЧД</column>
-            <column name="address_object">ильича 17</column>
-            <column name="from_whom_application">Иваненко</column>
+            <column name="name_object">квартира</column>
+            <column name="address_object">калинова 34 дом5 подъезд 7</column>
+            <column name="from_whom_application">от матиенко</column>
             <column name="checked_electrician">0</column>
             <column name="date_checked"> </column>
-            <column name="on_which_date">21-02-2017 18:00</column>
-            <column name="application_description">сработка зоны 4 БB </column>
+            <column name="on_which_date">20-01-2017 на 12:00</column>
+            <column name="application_description">заменить лунь </column>
+        </table>
+        <!-- Table dbo_no_tests -->
+        <table name="dbo_no_tests">
+            <column name="id">33</column>
+            <column name="date_no_test">2017-09-06 </column>
+            <column name="object_number">9090</column>
+            <column name="name_operator">21</column>
+            <column name="why_there_is_no_test">АКТ</column>
         </table>
         <!-- Table dbo_operator_application -->
         <table name="dbo_operator_application">
@@ -258,9 +276,9 @@
             <column name="name_pult">Грифон</column>
             <column name="number_object">1110</column>
             <column name="message">Добавить  </column>
-            <column name="checked_engineer">0</column>
-            <column name="date_of_completion"></column>
-            <column name="name_engineer_completion"> </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-09-02 11:49:45</column>
+            <column name="name_engineer_completion">admin@admin.ru</column>
         </table>
         <table name="dbo_operator_application">
             <column name="id">108</column>
@@ -269,50 +287,28 @@
             <column name="name_pult">Грифон</column>
             <column name="number_object">1233</column>
             <column name="message">Добавить ТЛ.  </column>
-            <column name="checked_engineer">0</column>
-            <column name="date_of_completion"></column>
-            <column name="name_engineer_completion"> </column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">109</column>
-            <column name="date_of_creation">2017-08-30 23:13:56</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">78645</column>
-            <column name="message">Убрать из 220  </column>
-            <column name="checked_engineer">0</column>
-            <column name="date_of_completion"></column>
-            <column name="name_engineer_completion"> </column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">110</column>
-            <column name="date_of_creation">2017-08-30 23:14:08</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить  </column>
-            <column name="checked_engineer">0</column>
-            <column name="date_of_completion"></column>
-            <column name="name_engineer_completion"> </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-09-05 14:53:37</column>
+            <column name="name_engineer_completion">admin@admin.ru</column>
         </table>
         <table name="dbo_operator_application">
             <column name="id">111</column>
-            <column name="date_of_creation">2017-08-30 23:14:17</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">2006</column>
-            <column name="message">Добавить  </column>
+            <column name="date_of_creation">2017-09-05 12:04:37</column>
+            <column name="name_operator">ф</column>
+            <column name="name_pult">Феникс</column>
+            <column name="number_object">123</column>
+            <column name="message">Убрать из 220  </column>
             <column name="checked_engineer">0</column>
             <column name="date_of_completion"></column>
             <column name="name_engineer_completion"> </column>
         </table>
         <!-- Table dbo_users -->
         <table name="dbo_users">
-            <column name="id">2</column>
-            <column name="date_register_user">2017-09-02 00:38:04</column>
-            <column name="user_name">admin@admin.ru</column>
-            <column name="user_password">11111111</column>
-            <column name="user_type">Оператор</column>
+            <column name="id">3</column>
+            <column name="date_register_user">2017-09-06 16:07:00</column>
+            <column name="user_name">wewwwww</column>
+            <column name="user_password">wwwwwwww</column>
+            <column name="user_type">Эк №2</column>
         </table>
         <!-- Table user_type -->
         <table name="user_type">
@@ -326,6 +322,14 @@
         <table name="user_type">
             <column name="id">3</column>
             <column name="user_type">Администратор</column>
+        </table>
+        <table name="user_type">
+            <column name="id">4</column>
+            <column name="user_type">Эк №2</column>
+        </table>
+        <table name="user_type">
+            <column name="id">5</column>
+            <column name="user_type">new type</column>
         </table>
     </database>
 </pma_xml_export>
