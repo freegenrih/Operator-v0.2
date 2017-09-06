@@ -10,6 +10,7 @@ from views.executor import (EngineerGet,
                             EngineerUpdate,
                             OperatorCreate,
                             OperatorCreateElectrician,
+                            OperatorCreateNoTests,
                             OperatorGet,
                             OperatorDel,
                             SettingsUsersRegUser,
@@ -33,7 +34,7 @@ def get_sesion_user():
     if escape(session['username']):
         user = escape(session['username'])
     else:
-        user = None
+        user = 'None'
     return user
 
 
@@ -49,20 +50,21 @@ def logout():
 
 
 def semple_page_signin():
-    # redirect page operator
-    if request.method == 'POST' and request.form['user_type'] == 'Оператор':
-        session['username'] = request.form['user_name']
-        return redirect(url_for('operator'))
+    if request.method == 'POST':
+        # redirect page operator
+        if request.form['user_type'] == 'Оператор':
+            session['username'] = request.form['user_name']
+            return redirect(url_for('operator'))
 
-    # redirect page admin
-    elif request.method == 'POST' and request.form['user_type'] == 'Администратор':
-        session['username'] = request.form['user_name']
-        return redirect(url_for('admin'))
+        # redirect page admin
+        elif request.form['user_type'] == 'Администратор':
+            session['username'] = request.form['user_name']
+            return redirect(url_for('admin'))
 
-    # redirect page engineer
-    elif request.method == 'POST' and request.form['user_type'] == 'Инженер':
-        session['username'] = request.form['user_name']
-        return redirect(url_for('engineer'))
+        # redirect page engineer
+        elif request.form['user_type'] == 'Инженер':
+            session['username'] = request.form['user_name']
+            return redirect(url_for('engineer'))
 
     # redirect page signin
     else:
@@ -70,14 +72,15 @@ def semple_page_signin():
 
 
 def semple_page_operator():
-    if request.method == 'POST' and request.form['submit'] == 'Заявки ИНЖ':
-        return redirect(url_for('operator'))
+    if request.method == 'POST':
+        if request.form['submit'] == 'Заявки ИНЖ':
+            return redirect(url_for('operator'))
 
-    elif request.method == 'POST' and request.form['submit'] == 'Заявки ЭЛМ':
-        return redirect(url_for('operator_application_for_electricians'))
+        elif request.form['submit'] == 'Заявки ЭЛМ':
+            return redirect(url_for('operator_application_for_electricians'))
 
-    elif request.method == 'POST' and request.form['submit'] == 'Тесты':
-        return redirect(url_for('operator_test'))
+        elif request.form['submit'] == 'Тесты':
+            return redirect(url_for('operator_test'))
 
     else:
         return redirect(url_for('operator'))
@@ -85,29 +88,30 @@ def semple_page_operator():
 
 def operator():
     # create operator note to engineer
-    if request.method == 'POST' and request.form['submit'] == 'create_note':
-        if Validators(request.form['select_pult'], 'name', min_len=6, max_len=6).valid_name() \
-                and Validators(int(request.form['number_object']), 'id').valid_id() \
-                and Validators(request.form['select_operation'], 'name', min_len=8, max_len=15).valid_name() \
-                and Validators(request.form['add_comment'], 'name', min_len=1, max_len=300).valid_name() == True:
+    if request.method == 'POST':
+        if request.form['submit'] == 'create_note':
+            if Validators(request.form['select_pult'], 'name', min_len=6, max_len=6).valid_name() \
+                    and Validators(int(request.form['number_object']), 'id').valid_id() \
+                    and Validators(request.form['select_operation'], 'name', min_len=8, max_len=15).valid_name() \
+                    and Validators(request.form['add_comment'], 'name', min_len=1, max_len=300).valid_name() == True:
 
-            OperatorCreate(get_sesion_user(),
-                           request.form['select_pult'],
-                           request.form['number_object'],
-                           request.form['select_operation'],
-                           request.form['add_comment']
-                           ).create_note()
-            return redirect(url_for('operator'))
-        else:
-            return redirect(url_for('operator'))
+                OperatorCreate(get_sesion_user(),
+                               request.form['select_pult'],
+                               request.form['number_object'],
+                               request.form['select_operation'],
+                               request.form['add_comment']
+                               ).create_note()
+                return redirect(url_for('operator'))
+            else:
+                return redirect(url_for('operator'))
 
-    # operator delete note by id note
-    elif request.method == 'POST' and request.form['submit'] == 'delete':
-        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
-            OperatorDel(request.form['optradio']).delete_note()
-            return redirect(url_for('operator'))
-        else:
-            return redirect(url_for('operator'))
+        # operator delete note by id note
+        elif request.form['submit'] == 'delete':
+            if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+                OperatorDel(request.form['optradio']).delete_note()
+                return redirect(url_for('operator'))
+            else:
+                return redirect(url_for('operator'))
 
     else:
         return render_template('operator.html',
@@ -116,28 +120,25 @@ def operator():
 
 
 def operator_application_for_electricians():
+    if request.method == 'POST':
+        if request.form['submit'] == 'delete':
+            if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+                OperatorDel(request.form['optradio']).delete_note_electrician()
+                return redirect(url_for('operator_application_for_electricians'))
+            else:
+                return redirect(url_for('operator_application_for_electricians'))
 
-    if request.method == 'POST' and request.form['submit'] == 'delete':
-        print(request.form['optradio'])
-        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
-            OperatorDel(request.form['optradio']).delete_note_electrician()
+        elif request.form['submit'] == 'create_note':
+            OperatorCreateElectrician(str(get_sesion_user()),
+                                      request.form['number_object'],
+                                      request.form['name_object'],
+                                      request.form['address_object'],
+                                      request.form['from_whom_application'],
+                                      request.form['on_which_date'],
+                                      request.form['application_description']
+                                      ).create_note_electrician()
+
             return redirect(url_for('operator_application_for_electricians'))
-        else:
-            return redirect(url_for('operator_application_for_electricians'))
-
-    elif request.method == 'POST' and request.form['submit'] == 'create_note':
-        print(request.form['submit'])
-
-        OperatorCreateElectrician(str(get_sesion_user()),
-                                  request.form['number_object'],
-                                  request.form['name_object'],
-                                  request.form['address_object'],
-                                  request.form['from_whom_application'],
-                                  request.form['on_which_date'],
-                                  request.form['application_description']
-                                  ).create_note_electrician()
-
-        return redirect(url_for('operator_application_for_electricians'))
 
     else:
         application = OperatorGet().get_list_electritian_application()
@@ -146,14 +147,20 @@ def operator_application_for_electricians():
 
 
 def operator_test():
-    if request.method=='POST':
-        if request.form['submit']=='create_note':
+    if request.method == 'POST':
+        if request.form['submit'] == 'create_note':
+            OperatorCreateNoTests(
+                request.form['number_object'],
+                str(get_sesion_user()),
+                request.form['why_there_is_no_test']
+            ).create_note_no_test()
             print('Create note No TEST')
             return redirect(url_for('operator_test'))
-        elif request.form['submit']=='delete':
+        elif request.form['submit'] == 'delete':
+            OperatorDel(request.form['optradio']).delete_note_no_tests()
             print('Delete note No TEST')
             return redirect(url_for('operator_test'))
-        elif request.form['submit']=='copy':
+        elif request.form['submit'] == 'copy':
             print('Copy note No TEST')
             return redirect(url_for('operator_test'))
     return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
@@ -161,12 +168,13 @@ def operator_test():
 
 def engineer():
     # completion operators note
-    if request.method == 'POST' and request.form['submit'] == 'completion':
-        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
-            EngineerUpdate(request.form['optradio'], get_sesion_user()).update_note()
-            return redirect(url_for('engineer'))
-        else:
-            return redirect(url_for('engineer'))
+    if request.method == 'POST':
+        if request.form['submit'] == 'completion':
+            if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+                EngineerUpdate(request.form['optradio'], get_sesion_user()).update_note()
+                return redirect(url_for('engineer'))
+            else:
+                return redirect(url_for('engineer'))
     else:
         return render_template('engineer.html',
                                application_engineer=EngineerGet().get_list_note(),
@@ -178,40 +186,41 @@ def admin():
 
 
 def settings_users():
-    # Create new user
-    if request.method == 'POST' and request.form['submit'] == 'Зарегестрировать Пользователя':
-        if Validators(request.form['user_name'], 'name', min_len=3, max_len=20).valid_name() \
-                and Validators(request.form['user_password'], 'password', min_len=5, max_len=10).valid_password() \
-                and Validators(request.form['user_type'], 'name', min_len=3, max_len=15).valid_name() == True:
-            SettingsUsersRegUser(request.form['user_name'],
-                                 request.form['user_password'],
-                                 request.form['user_type']).reg_user()
-            return redirect(url_for('settings_users'))
-        else:
-            return redirect(url_for('settings_users'))
-    # Delete user
-    elif request.method == 'POST' and request.form['submit'] == 'delete_user':
-        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
-            SettingsUsersDel(request.form['optradio']).delete_users()
-            return redirect(url_for('settings_users'))
-        else:
-            return redirect(url_for('settings_users'))
+    if request.method == 'POST':
+        # Create new user
+        if request.form['submit'] == 'Зарегестрировать Пользователя':
+            if Validators(request.form['user_name'], 'name', min_len=3, max_len=20).valid_name() \
+                    and Validators(request.form['user_password'], 'password', min_len=5, max_len=10).valid_password() \
+                    and Validators(request.form['user_type'], 'name', min_len=3, max_len=15).valid_name() == True:
+                SettingsUsersRegUser(request.form['user_name'],
+                                     request.form['user_password'],
+                                     request.form['user_type']).reg_user()
+                return redirect(url_for('settings_users'))
+            else:
+                return redirect(url_for('settings_users'))
+        # Delete user
+        elif request.form['submit'] == 'delete_user':
+            if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+                SettingsUsersDel(request.form['optradio']).delete_users()
+                return redirect(url_for('settings_users'))
+            else:
+                return redirect(url_for('settings_users'))
 
-    # Delete user type
-    elif request.method == 'POST' and request.form['submit'] == 'delete_user_type':
-        if Validators(int(request.form['optradio']), 'id').valid_id() == True:
-            SettingsUsersDel(request.form['optradio']).delete_user_type()
-            return redirect(url_for('settings_users'))
-        else:
-            return redirect(url_for('settings_users'))
+        # Delete user type
+        elif request.form['submit'] == 'delete_user_type':
+            if Validators(int(request.form['optradio']), 'id').valid_id() == True:
+                SettingsUsersDel(request.form['optradio']).delete_user_type()
+                return redirect(url_for('settings_users'))
+            else:
+                return redirect(url_for('settings_users'))
 
-    # Create user type
-    elif request.method == 'POST' and request.form['submit'] == 'Зарегестрировать Новый Тип Пользователя':
-        if Validators(request.form['user_name_type'], 'name', min_len=3, max_len=10).valid_name() == True:
-            SettingsUsersRegType(request.form['user_name_type']).reg_new_type()
-            return redirect(url_for('settings_users'))
-        else:
-            return redirect(url_for('settings_users'))
+        # Create user type
+        elif request.form['submit'] == 'Зарегестрировать Новый Тип Пользователя':
+            if Validators(request.form['user_name_type'], 'name', min_len=3, max_len=10).valid_name() == True:
+                SettingsUsersRegType(request.form['user_name_type']).reg_new_type()
+                return redirect(url_for('settings_users'))
+            else:
+                return redirect(url_for('settings_users'))
     else:
         return render_template('settings_users.html',
                                users=UsersGet().get_list_user(),
@@ -222,6 +231,8 @@ def settings_users():
 
 def settings_phone():
     return render_template('settings_phone.html', user=get_sesion_user())
+
+
 # test page
 def test():
     return render_template('testpage.html')

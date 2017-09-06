@@ -27,7 +27,7 @@ class EngineerGet:
 class OperatorGet:
     sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
     sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
-                                                "WHERE `checked_electrician`=0"
+                                           "WHERE `checked_electrician`=0"
     sql_list_no_tests = "SELECT * FROM `dbo_no_tests`"
 
     def get_list_note(self):
@@ -102,6 +102,26 @@ class OperatorCreateElectrician:
         return wraper_write(self.sql_insert_note_electrician)
 
 
+class OperatorCreateNoTests:
+    def __init__(self, object_number, name_operator, why_there_is_no_test):
+        self.object_number = object_number
+        self.name_operator = name_operator
+        self.why_there_is_no_test = why_there_is_no_test
+        self.sql_create_no_test_note = "INSERT INTO `dbo_no_tests` (" \
+                                       "`id`, `date_no_test`, `object_number`, " \
+                                       "`name_operator`, `why_there_is_no_test`) " \
+                                       "VALUES (NULL, '{}', '{}', '{}', '{}');" \
+            .format(
+            str(datetime.now())[0:-15],
+            str(self.object_number),
+            str(self.name_operator),
+            str(self.why_there_is_no_test)
+        )
+
+    def create_note_no_test(self):
+        return wraper_write(self.sql_create_no_test_note)
+
+
 class OperatorDel:
     def __init__(self, id: int):
         self.id = id
@@ -110,6 +130,8 @@ class OperatorDel:
 
         self.sql_delete_note_electrician = "DELETE FROM `dbo_electrician_application` " \
                                            "WHERE `dbo_electrician_application`.`id` = {};".format(int(self.id))
+        self.sql_delete_note_no_tests = "DELETE FROM `dbo_no_tests` WHERE `dbo_no_tests`.`id` = {};".format(
+            int(self.id))
 
     def delete_note(self):
         return wraper_write(self.sql_delete_note)
@@ -117,19 +139,20 @@ class OperatorDel:
     def delete_note_electrician(self):
         return wraper_write(self.sql_delete_note_electrician)
 
+    def delete_note_no_tests(self):
+        return wraper_write(self.sql_delete_note_no_tests)
+
 
 class UsersGet:
     def __init__(self):
         self.sql_type_user = "SELECT * FROM `user_type`"
         self.sql_list_users = "SELECT * FROM `dbo_users`"
 
-
     def get_type_user(self):
         return wraper_read(self.sql_type_user)
 
     def get_list_user(self):
         return wraper_read(self.sql_list_users)
-
 
 
 class SettingsUsersRegUser:
