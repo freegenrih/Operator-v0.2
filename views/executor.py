@@ -25,14 +25,19 @@ class EngineerGet:
 
 
 class OperatorGet:
+    sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
+    sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
+                                                "WHERE `checked_electrician`=0"
+    sql_list_no_tests = "SELECT * FROM `dbo_no_tests`"
+
     def get_list_note(self):
-        self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         return wraper_read(self.sql_get_list_note)
 
     def get_list_electritian_application(self):
-        self.sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
-                                                    "WHERE `checked_electrician`=0"
         return wraper_read(self.sql_get_list_electrician_application)
+
+    def get_list_no_tests_all(self):
+        return wraper_read(self.sql_list_no_tests)
 
 
 class OperatorCreate:
@@ -118,11 +123,13 @@ class UsersGet:
         self.sql_type_user = "SELECT * FROM `user_type`"
         self.sql_list_users = "SELECT * FROM `dbo_users`"
 
+
     def get_type_user(self):
         return wraper_read(self.sql_type_user)
 
     def get_list_user(self):
         return wraper_read(self.sql_list_users)
+
 
 
 class SettingsUsersRegUser:

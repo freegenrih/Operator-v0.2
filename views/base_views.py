@@ -146,7 +146,17 @@ def operator_application_for_electricians():
 
 
 def operator_test():
-    return render_template('operator_test.html', user=get_sesion_user())
+    if request.method=='POST':
+        if request.form['submit']=='create_note':
+            print('Create note No TEST')
+            return redirect(url_for('operator_test'))
+        elif request.form['submit']=='delete':
+            print('Delete note No TEST')
+            return redirect(url_for('operator_test'))
+        elif request.form['submit']=='copy':
+            print('Copy note No TEST')
+            return redirect(url_for('operator_test'))
+    return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
 
 
 def engineer():

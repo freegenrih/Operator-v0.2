@@ -30,7 +30,7 @@
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                         data-target="#myModal"
                                         data-placement="right"
-                                        title="Нажать левую кнопку мыши для создания заявки инженеру">Нет Теста
+                                        title="Нажать левую кнопку мыши для записи в не терстируемые">Нет Теста
                                 </button>
 
                                 <a href="{{ url_for('operator_test') }}">
@@ -59,7 +59,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="sel1">Почему отсутствует тест:</label>
-                                                        <select class="form-control" name="select_operation" id="sel1">
+                                                        <select class="form-control" name="why_there_is_no_test" id="sel1">
                                                             <option class="text-center"></option>
                                                             <option class="text-center">АКТ</option>
                                                             <option class="text-center">Отсутствует 220 Вольт</option>
@@ -67,11 +67,6 @@
                                                             <option class="text-center">Вырезан Кабель</option>
                                                             <option class="text-center">Переодически</option>
                                                         </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="comment">Добавить текст если нужно:</label>
-                                                        <textarea class="form-control" name="add_comment" rows="5"
-                                                                  id="comment"> </textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" name="submit" value="create_note"
@@ -107,22 +102,28 @@
                         </tr>
                         </thead>
                     </table>
+
                     <div style="height:300px;overflow-y:scroll; width:100%;overflow-x :scroll;">
+                        {%if no_tests%}
+                        {%for row in no_tests%}
                         <table class="table">
                             <tbody>
                             <form method="post" action="{{url_for('operator_test')}}">
                                 <tr class="success">
-                                    <td class="text-center" width="18%"><strong>20-07-1027</strong></td>
-                                    <td class="text-center" width="17%"><strong>21</strong></td>
-                                    <td class="text-center" width="17%"><strong>1011</strong></td>
-                                    <td class="text-center" width="42%"><strong>AKT</strong></td>
+                                    <td class="text-center" width="18%"><strong>{{row.date_no_test}}</strong></td>
+                                    <td class="text-center" width="17%"><strong>{{row.name_operator}}</strong></td>
+                                    <td class="text-center" width="17%"><strong>{{row.object_number}}</strong></td>
+                                    <td class="text-center" width="42%"><strong>{{row.why_there_is_no_test}}</strong>
+                                    </td>
                                     <td class="text-center" width="1%">
                                         <label style="padding-left: 5px; padding-top: 6px;">
-                                            <input type="radio" name="optradio" value="" required>
+                                            <input type="radio" name="optradio" value="{{row.id}}" required
+                                            title="Кликнуть для потверждения удаления">
                                         </label>
                                     </td>
                                     <td class="text-center" width="5%">
-                                        <button type="submit" name="submit" value="delete" class="btn btn-danger">
+                                        <button type="submit" name="submit" value="delete" class="btn btn-danger"
+                                        title="Кликнуть для удаления">
                                             Удалить
                                         </button>
                                     </td>
@@ -130,6 +131,8 @@
                             </form>
                             </tbody>
                         </table>
+                        {%endfor%}
+                        {%endif%}
                     </div>
                 </div>
             </div>
@@ -151,7 +154,6 @@
                             <th width="17%" class="text-center">Оператор</th>
                             <th width="17%" class="text-center">Объект</th>
                             <th width="40%" class="text-center">Причина отсутствия теста</th>
-
                             <th width="1%" class="text-center text-danger">ОК</th>
                             <th width="2%" class="text-center text-danger"></th>
                             <th width="5%" class="text-center text-danger">Выполнить</th>
@@ -160,21 +162,27 @@
                         </thead>
                     </table>
                     <div style="height:300px;overflow-y:scroll; width:100%;overflow-x :scroll;">
+
+                        {%if no_tests%}
+                        {%for row in no_tests%}
                         <table class="table">
                             <tbody>
                             <form method="post" action="{{url_for('operator_test')}}">
                                 <tr class="success">
-                                    <td class="text-center" width="18%"><strong>20-07-1027</strong></td>
-                                    <td class="text-center" width="17%"><strong>21</strong></td>
-                                    <td class="text-center" width="17%"><strong>1011</strong></td>
-                                    <td class="text-center" width="42%"><strong>AKT</strong></td>
+                                    <td class="text-center" width="18%"><strong>{{row.date_no_test}}</strong></td>
+                                    <td class="text-center" width="17%"><strong>{{row.name_operator}}</strong></td>
+                                    <td class="text-center" width="17%"><strong>{{row.object_number}}</strong></td>
+                                    <td class="text-center" width="42%"><strong>{{row.why_there_is_no_test}}</strong>
+                                    </td>
                                     <td class="text-center" width="1%">
                                         <label style="padding-left: 5px; padding-top: 6px;">
-                                            <input type="radio" name="optradio" value="" required>
+                                            <input type="radio" name="optradio" value="{{row.id}}" required
+                                             title="Кликнуть для потвержденияи копирования">
                                         </label>
                                     </td>
                                     <td class="text-center" width="5%">
-                                        <button type="submit" name="submit" value="delete" class="btn btn-warning">
+                                        <button type="submit" name="submit" value="copy" class="btn btn-warning"
+                                        title="Кликнуть что бы скопировать в текущие">
                                             Копировать
                                         </button>
                                         <br>
@@ -183,6 +191,8 @@
                             </form>
                             </tbody>
                         </table>
+                        {%endfor%}
+                        {%endif%}
                     </div>
                 </div>
             </div>
