@@ -59,7 +59,8 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="sel1">Почему отсутствует тест:</label>
-                                                        <select class="form-control" name="why_there_is_no_test" id="sel1">
+                                                        <select class="form-control" name="why_there_is_no_test"
+                                                                id="sel1">
                                                             <option class="text-center"></option>
                                                             <option class="text-center">АКТ</option>
                                                             <option class="text-center">Отсутствует 220 Вольт</option>
@@ -89,7 +90,7 @@
                     </div>
                 </div>
                 <div class="panel-body" style="min-height:300px;">
-                    <table class="table">
+                    <table class="table table table-condensed ">
                         <thead>
                         <tr class="info">
                             <th width="18%" class="text-center">Дата <br>создания</th>
@@ -104,9 +105,9 @@
                     </table>
 
                     <div style="height:300px;overflow-y:scroll; width:100%;overflow-x :scroll;">
-                        {%if no_tests%}
-                        {%for row in no_tests%}
-                        <table class="table">
+                        <table class="table table table-condensed ">
+                            {%if no_tests%}
+                            {%for row in no_tests%}
                             <tbody>
                             <form method="post" action="{{url_for('operator_test')}}">
                                 <tr class="success">
@@ -118,21 +119,22 @@
                                     <td class="text-center" width="1%">
                                         <label style="padding-left: 5px; padding-top: 6px;">
                                             <input type="radio" name="optradio" value="{{row.id}}" required
-                                            title="Кликнуть для потверждения удаления">
+                                                   title="Кликнуть для потверждения удаления">
                                         </label>
                                     </td>
                                     <td class="text-center" width="5%">
                                         <button type="submit" name="submit" value="delete" class="btn btn-danger"
-                                        title="Кликнуть для удаления">
+                                                title="Кликнуть для удаления">
                                             Удалить
                                         </button>
                                     </td>
                                 </tr>
                             </form>
                             </tbody>
+                            {%endfor%}
+                            {%endif%}
                         </table>
-                        {%endfor%}
-                        {%endif%}
+
                     </div>
                 </div>
             </div>
@@ -147,7 +149,7 @@
                     <div class="text-center">Тесты За Переод</div>
                 </div>
                 <div class="panel-body" style="min-height:300px;">
-                    <table class="table">
+                    <table class="table table table-condensed ">
                         <thead>
                         <tr class="info">
                             <th width="18%" class="text-center">Дата <br>создания</th>
@@ -162,10 +164,9 @@
                         </thead>
                     </table>
                     <div style="height:300px;overflow-y:scroll; width:100%;overflow-x :scroll;">
-
-                        {%if no_tests%}
-                        {%for row in no_tests%}
-                        <table class="table">
+                        <table class="table table table-condensed ">
+                            {%if no_tests%}
+                            {%for row in no_tests%}
                             <tbody>
                             <form method="post" action="{{url_for('operator_test')}}">
                                 <tr class="success">
@@ -177,12 +178,14 @@
                                     <td class="text-center" width="1%">
                                         <label style="padding-left: 5px; padding-top: 6px;">
                                             <input type="radio" name="optradio" value="{{row.id}}" required
-                                             title="Кликнуть для потвержденияи копирования">
+                                                   title="Кликнуть для потвержденияи копирования">
                                         </label>
                                     </td>
+                                    <input type="hidden" name="number_object" value="{{row.object_number}}">
+                                    <input type="hidden" name="why_there_is_no_test" value="{{row.why_there_is_no_test}}">
                                     <td class="text-center" width="5%">
                                         <button type="submit" name="submit" value="copy" class="btn btn-warning"
-                                        title="Кликнуть что бы скопировать в текущие">
+                                                title="Кликнуть что бы скопировать в текущие">
                                             Копировать
                                         </button>
                                         <br>
@@ -190,9 +193,10 @@
                                 </tr>
                             </form>
                             </tbody>
+                            {%endfor%}
+                            {%endif%}
                         </table>
-                        {%endfor%}
-                        {%endif%}
+
                     </div>
                 </div>
             </div>

@@ -98,44 +98,47 @@
 </div>
 <!--------------------------------------------------------------------------------------------------------------------->
 <div style="padding-top: 10px;">
-
-    <div style="height:550px;overflow-y:scroll; width:100%;overflow-x :scroll;">
-        <table class="table">
+            <table class="table table table-condensed ">
             <thead>
             <tr class="info">
-                <th width="1%" class="text-center">Дата <br>создания</th>
-                <th width="1%" class="text-center">Оператор</th>
-                <th width="1%" class="text-center">Объект</th>
-                <th width="1%" class="text-center">На какое число</th>
-                <th width="2%" class="text-center">Название<br>объекта</th>
-                <th width="2%" class="text-center">Адресс</th>
-                <th width="2%" class="text-center">От кого заявка</th>
-                <th width="88%" class="text-center">Описание<br>заявки</th>
+                <th width="10%" class="text-center">Дата <br>создания</th>
+<!--            <th width="5%" class="text-center">Оператор</th>  -->
+                <th width="10%" class="text-center">Объект</th>
+                <th width="10%" class="text-center">На какое число</th>
+                <th width="12%" class="text-center">Название<br>объекта</th>
+                <th width="10%" class="text-center">Адресс</th>
+                <th width="10%" class="text-center">От кого заявка</th>
+                <th width="20%" class="text-center">Описание<br>заявки</th>
                 <th width="1%" class="text-center text-danger">ОК</th>
-                <th width="1%" class="text-center text-danger">Выполнить</th>
+                <th width="10%" class="text-center text-danger">Выполнить</th>
+                <th width="1%" class="text-center text-danger"></th>
             </tr>
             </thead>
+        </table>
+
+    <div style="height:550px;overflow-y:scroll; width:100%;overflow-x :scroll;">
+
+                <table class="table table-condensed ">
             {%if app%}
             {%for row in app%}
-
             <tbody>
             <form method="post" action="{{url_for('operator_application_for_electricians')}}">
                 <tr class="success">
-                    <td class="text-center"><strong>{{row.date_of_creation}}</strong></td>
-                    <td class="text-center"><strong>{{row.name_operator}}</strong></td>
-                    <td class="text-center"><strong>{{row.number_object}}</strong></td>
-                    <td class="text-center"><strong>{{row.on_which_date }}</strong></td>
-                    <td class="text-center"><strong>{{row.name_object}}</strong></td>
-                    <td class="text-center"><strong>{{row.address_object}}</strong></td>
-                    <td class="text-center"><strong>{{row.from_whom_application}}</strong></td>
-                    <td class="text-center"><strong>{{row.application_description}}</strong></td>
-                    <td class="text-center">
+                    <td class="text-center" width="10%"><strong>{{row.date_of_creation}}</strong></td>
+<!--                    <td class="text-center" width="5%"><strong>{{row.name_operator}}</strong></td> -->
+                    <td class="text-center" width="11%"><strong>{{row.number_object}}</strong></td>
+                    <td class="text-center" width="10%"><strong>{{row.on_which_date }}</strong></td>
+                    <td class="text-center" width="10%"><strong>{{row.name_object}}</strong></td>
+                    <td class="text-center" width="10%"><strong>{{row.address_object}}</strong></td>
+                    <td class="text-center" width="10%"><strong>{{row.from_whom_application}}</strong></td>
+                    <td class="text-center" width="20%"><strong>{{row.application_description}}</strong></td>
+                    <td class="text-center" width="1%">
                         <label style="padding-left: 5px; padding-top: 6px;">
                             <input type="radio" name="optradio" value="{{row.id}}" required
                             title="Кликнуть для потверждения">
                         </label>
                     </td>
-                    <td class="text-center">
+                    <td class="text-center" width="10%">
                         <button type="submit" name="submit" value="delete" class="btn btn-danger"
                         title="Кликнуть для Удаления">Удалить</button>
                     </td>

@@ -137,12 +137,10 @@ def operator_application_for_electricians():
                                       request.form['on_which_date'],
                                       request.form['application_description']
                                       ).create_note_electrician()
-
             return redirect(url_for('operator_application_for_electricians'))
 
     else:
         application = OperatorGet().get_list_electritian_application()
-        print(application)
         return render_template('operator_application_for_electricians.html', user=get_sesion_user(), app=application)
 
 
@@ -154,15 +152,20 @@ def operator_test():
                 str(get_sesion_user()),
                 request.form['why_there_is_no_test']
             ).create_note_no_test()
-            print('Create note No TEST')
             return redirect(url_for('operator_test'))
+
         elif request.form['submit'] == 'delete':
             OperatorDel(request.form['optradio']).delete_note_no_tests()
-            print('Delete note No TEST')
             return redirect(url_for('operator_test'))
+
         elif request.form['submit'] == 'copy':
-            print('Copy note No TEST')
+            OperatorCreateNoTests(
+                request.form['number_object'],
+                str(get_sesion_user()),
+                request.form['why_there_is_no_test']
+            ).create_note_no_test()
             return redirect(url_for('operator_test'))
+
     return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
 
 
