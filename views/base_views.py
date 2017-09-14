@@ -166,6 +166,12 @@ def operator_test():
             ).create_note_no_test()
             return redirect(url_for('operator_test'))
 
+        elif request.form['submit'] == 'select':
+            date_src = request.form['date'].split('-')
+            date = date_src[0]+'-'+date_src[1]+'-'+date_src[2]
+            print(date)
+            return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
+
     return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
 
 

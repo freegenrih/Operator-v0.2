@@ -21,13 +21,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="text-center">
                         <div class="row">
                             <div class="text-center">
                                 <!-- Trigger the modal with a button -->
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal"
                                         data-target="#myModal"
                                         data-placement="right"
                                         title="Нажать левую кнопку мыши для записи в не терстируемые">Нет Теста
@@ -144,9 +144,28 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-            <div class="panel panel-info">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="text-center">Тесты За Переод</div>
+                    <div class="text-center">
+                        <div class="row">
+                            <form method="post" action="{{ url_for('operator_test') }}">
+                                <div class="col-xs-4 col-xs-offset-1 ">
+                                    <div class="form-group">
+                                        <label for="date">За какое число :</label>
+                                        <input class="form-control" type="date" name="date"
+                                               id="date">
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="form-group" style="padding-top: 25px;">
+                                        <button type="submit" name="submit" value="select"
+                                                class="btn btn-warning">Выбрать
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body" style="min-height:300px;">
                     <table class="table table table-condensed ">
@@ -182,7 +201,8 @@
                                         </label>
                                     </td>
                                     <input type="hidden" name="number_object" value="{{row.object_number}}">
-                                    <input type="hidden" name="why_there_is_no_test" value="{{row.why_there_is_no_test}}">
+                                    <input type="hidden" name="why_there_is_no_test"
+                                           value="{{row.why_there_is_no_test}}">
                                     <td class="text-center" width="5%">
                                         <button type="submit" name="submit" value="copy" class="btn btn-warning"
                                                 title="Кликнуть что бы скопировать в текущие">

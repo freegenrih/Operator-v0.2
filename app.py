@@ -39,9 +39,10 @@ app.add_url_rule('/logout', view_func=logout, methods=['GET'])
 app.add_url_rule('/test', view_func=test, methods=['GET', 'POST'])
 
 # error handlers
-from views.error_handlers import page_not_found
+from views.error_handlers import page_not_found, page_error
 
 app.register_error_handler(404, page_not_found)
+app.register_error_handler(500, page_error)
 
 if __name__ == '__main__':
     app.run(#**config_debug_local,
