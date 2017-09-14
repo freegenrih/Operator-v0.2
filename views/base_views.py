@@ -21,7 +21,7 @@ from views.executor import (EngineerGet,
 
 from views.validators import Validators
 
-
+cache_date='yy-mm-dd' # yy-mm-dd костыль для неотображения всего списка по всем датам в mysql запросе
 # !!! need create settings min max size password, usertype and ...
 # !!! need create exeption try: exeption: finally:
 def type_user():
@@ -164,15 +164,31 @@ def operator_test():
                 str(get_sesion_user()),
                 request.form['why_there_is_no_test']
             ).create_note_no_test()
+            print('copy',cache_date)
             return redirect(url_for('operator_test'))
 
         elif request.form['submit'] == 'select':
-            date_src = request.form['date'].split('-')
-            date = date_src[0]+'-'+date_src[1]+'-'+date_src[2]
-            print(date)
-            return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
+            if request.form['date']:
+                date_src = request.form['date'].split('-')
+                print('DO',cache_date)
+                global cache_date
+                cache_date = str(date_src[0]+'-'+date_src[1]+'-'+date_src[2])
 
-    return render_template('operator_test.html', user=get_sesion_user(), no_tests=OperatorGet().get_list_no_tests_all())
+                print('posle',cache_date)
+
+                return render_template(
+                    'operator_test.html',
+                    user=get_sesion_user(),
+                    no_tests=OperatorGet().get_list_no_tests_all(),
+                    no_test_date_search=OperatorGet(search_date=cache_date).get_list_no_test_search_date()
+                )
+    else:
+        return render_template(
+            'operator_test.html',
+            user=get_sesion_user(),
+            no_tests=OperatorGet().get_list_no_tests_all(),
+            no_test_date_search=OperatorGet(search_date=cache_date).get_list_no_test_search_date()
+        )
 
 
 def engineer():

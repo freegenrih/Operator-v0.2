@@ -104,7 +104,7 @@
                         </thead>
                     </table>
 
-                    <div style="height:300px;overflow-y:scroll; width:100%;overflow-x :scroll;">
+                    <div style="height:250px;overflow-y:scroll; width:100%;overflow-x :scroll;">
                         <table class="table table table-condensed ">
                             {%if no_tests%}
                             {%for row in no_tests%}
@@ -184,8 +184,8 @@
                     </table>
                     <div style="height:300px;overflow-y:scroll; width:100%;overflow-x :scroll;">
                         <table class="table table table-condensed ">
-                            {%if no_tests%}
-                            {%for row in no_tests%}
+                            {%if no_test_date_search%}
+                            {%for row in no_test_date_search%}
                             <tbody>
                             <form method="post" action="{{url_for('operator_test')}}">
                                 <tr class="success">
@@ -223,7 +223,6 @@
         </div>
     </div>
 </div>
-
 {%endblock centermenu%}
 
 {%block rightmenuhead%}

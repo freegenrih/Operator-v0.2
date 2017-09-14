@@ -25,14 +25,18 @@ class EngineerGet:
 
 
 class OperatorGet:
-    def __init__(self, start_date=None, end_date=None ):
+    def __init__(self, start_date=None, end_date=None, search_date=None):
         self.start_date = start_date
         self.end_date = end_date
+        self.search_date = search_date
         self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         self.sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
-                                               "WHERE `checked_electrician`=0"
+                                                    "WHERE `checked_electrician`=0"
         self.sql_list_no_tests = "SELECT * FROM `dbo_no_tests`"
-        self.sql_list_no_tests_select_date = ""
+        self.sql_list_no_tests_search_date = "SELECT * FROM `dbo_no_tests` " \
+                                             "WHERE `date_no_test` " \
+                                             "LIKE'{}'".format(str(self.search_date)+'%')
+
     def get_list_note(self):
         return wraper_read(self.sql_get_list_note)
 
@@ -42,8 +46,8 @@ class OperatorGet:
     def get_list_no_tests_all(self):
         return wraper_read(self.sql_list_no_tests)
 
-    def get_list_no_test_select_date(self):
-        return wraper_read(self.sql_list_no_tests) # доделать
+    def get_list_no_test_search_date(self):
+        return wraper_read(self.sql_list_no_tests_search_date)  # доделать
 
 
 class OperatorCreate:
