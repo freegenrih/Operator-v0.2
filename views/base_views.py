@@ -221,11 +221,11 @@ def engineer():
 
 
 def engineer_application_for_electricians():
-    return render_template('engineer_application_for_electricians.html')
+    return render_template('engineer_application_for_electricians.html', user=get_sesion_user())
 
 
 def engineer_test():
-    return render_template('engineer_test.html')
+    return render_template('engineer_test.html', user=get_sesion_user())
 
 
 def admin():
