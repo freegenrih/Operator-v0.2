@@ -1,18 +1,15 @@
+
 <div class="text-center">
     <br class="nav navbar-nav navbar-left">
-    <!--
-     <form >
-         <input type="submit" class="btn btn-danger btn-block" value="Заявки ИНЖ">
-     </form>
-     -->
-    <br class="nav navbar-nav navbar-left">
-    <form method="post" action="{{url_for('semple_page_operator')}}">
-        <button class="btn btn-danger btn-block" name="submit" type="submit" value="Заявки ИНЖ"
-        title="Перейти в заявки Инженеру">Заявки<br>ИНЖ</button>
+    <form method="post" action="{{url_for('semple_page_engineer')}}">
+        <button class="btn btn-danger btn-block" name="submit" type="submit" value="Заявки ОПР"
+        title="Перейти в заявки Инженеру">Заявки<br>ОПР</button>
         <button class="btn btn-danger btn-block" name="submit" type="submit" value="Заявки ЭЛМ"
         title="Перейти в заявки Электромонтеру">Заявки<br>ЭЛМ</button>
         <button class="btn btn-danger btn-block" name="submit" type="submit" value="Тесты"
         title="Перейти в раздел Тестов">Тесты</button>
     </form>
+
+
 
 </div>

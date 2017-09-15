@@ -85,6 +85,20 @@ def semple_page_operator():
     else:
         return redirect(url_for('operator'))
 
+def semple_page_engineer():
+    if request.method == 'POST':
+        if request.form['submit'] == 'Заявки ОПР':
+            return redirect(url_for('engineer'))
+
+        elif request.form['submit'] == 'Заявки ЭЛМ':
+            return redirect(url_for('engineer_application_for_electricians'))
+
+        elif request.form['submit'] == 'Тесты':
+            return redirect(url_for('engineer_test'))
+
+    else:
+        return redirect(url_for('engineer'))
+
 
 def operator():
     # create operator note to engineer
@@ -204,6 +218,14 @@ def engineer():
         return render_template('engineer.html',
                                application_engineer=EngineerGet().get_list_note(),
                                user=get_sesion_user())
+
+
+def engineer_application_for_electricians():
+    return render_template('engineer_application_for_electricians.html')
+
+
+def engineer_test():
+    return render_template('engineer_test.html')
 
 
 def admin():
