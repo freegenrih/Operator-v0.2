@@ -25,7 +25,17 @@
                     <script src="{{url_for('static', filename='js/time.js')}}"></script>
                 </div>
             </div>
-            <div class="panel-body" style="min-height: 670px;">{% block leftmenu %}{% endblock leftmenu %}</div>
+            <div class="panel-body" style="min-height: 670px;">
+                <div class="text-center">
+                    <div class="alert alert-info" title="Имя Пользователя">
+                        {% if user %}
+                        {{ user }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% block leftmenu %}{% endblock leftmenu %}
+            </div>
         </div>
     </div>
 
@@ -43,13 +53,6 @@
                 {% endblock rightmenuhead %}
             </div>
             <div class="panel-body" style="min-height: 670px;">
-                <div class="text-center">
-                    <div class="alert alert-info" title="Имя Пользователя">
-                        {% if user %}
-                        {{ user }}
-                        {% endif %}
-                    </div>
-                </div>
                 {% block rightmenu %}
                 {% endblock rightmenu %}
             </div>
