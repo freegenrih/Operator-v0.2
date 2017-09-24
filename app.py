@@ -53,8 +53,8 @@ app.register_error_handler(404, page_not_found)
 app.register_error_handler(500, page_error)
 
 if __name__ == '__main__':
-     app.run(#**config_debug_local,
-             **config_debug_105,
+     app.run(**config_debug_local,
+             #**config_debug_105,
             # **config_debug_my_work,
             #**config_no_debug
             )

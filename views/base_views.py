@@ -277,7 +277,20 @@ def settings_users():
 
 
 def settings_phone():
-    return render_template('settings_phone.html', user=get_sesion_user())
+    if request.method=='POST' and request.form['submit']=='confirm':
+        # print(request.form['oil'])
+        # print(request.form['price_oil'])
+        # print(request.form['distance'])
+        # print(request.form['price_day'])
+        # print(request.form['spent time'])
+        result_price_oil = int(request.form['oil'])/100*int(request.form['price_oil'])*int(request.form['distance'])
+        result_peopl_price = int(request.form['price_day'])/8*int(request.form['spent time'])
+        result_full_price = {'firm':result_price_oil,
+                             'people':result_peopl_price,
+                             'full_price':result_price_oil+result_peopl_price}
+        return render_template('settings_phone.html', user=get_sesion_user(), price=result_full_price)
+    else:
+        return render_template('settings_phone.html', user=get_sesion_user())
 
 
 # test page

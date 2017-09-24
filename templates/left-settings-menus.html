@@ -3,8 +3,8 @@
     <form method="get" action="{{ url_for('settings_users') }}">
         <input type="submit" class="btn btn-danger btn-block" value="Пользователи">
     </form>
-    <form method="post" action="{{ url_for('settings_phone') }}">
-        <input type="submit" class="btn btn-danger btn-block" value="ТЛ" style=" margin-top: 4px;">
+    <form method="get" action="{{ url_for('settings_phone') }}">
+        <input type="submit" class="btn btn-danger btn-block" value="Цена ошибки" style=" margin-top: 4px;">
 
         <form method="post" action="{{ url_for('settings_users') }}">
             <input type="submit" class="btn btn-danger btn-block" value="Заявки ОПР" style=" margin-top: 4px;">
