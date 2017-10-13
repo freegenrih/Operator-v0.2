@@ -9,7 +9,6 @@ from flask import (render_template,
 from views.executor import (EngineerGet,
                             EngineerUpdate,
                             OperatorCreate,
-                            OperatorCreateElectrician,
                             OperatorCreateNoTests,
                             OperatorGet,
                             OperatorDel,
@@ -21,7 +20,9 @@ from views.executor import (EngineerGet,
 
 from views.validators import Validators
 
-cache_date='yy-mm-dd' # yy-mm-dd костыль для неотображения всего списка по всем датам в mysql запросе
+cache_date = 'yy-mm-dd'  # yy-mm-dd костыль для неотображения всего списка по всем датам в mysql запросе
+
+
 # !!! need create settings min max size password, usertype and ...
 # !!! need create exeption try: exeption: finally:
 def type_user():
@@ -40,7 +41,7 @@ def get_sesion_user():
 
 def signin():
     # Render page Sign In
-    return render_template('signin.html', type_user=type_user())
+    return render_template('signin.html')
 
 
 def logout():
@@ -76,22 +77,17 @@ def semple_page_operator():
         if request.form['submit'] == 'Заявки ИНЖ':
             return redirect(url_for('operator'))
 
-        elif request.form['submit'] == 'Заявки ЭЛМ':
-            return redirect(url_for('operator_application_for_electricians'))
-
         elif request.form['submit'] == 'Тесты':
             return redirect(url_for('operator_test'))
 
     else:
         return redirect(url_for('operator'))
 
+
 def semple_page_engineer():
     if request.method == 'POST':
         if request.form['submit'] == 'Заявки ОПР':
             return redirect(url_for('engineer'))
-
-        elif request.form['submit'] == 'Заявки ЭЛМ':
-            return redirect(url_for('engineer_application_for_electricians'))
 
         elif request.form['submit'] == 'Тесты':
             return redirect(url_for('engineer_test'))
@@ -133,31 +129,6 @@ def operator():
                                user=get_sesion_user())
 
 
-def operator_application_for_electricians():
-    if request.method == 'POST':
-        if request.form['submit'] == 'delete':
-            if Validators(int(request.form['optradio']), 'id').valid_id() == True:
-                OperatorDel(request.form['optradio']).delete_note_electrician()
-                return redirect(url_for('operator_application_for_electricians'))
-            else:
-                return redirect(url_for('operator_application_for_electricians'))
-
-        elif request.form['submit'] == 'create_note':
-            OperatorCreateElectrician(str(get_sesion_user()),
-                                      request.form['number_object'],
-                                      request.form['name_object'],
-                                      request.form['address_object'],
-                                      request.form['from_whom_application'],
-                                      request.form['on_which_date'],
-                                      request.form['application_description']
-                                      ).create_note_electrician()
-            return redirect(url_for('operator_application_for_electricians'))
-
-    else:
-        application = OperatorGet().get_list_electritian_application()
-        return render_template('operator_application_for_electricians.html', user=get_sesion_user(), app=application)
-
-
 def operator_test():
     if request.method == 'POST':
         if request.form['submit'] == 'create_note':
@@ -178,17 +149,17 @@ def operator_test():
                 str(get_sesion_user()),
                 request.form['why_there_is_no_test']
             ).create_note_no_test()
-            print('copy',cache_date)
+            print('copy', cache_date)
             return redirect(url_for('operator_test'))
 
         elif request.form['submit'] == 'select':
             if request.form['date']:
                 date_src = request.form['date'].split('-')
-                print('DO',cache_date)
+                print('DO', cache_date)
                 global cache_date
-                cache_date = str(date_src[0]+'-'+date_src[1]+'-'+date_src[2])
+                cache_date = str(date_src[0] + '-' + date_src[1] + '-' + date_src[2])
 
-                print('posle',cache_date)
+                print('posle', cache_date)
 
                 return render_template(
                     'operator_test.html',
@@ -218,10 +189,6 @@ def engineer():
         return render_template('engineer.html',
                                application_engineer=EngineerGet().get_list_note(),
                                user=get_sesion_user())
-
-
-def engineer_application_for_electricians():
-    return render_template('engineer_application_for_electricians.html', user=get_sesion_user())
 
 
 def engineer_test():
@@ -277,22 +244,20 @@ def settings_users():
 
 
 def settings_phone():
-    if request.method=='POST' and request.form['submit']=='confirm':
+    if request.method == 'POST' and request.form['submit'] == 'confirm':
         # print(request.form['oil'])
         # print(request.form['price_oil'])
         # print(request.form['distance'])
         # print(request.form['price_day'])
         # print(request.form['spent time'])
-        result_price_oil = int(request.form['oil'])/100*int(request.form['price_oil'])*int(request.form['distance'])
-        result_peopl_price = int(request.form['price_day'])/8*int(request.form['spent time'])
-        result_full_price = {'firm':result_price_oil,
-                             'people':result_peopl_price,
-                             'full_price':result_price_oil+result_peopl_price}
+        result_price_oil = int(request.form['oil']) / 100 * int(request.form['price_oil']) * int(
+            request.form['distance'])
+        result_peopl_price = int(request.form['price_day']) / 8 * int(request.form['spent time'])
+        result_full_price = {'firm': result_price_oil,
+                             'people': result_peopl_price,
+                             'full_price': result_price_oil + result_peopl_price}
         return render_template('settings_phone.html', user=get_sesion_user(), price=result_full_price)
     else:
         return render_template('settings_phone.html', user=get_sesion_user())
 
 
-# test page
-def test():
-    return render_template('testpage.html')

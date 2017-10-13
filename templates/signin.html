@@ -25,11 +25,9 @@
                             <div class="form-group">
                                 <label for="sel1">Тип Пользователя:</label>
                                 <select class="form-control" name="user_type" id="sel1">
-                                     {%if type_user%}
-                                     {%for row in type_user%}
-                                     <option>{{row.user_type}}</option>
-                                    {%endfor%}
-                                    {%endif%}
+                                     <option>Оператор</option>
+                                     <option>Инженер</option>
+                                     <option>Администратор</option>
                                 </select>
                             </div>
                             <div class="form-group">

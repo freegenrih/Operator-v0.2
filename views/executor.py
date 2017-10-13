@@ -73,43 +73,6 @@ class OperatorCreate:
         return wraper_write(self.sql_insert_note)
 
 
-class OperatorCreateElectrician:
-    def __init__(self, name_operator: str,
-                 namber_object: str,
-                 name_object: str,
-                 address_object: str,
-                 from_whom_application: str,
-                 on_which_date: str,
-                 application_description: str):
-        self.name_operator = name_operator
-        self.namber_object = namber_object
-        self.name_object = name_object
-        self.address_object = address_object
-        self.from_whom_application = from_whom_application
-        self.on_which_date = on_which_date
-        self.application_description = application_description
-
-        self.sql_insert_note_electrician = \
-            "INSERT INTO `dbo_electrician_application` (`id`, `date_of_creation`, " \
-            "`name_operator`, `number_object`, `name_object`, `address_object`, " \
-            "`from_whom_application`, `checked_electrician`, `date_checked`, " \
-            "`on_which_date`, `application_description`) " \
-            "VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');" \
-                .format(
-                str(datetime.now())[0:-7],
-                str(self.name_operator),
-                str(self.namber_object),
-                str(self.name_object),
-                str(self.address_object),
-                str(self.from_whom_application),
-                str('0'),
-                str(' '),
-                str(self.on_which_date),
-                str(self.application_description),
-            )
-
-    def create_note_electrician(self):
-        return wraper_write(self.sql_insert_note_electrician)
 
 
 class OperatorCreateNoTests:
