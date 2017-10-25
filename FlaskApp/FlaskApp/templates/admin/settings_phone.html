@@ -1,0 +1,117 @@
+{%extends 'base/base.html' %}
+{%block title%}Setings{%endblock title%}
+
+{%block extralink%}
+{%endblock extralink%}
+
+
+{%block leftmenuhead%}
+<div class="text-center"><h4>Settings</h4></div>
+{%endblock leftmenuhead%}
+
+{%block leftmenu%}
+{%include 'admin/left-settings-menus.html' %}
+{%endblock leftmenu%}
+
+
+{%block centermenuhead%}
+<h4 class="text-center">Цена Ошибки</h4>
+{%endblock centermenuhead%}
+
+{%block centermenu%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5 ">
+            <div class="panel  panel-primary">
+                <div class="panel-heading">
+                    <div class="text-center">Данные Для Расчета</div>
+                </div>
+        <div class="panel-body" style="min-height: 460px;">
+
+                <form method="post" action="{{ url_for('settings_phone') }}">
+                    <div class="form-group">
+                        <label for="oil">&nbsp&nbspВвести расход топлива на 100 КМ :</label>
+                        <input class="form-control" type="number" name="oil" id="oil" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price_oil">&nbsp&nbspВвести цену за литр топлива в Гривне:</label>
+                        <input class="form-control" type="number" name="price_oil" id="price_oil" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="distance">&nbsp&nbspВвести расстиояние повторного выезда в КМ:</label>
+                        <input class="form-control" type="number" name="distance" id="distance" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price_day">&nbsp&nbspВвести оплату труда за день:</label>
+                        <input class="form-control" type="number" name="price_day" id="price_day" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spent time">&nbsp&nbspВвести время потраченное на выполнение &nbsp&nbspработы
+                            ЧЧ:</label>
+                        <input class="form-control" type="number" name="spent time" id="spent time" value="0" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" name="submit" value="confirm" class="btn btn-danger">
+                            Расчитать финансовые потери
+                        </button>
+                    </div>
+                </form>
+            </div>
+            </div></div>
+        <div class="col-sm-2 ">
+            {%if price%}
+
+            <div class="panel  panel-primary">
+                <div class="panel-heading">
+                    <div class="text-center">И ТОГО</div>
+                </div>
+                <div style="padding-top: 5px;"></div>
+                <div class="panel-body" style="min-height: 100px;">
+                    <div class="panel  panel-warning">
+                            <div class="text-center text-success"><h3>{{price.full_price}}</h3></div>
+                            <div class="text-center text-success"><h3> гривен</h3></div>
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+        </div>
+<div class="col-sm-5 ">
+    <div class="panel  panel-primary">
+        <div class="panel-heading">
+            <div class="text-center">Результат Расчета</div>
+        </div>
+        <div style="padding-top: 5px;"></div>
+        <div class="panel-body" style="min-height: 480px;">
+            <div class="panel  panel-warning">
+                <div class="panel-heading">
+                    <div class="text-center"><h3>Вернуть фирме за топливо:</h3></div>
+                    {%if price%}
+                    <div class="text-center text-danger"><h3>{{price.firm}} гривен</h3></div>
+                    {%endif%}
+                </div>
+            </div>
+            <div style="padding-top: 5px;"></div>
+            <div class="panel  panel-warning">
+                <div class="panel-heading">
+                    <div class="text-center"><h3>Вернуть человеку за его работу:</h3></div>
+                    {%if price%}
+                    <div class="text-center text-danger"><h3>{{price.people}} гривен</h3></div>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{%endblock centermenu%}
+
+
+{%block rightmenuhead%}
+<h4 class="text-center">Админ</h4>
+{%endblock rightmenuhead%}
+
+
+{%block rightmenu%}
+{%endblock rightmenu%}

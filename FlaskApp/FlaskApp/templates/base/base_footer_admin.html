@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{url_for('info')}}" title="Инфо">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-2">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{url_for('operator')}}" title="Орератор">
+                        <span class="glyphicon glyphicon-object-align-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-2">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{url_for('engineer')}}" title="Инженер">
+                        <span class="glyphicon glyphicon-wrench"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{url_for('admin')}}" title="Насиройки">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-1  col-sm-offset-3">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{url_for('logout')}}">
+                        <span class="glyphicon glyphicon-random"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

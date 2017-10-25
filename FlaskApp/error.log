@@ -1,0 +1,256 @@
+[Wed Oct 25 13:07:54.819426 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662] [2017-10-25 13:07:54,813] ERROR in app: Exception on /admin [GET], referer: http://localhost/
+[Wed Oct 25 13:07:54.819488 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662] Traceback (most recent call last):, referer: http://localhost/
+[Wed Oct 25 13:07:54.819498 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/
+[Wed Oct 25 13:07:54.819506 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     response = self.full_dispatch_request(), referer: http://localhost/
+[Wed Oct 25 13:07:54.819514 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:07:54.819521 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     rv = self.handle_user_exception(e), referer: http://localhost/
+[Wed Oct 25 13:07:54.819529 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception, referer: http://localhost/
+[Wed Oct 25 13:07:54.819537 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:07:54.819544 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/
+[Wed Oct 25 13:07:54.819552 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     raise value, referer: http://localhost/
+[Wed Oct 25 13:07:54.819559 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:07:54.819566 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     rv = self.dispatch_request(), referer: http://localhost/
+[Wed Oct 25 13:07:54.819574 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:07:54.819581 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://localhost/
+[Wed Oct 25 13:07:54.819589 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 163, in admin, referer: http://localhost/
+[Wed Oct 25 13:07:54.819597 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     return render_template('admin/settings.html', user=get_sesion_user()), referer: http://localhost/
+[Wed Oct 25 13:07:54.819604 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/templating.py", line 134, in render_template, referer: http://localhost/
+[Wed Oct 25 13:07:54.819612 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     context, ctx.app), referer: http://localhost/
+[Wed Oct 25 13:07:54.819619 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/templating.py", line 116, in _render, referer: http://localhost/
+[Wed Oct 25 13:07:54.819627 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     rv = template.render(context), referer: http://localhost/
+[Wed Oct 25 13:07:54.819634 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/jinja2/asyncsupport.py", line 76, in render, referer: http://localhost/
+[Wed Oct 25 13:07:54.819642 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     return original_render(self, *args, **kwargs), referer: http://localhost/
+[Wed Oct 25 13:07:54.819649 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/jinja2/environment.py", line 1008, in render, referer: http://localhost/
+[Wed Oct 25 13:07:54.819657 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     return self.environment.handle_exception(exc_info, True), referer: http://localhost/
+[Wed Oct 25 13:07:54.819672 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/jinja2/environment.py", line 780, in handle_exception, referer: http://localhost/
+[Wed Oct 25 13:07:54.819681 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:07:54.819688 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/jinja2/_compat.py", line 37, in reraise, referer: http://localhost/
+[Wed Oct 25 13:07:54.819696 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     raise value.with_traceback(tb), referer: http://localhost/
+[Wed Oct 25 13:07:54.819703 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/var/www/FlaskApp/FlaskApp/templates/admin/settings.html", line 1, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:07:54.819711 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     {%extends 'base/base.html' %}, referer: http://localhost/
+[Wed Oct 25 13:07:54.819718 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/var/www/FlaskApp/FlaskApp/templates/base/base.html", line 18, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:07:54.819726 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     {%block footer%}, referer: http://localhost/
+[Wed Oct 25 13:07:54.819733 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/var/www/FlaskApp/FlaskApp/templates/admin/settings.html", line 8, in block "footer", referer: http://localhost/
+[Wed Oct 25 13:07:54.819741 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     {%include 'base/base_footer_admin.html' %}, referer: http://localhost/
+[Wed Oct 25 13:07:54.819749 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/var/www/FlaskApp/FlaskApp/templates/base/base_footer_admin.html", line 35, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:07:54.819756 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     <a href="{{url_for('settings')}}" title="\xd0\x9d\xd0\xb0\xd1\x81\xd0\xb8\xd1\x80\xd0\xbe\xd0\xb9\xd0\xba\xd0\xb8">, referer: http://localhost/
+[Wed Oct 25 13:07:54.819764 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/helpers.py", line 333, in url_for, referer: http://localhost/
+[Wed Oct 25 13:07:54.819771 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     return appctx.app.handle_url_build_error(error, endpoint, values), referer: http://localhost/
+[Wed Oct 25 13:07:54.819779 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1805, in handle_url_build_error, referer: http://localhost/
+[Wed Oct 25 13:07:54.819787 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:07:54.819794 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/
+[Wed Oct 25 13:07:54.819802 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     raise value, referer: http://localhost/
+[Wed Oct 25 13:07:54.819809 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/flask/helpers.py", line 323, in url_for, referer: http://localhost/
+[Wed Oct 25 13:07:54.819817 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     force_external=external), referer: http://localhost/
+[Wed Oct 25 13:07:54.819825 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/routing.py", line 1768, in build, referer: http://localhost/
+[Wed Oct 25 13:07:54.819832 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662]     raise BuildError(endpoint, values, method, self), referer: http://localhost/
+[Wed Oct 25 13:07:54.819847 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662] werkzeug.routing.BuildError: Could not build url for endpoint 'settings'. Did you mean 'settings_users' instead?, referer: http://localhost/
+[Wed Oct 25 13:07:54.819874 2017] [wsgi:error] [pid 3411] [client 127.0.0.1:42662] , referer: http://localhost/
+[Wed Oct 25 13:11:18.772077 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706] [2017-10-25 13:11:18,766] ERROR in app: Exception on /admin [GET], referer: http://localhost/
+[Wed Oct 25 13:11:18.772136 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706] Traceback (most recent call last):, referer: http://localhost/
+[Wed Oct 25 13:11:18.772148 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/
+[Wed Oct 25 13:11:18.772158 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     response = self.full_dispatch_request(), referer: http://localhost/
+[Wed Oct 25 13:11:18.772168 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:11:18.772178 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     rv = self.handle_user_exception(e), referer: http://localhost/
+[Wed Oct 25 13:11:18.772188 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception, referer: http://localhost/
+[Wed Oct 25 13:11:18.772197 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:11:18.772206 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/
+[Wed Oct 25 13:11:18.772216 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     raise value, referer: http://localhost/
+[Wed Oct 25 13:11:18.772225 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:11:18.772235 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     rv = self.dispatch_request(), referer: http://localhost/
+[Wed Oct 25 13:11:18.772244 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:11:18.772253 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://localhost/
+[Wed Oct 25 13:11:18.772263 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 163, in admin, referer: http://localhost/
+[Wed Oct 25 13:11:18.772272 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     return render_template('admin/settings_users.html', user=get_sesion_user()), referer: http://localhost/
+[Wed Oct 25 13:11:18.772282 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/templating.py", line 134, in render_template, referer: http://localhost/
+[Wed Oct 25 13:11:18.772291 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     context, ctx.app), referer: http://localhost/
+[Wed Oct 25 13:11:18.772300 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/templating.py", line 116, in _render, referer: http://localhost/
+[Wed Oct 25 13:11:18.772309 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     rv = template.render(context), referer: http://localhost/
+[Wed Oct 25 13:11:18.772318 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/jinja2/asyncsupport.py", line 76, in render, referer: http://localhost/
+[Wed Oct 25 13:11:18.772328 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     return original_render(self, *args, **kwargs), referer: http://localhost/
+[Wed Oct 25 13:11:18.772352 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/jinja2/environment.py", line 1008, in render, referer: http://localhost/
+[Wed Oct 25 13:11:18.772361 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     return self.environment.handle_exception(exc_info, True), referer: http://localhost/
+[Wed Oct 25 13:11:18.772394 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/jinja2/environment.py", line 780, in handle_exception, referer: http://localhost/
+[Wed Oct 25 13:11:18.772402 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:11:18.772409 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/jinja2/_compat.py", line 37, in reraise, referer: http://localhost/
+[Wed Oct 25 13:11:18.772417 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     raise value.with_traceback(tb), referer: http://localhost/
+[Wed Oct 25 13:11:18.772425 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/var/www/FlaskApp/FlaskApp/templates/admin/settings_users.html", line 1, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:11:18.772432 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     {%extends 'base/base.html' %}, referer: http://localhost/
+[Wed Oct 25 13:11:18.772440 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/var/www/FlaskApp/FlaskApp/templates/base/base.html", line 18, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:11:18.772447 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     {%block footer%}, referer: http://localhost/
+[Wed Oct 25 13:11:18.772455 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/var/www/FlaskApp/FlaskApp/templates/admin/settings_users.html", line 8, in block "footer", referer: http://localhost/
+[Wed Oct 25 13:11:18.772463 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     {%include 'base/base_footer_admin.html' %}, referer: http://localhost/
+[Wed Oct 25 13:11:18.772470 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/var/www/FlaskApp/FlaskApp/templates/base/base_footer_admin.html", line 35, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:11:18.772478 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     <a href="{{url_for('settings')}}" title="\xd0\x9d\xd0\xb0\xd1\x81\xd0\xb8\xd1\x80\xd0\xbe\xd0\xb9\xd0\xba\xd0\xb8">, referer: http://localhost/
+[Wed Oct 25 13:11:18.772485 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/helpers.py", line 333, in url_for, referer: http://localhost/
+[Wed Oct 25 13:11:18.772493 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     return appctx.app.handle_url_build_error(error, endpoint, values), referer: http://localhost/
+[Wed Oct 25 13:11:18.772501 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1805, in handle_url_build_error, referer: http://localhost/
+[Wed Oct 25 13:11:18.772508 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:11:18.772515 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/
+[Wed Oct 25 13:11:18.772523 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     raise value, referer: http://localhost/
+[Wed Oct 25 13:11:18.772530 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/flask/helpers.py", line 323, in url_for, referer: http://localhost/
+[Wed Oct 25 13:11:18.772538 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     force_external=external), referer: http://localhost/
+[Wed Oct 25 13:11:18.772552 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/routing.py", line 1768, in build, referer: http://localhost/
+[Wed Oct 25 13:11:18.772560 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706]     raise BuildError(endpoint, values, method, self), referer: http://localhost/
+[Wed Oct 25 13:11:18.772569 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706] werkzeug.routing.BuildError: Could not build url for endpoint 'settings'. Did you mean 'settings_users' instead?, referer: http://localhost/
+[Wed Oct 25 13:11:18.772597 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42706] , referer: http://localhost/
+[Wed Oct 25 13:13:26.062587 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718] [2017-10-25 13:13:26,059] ERROR in app: Exception on /admin [GET], referer: http://localhost/
+[Wed Oct 25 13:13:26.062646 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718] Traceback (most recent call last):, referer: http://localhost/
+[Wed Oct 25 13:13:26.062658 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/
+[Wed Oct 25 13:13:26.062669 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     response = self.full_dispatch_request(), referer: http://localhost/
+[Wed Oct 25 13:13:26.062678 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:13:26.062689 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     rv = self.handle_user_exception(e), referer: http://localhost/
+[Wed Oct 25 13:13:26.062698 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception, referer: http://localhost/
+[Wed Oct 25 13:13:26.062708 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:13:26.062718 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/
+[Wed Oct 25 13:13:26.062727 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     raise value, referer: http://localhost/
+[Wed Oct 25 13:13:26.062737 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:13:26.062746 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     rv = self.dispatch_request(), referer: http://localhost/
+[Wed Oct 25 13:13:26.062756 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://localhost/
+[Wed Oct 25 13:13:26.062765 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://localhost/
+[Wed Oct 25 13:13:26.062775 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 163, in admin, referer: http://localhost/
+[Wed Oct 25 13:13:26.062784 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     if request.method == 'POST':, referer: http://localhost/
+[Wed Oct 25 13:13:26.062794 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/templating.py", line 134, in render_template, referer: http://localhost/
+[Wed Oct 25 13:13:26.062804 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     context, ctx.app), referer: http://localhost/
+[Wed Oct 25 13:13:26.062813 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/templating.py", line 116, in _render, referer: http://localhost/
+[Wed Oct 25 13:13:26.062823 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     rv = template.render(context), referer: http://localhost/
+[Wed Oct 25 13:13:26.062851 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/jinja2/asyncsupport.py", line 76, in render, referer: http://localhost/
+[Wed Oct 25 13:13:26.062860 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     return original_render(self, *args, **kwargs), referer: http://localhost/
+[Wed Oct 25 13:13:26.062869 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/jinja2/environment.py", line 1008, in render, referer: http://localhost/
+[Wed Oct 25 13:13:26.062877 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     return self.environment.handle_exception(exc_info, True), referer: http://localhost/
+[Wed Oct 25 13:13:26.062885 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/jinja2/environment.py", line 780, in handle_exception, referer: http://localhost/
+[Wed Oct 25 13:13:26.062894 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:13:26.062902 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/jinja2/_compat.py", line 37, in reraise, referer: http://localhost/
+[Wed Oct 25 13:13:26.062910 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     raise value.with_traceback(tb), referer: http://localhost/
+[Wed Oct 25 13:13:26.062918 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/var/www/FlaskApp/FlaskApp/templates/admin/settings_users.html", line 1, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:13:26.062927 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     {%extends 'base/base.html' %}, referer: http://localhost/
+[Wed Oct 25 13:13:26.062935 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/var/www/FlaskApp/FlaskApp/templates/base/base.html", line 18, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:13:26.062944 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     {%block footer%}, referer: http://localhost/
+[Wed Oct 25 13:13:26.062952 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/var/www/FlaskApp/FlaskApp/templates/admin/settings_users.html", line 8, in block "footer", referer: http://localhost/
+[Wed Oct 25 13:13:26.062960 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     {%include 'base/base_footer_admin.html' %}, referer: http://localhost/
+[Wed Oct 25 13:13:26.062969 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/var/www/FlaskApp/FlaskApp/templates/base/base_footer_admin.html", line 35, in top-level template code, referer: http://localhost/
+[Wed Oct 25 13:13:26.062977 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     <a href="#" title="\xd0\x9d\xd0\xb0\xd1\x81\xd0\xb8\xd1\x80\xd0\xbe\xd0\xb9\xd0\xba\xd0\xb8">, referer: http://localhost/
+[Wed Oct 25 13:13:26.062985 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/helpers.py", line 333, in url_for, referer: http://localhost/
+[Wed Oct 25 13:13:26.062994 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     return appctx.app.handle_url_build_error(error, endpoint, values), referer: http://localhost/
+[Wed Oct 25 13:13:26.063002 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1805, in handle_url_build_error, referer: http://localhost/
+[Wed Oct 25 13:13:26.063010 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     reraise(exc_type, exc_value, tb), referer: http://localhost/
+[Wed Oct 25 13:13:26.063018 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/
+[Wed Oct 25 13:13:26.063026 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     raise value, referer: http://localhost/
+[Wed Oct 25 13:13:26.063042 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/flask/helpers.py", line 323, in url_for, referer: http://localhost/
+[Wed Oct 25 13:13:26.063051 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     force_external=external), referer: http://localhost/
+[Wed Oct 25 13:13:26.063059 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/routing.py", line 1768, in build, referer: http://localhost/
+[Wed Oct 25 13:13:26.063068 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718]     raise BuildError(endpoint, values, method, self), referer: http://localhost/
+[Wed Oct 25 13:13:26.063079 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718] werkzeug.routing.BuildError: Could not build url for endpoint 'settings'. Did you mean 'settings_users' instead?, referer: http://localhost/
+[Wed Oct 25 13:13:26.063115 2017] [wsgi:error] [pid 3508] [client 127.0.0.1:42718] , referer: http://localhost/
+[Wed Oct 25 14:06:47.854089 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166] [2017-10-25 14:06:47,852] ERROR in app: Exception on /info [GET], referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854155 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166] Traceback (most recent call last):, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854167 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854178 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     response = self.full_dispatch_request(), referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854188 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854198 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     rv = self.handle_user_exception(e), referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854207 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854217 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     reraise(exc_type, exc_value, tb), referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854226 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854236 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     raise value, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854245 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854255 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     rv = self.dispatch_request(), referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854264 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854274 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854284 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 54, in info, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854293 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     return render_template('info/info.html',user=get_sesion_user(),type_footer=get_sesion_user()), referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854302 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 35, in get_sesion_user, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854326 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     if escape(session['username']):, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854335 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/local.py", line 377, in <lambda>, referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854343 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166]     __getitem__ = lambda x, i: x._get_current_object()[i], referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854353 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166] KeyError: 'username', referer: http://localhost/operator
+[Wed Oct 25 14:06:47.854384 2017] [wsgi:error] [pid 4195] [client 127.0.0.1:43166] , referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930729 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168] [2017-10-25 14:06:52,928] ERROR in app: Exception on /info [GET], referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930791 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168] Traceback (most recent call last):, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930802 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930810 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     response = self.full_dispatch_request(), referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930819 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930828 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     rv = self.handle_user_exception(e), referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930836 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930844 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     reraise(exc_type, exc_value, tb), referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930853 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930861 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     raise value, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930868 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930876 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     rv = self.dispatch_request(), referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930884 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930892 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     return self.view_functions[rule.endpoint](**req.view_args), referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930900 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 54, in info, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930908 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     return render_template('info/info.html',user=get_sesion_user(),type_footer=get_sesion_user()), referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930917 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 35, in get_sesion_user, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930942 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     if escape(session['username']):, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930950 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/local.py", line 377, in <lambda>, referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930959 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168]     __getitem__ = lambda x, i: x._get_current_object()[i], referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930968 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168] KeyError: 'username', referer: http://localhost/operator
+[Wed Oct 25 14:06:52.930998 2017] [wsgi:error] [pid 4196] [client 127.0.0.1:43168] , referer: http://localhost/operator
+[Wed Oct 25 14:06:56.302387 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170] [2017-10-25 14:06:56,300] ERROR in app: Exception on /info [GET]
+[Wed Oct 25 14:06:56.302441 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170] Traceback (most recent call last):
+[Wed Oct 25 14:06:56.302451 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app
+[Wed Oct 25 14:06:56.302460 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     response = self.full_dispatch_request()
+[Wed Oct 25 14:06:56.302468 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+[Wed Oct 25 14:06:56.302476 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     rv = self.handle_user_exception(e)
+[Wed Oct 25 14:06:56.302484 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception
+[Wed Oct 25 14:06:56.302492 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     reraise(exc_type, exc_value, tb)
+[Wed Oct 25 14:06:56.302500 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise
+[Wed Oct 25 14:06:56.302508 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     raise value
+[Wed Oct 25 14:06:56.302516 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Wed Oct 25 14:06:56.302524 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     rv = self.dispatch_request()
+[Wed Oct 25 14:06:56.302532 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Wed Oct 25 14:06:56.302540 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     return self.view_functions[rule.endpoint](**req.view_args)
+[Wed Oct 25 14:06:56.302548 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 54, in info
+[Wed Oct 25 14:06:56.302556 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     return render_template('info/info.html',user=get_sesion_user(),type_footer=get_sesion_user())
+[Wed Oct 25 14:06:56.302563 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 35, in get_sesion_user
+[Wed Oct 25 14:06:56.302571 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     if escape(session['username']):
+[Wed Oct 25 14:06:56.302579 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/local.py", line 377, in <lambda>
+[Wed Oct 25 14:06:56.302589 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170]     __getitem__ = lambda x, i: x._get_current_object()[i]
+[Wed Oct 25 14:06:56.302599 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170] KeyError: 'username'
+[Wed Oct 25 14:06:56.302627 2017] [wsgi:error] [pid 4161] [client 127.0.0.1:43170] 
+[Wed Oct 25 14:06:58.253460 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172] [2017-10-25 14:06:58,251] ERROR in app: Exception on /info [GET]
+[Wed Oct 25 14:06:58.253538 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172] Traceback (most recent call last):
+[Wed Oct 25 14:06:58.253548 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app
+[Wed Oct 25 14:06:58.253556 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     response = self.full_dispatch_request()
+[Wed Oct 25 14:06:58.253565 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+[Wed Oct 25 14:06:58.253573 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     rv = self.handle_user_exception(e)
+[Wed Oct 25 14:06:58.253581 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1517, in handle_user_exception
+[Wed Oct 25 14:06:58.253589 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     reraise(exc_type, exc_value, tb)
+[Wed Oct 25 14:06:58.253603 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/flask/_compat.py", line 33, in reraise
+[Wed Oct 25 14:06:58.253611 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     raise value
+[Wed Oct 25 14:06:58.253619 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+[Wed Oct 25 14:06:58.253627 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     rv = self.dispatch_request()
+[Wed Oct 25 14:06:58.253634 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1598, in dispatch_request
+[Wed Oct 25 14:06:58.253642 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     return self.view_functions[rule.endpoint](**req.view_args)
+[Wed Oct 25 14:06:58.253650 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 54, in info
+[Wed Oct 25 14:06:58.253658 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     return render_template('info/info.html',user=get_sesion_user(),type_footer=get_sesion_user())
+[Wed Oct 25 14:06:58.253666 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/var/www/FlaskApp/FlaskApp/views/base_views.py", line 35, in get_sesion_user
+[Wed Oct 25 14:06:58.253675 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     if escape(session['username']):
+[Wed Oct 25 14:06:58.253682 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]   File "/usr/local/lib/python3.6/dist-packages/werkzeug/local.py", line 377, in <lambda>
+[Wed Oct 25 14:06:58.253691 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172]     __getitem__ = lambda x, i: x._get_current_object()[i]
+[Wed Oct 25 14:06:58.253700 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172] KeyError: 'username'
+[Wed Oct 25 14:06:58.253728 2017] [wsgi:error] [pid 4197] [client 127.0.0.1:43172] 
+[Wed Oct 25 20:25:41.314159 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778] [2017-10-25 20:25:41,311] ERROR in app: Exception on /operator-test [GET], referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314577 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778] Traceback (most recent call last):, referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314598 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314616 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]     response = self.full_dispatch_request(), referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314635 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1615, in full_dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314648 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]     return self.finalize_request(rv), referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314673 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1630, in finalize_request, referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314685 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]     response = self.make_response(rv), referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314696 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1725, in make_response, referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314707 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778]     raise ValueError('View function did not return a response'), referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314720 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778] ValueError: View function did not return a response, referer: http://localhost/operator
+[Wed Oct 25 20:25:41.314760 2017] [wsgi:error] [pid 537] [client 127.0.0.1:43778] , referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877466 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608] [2017-10-25 20:47:15,874] ERROR in app: Exception on /operator-test [GET], referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877520 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608] Traceback (most recent call last):, referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877532 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1982, in wsgi_app, referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877542 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]     response = self.full_dispatch_request(), referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877551 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1615, in full_dispatch_request, referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877561 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]     return self.finalize_request(rv), referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877571 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1630, in finalize_request, referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877580 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]     response = self.make_response(rv), referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877590 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]   File "/usr/local/lib/python3.6/dist-packages/flask/app.py", line 1725, in make_response, referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877599 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608]     raise ValueError('View function did not return a response'), referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877613 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608] ValueError: View function did not return a response, referer: http://localhost/operator
+[Wed Oct 25 20:47:15.877644 2017] [wsgi:error] [pid 545] [client 127.0.0.1:38608] , referer: http://localhost/operator

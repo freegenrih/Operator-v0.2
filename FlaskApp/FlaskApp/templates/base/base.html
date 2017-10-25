@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/body.css') }}">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    {% block extralink %}
+    {% endblock extralink %}
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+<footer class="container-fluid text-center">
+    {% if type_footer=='Admin' %}
+        {%include 'base/base_footer_admin.html' %}
+    {% elif type_footer=='Engineer' %}
+        {%include 'base/base_footer_engineer.html' %}
+    {% elif type_footer=='Operator' %}
+        {%include 'base/base_footer_operator.html' %}
+    {% elif type_footer=='User' %}
+        {%include 'base/base_footer_user.html' %}
+    {% endif %}
+
+    {%block footer%}
+    {%endblock%}
+</footer>
+<div class="wraper">
+    <div class="left-menu">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div id="clock" class="text-center" title="Да! Это часы :)">
+                    <script src="{{url_for('static', filename='js/time.js')}}"></script>
+                </div>
+            </div>
+            <div class="panel-body" style="min-height: 670px;">
+                {% block leftmenu %}{% endblock leftmenu %}
+            </div>
+        </div>
+    </div>
+
+    <div class="center-menu">
+        <div class="panel panel-primary">
+            <div class="panel-heading">{% block centermenuhead %}{% endblock centermenuhead %}</div>
+            <div class="panel-body" style="min-height: 670px;">{% block centermenu %}{% endblock centermenu %}</div>
+        </div>
+    </div>
+
+    <div class="right-menu">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                {% block rightmenuhead %}
+                {% endblock rightmenuhead %}
+            </div>
+            <div class="panel-body" style="min-height: 670px;">
+                <div class="text-center">
+                    <div class="alert alert-info" title="Имя Пользователя">
+                        {% if user %}
+                        {{ user }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% block rightmenu %}
+                {% endblock rightmenu %}
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="container-fluid text-center"></footer>
+</body>
+</html>
