@@ -1,6 +1,6 @@
 import pymysql.cursors
 
-from FlaskApp.Settings_app import config_db
+from Settings_app import config_db
 
 def wraper_read(sql):
     ''' wraper  read mysql  '''

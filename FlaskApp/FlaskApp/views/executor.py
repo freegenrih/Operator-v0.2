@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from FlaskApp.sqlrw import wraper_write, wraper_read
+from sqlrw import wraper_write, wraper_read
 
 
 class EngineerUpdate:

@@ -6,7 +6,7 @@ from flask import (render_template,
                    redirect
                    )
 
-from FlaskApp.views.executor import (EngineerGet,
+from views.executor import (EngineerGet,
                             EngineerUpdate,
                             OperatorCreate,
                             OperatorCreateNoTests,
@@ -18,13 +18,9 @@ from FlaskApp.views.executor import (EngineerGet,
                             UsersGet
                             )
 
-from FlaskApp.views.validators import Validators
-
-cache_date = 'yy-mm-dd'  # yy-mm-dd костыль для неотображения всего списка по всем датам в mysql запросе
+from views.validators import Validators
 
 
-# !!! need create settings min max size password, usertype and ...
-# !!! need create exeption try: exeption: finally:
 def type_user():
     # Get type user list
     return UsersGet().get_type_user()
@@ -51,7 +47,7 @@ def logout():
 
 
 def info():
-    return render_template('info/info.html',user=get_sesion_user(),type_footer=get_sesion_user())
+    return render_template('info/info.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
 
 def semple_page_signin():
@@ -70,6 +66,11 @@ def semple_page_signin():
         elif request.form['user_type'] == 'Инженер':
             session['username'] = request.form['user_name']
             return redirect(url_for('engineer'))
+
+        # redirect page users
+        elif request.form['user_type'] == 'Пользователь':
+            session['username'] = request.form['user_name']
+            return  redirect(url_for('users'))
 
     # redirect page signin
     else:
@@ -100,6 +101,29 @@ def semple_page_engineer():
         return redirect(url_for('engineer'))
 
 
+def semple_page_users():
+    if request.method =='POST':
+        if request.form['submit']=='application_pc':
+            return redirect(url_for('application_pc'))
+
+        if request.form['submit']=='repport_tests':
+            return redirect(url_for('report_tests'))
+
+# -------------------------------------------------Users----------------------------------------------------------------
+def users():
+    return render_template('users/users.html', user=get_sesion_user(), type_footer=get_sesion_user())
+
+
+def application_pc():
+    return render_template('users/application_pc.html', user=get_sesion_user(), type_footer=get_sesion_user())
+
+
+def report_test():
+    return render_template('users/report_tests.html', user=get_sesion_user(), type_footer=get_sesion_user())
+# -----------------------------------------------End Users--------------------------------------------------------------
+
+
+# ------------------------------------------------Operator--------------------------------------------------------------
 def operator():
     # create operator note to engineer
     if request.method == 'POST':
@@ -135,8 +159,10 @@ def operator():
 
 def operator_test():
     pass
+# ---------------------------------------------End Operator-------------------------------------------------------------
 
 
+# ------------------------------------------------Engineer--------------------------------------------------------------
 def engineer():
     # completion operators note
     if request.method == 'POST':
@@ -154,10 +180,13 @@ def engineer():
 
 def engineer_test():
     return render_template('engineer/engineer_test.html', user=get_sesion_user(), type_footer=get_sesion_user())
+# ---------------------------------------------End Engineer-------------------------------------------------------------
 
 
+# -------------------------------------------------Admin----------------------------------------------------------------
 def admin():
     return render_template('admin/admin.html', user=get_sesion_user(),type_footer=get_sesion_user())
+
 
 def settings_users():
     if request.method == 'POST':
@@ -190,7 +219,7 @@ def settings_users():
 
         # Create user type
         elif request.form['submit'] == 'Зарегестрировать Новый Тип Пользователя':
-            if Validators(request.form['user_name_type'], 'name', min_len=3, max_len=10).valid_name() == True:
+            if Validators(request.form['user_name_type'], 'name', min_len=3, max_len=20).valid_name() == True:
                 SettingsUsersRegType(request.form['user_name_type']).reg_new_type()
                 return redirect(url_for('settings_users'))
             else:
@@ -220,5 +249,5 @@ def settings_phone():
         return render_template('admin/settings_phone.html', user=get_sesion_user(), price=result_full_price)
     else:
         return render_template('admin/settings_phone.html', user=get_sesion_user(),type_footer=get_sesion_user())
-
+# -----------------------------------------------End Admin--------------------------------------------------------------
 
