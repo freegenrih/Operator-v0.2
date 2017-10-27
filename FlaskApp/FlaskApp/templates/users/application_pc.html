@@ -1,10 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Заявки ПК</title>
-</head>
-<body>
+{%extends 'base/base.html' %}
 
-</body>
-</html>
+{%block extralink%}
+{%endblock extralink%}
+
+
+{%block title%}Пользователь{%endblock title%}
+
+
+{%block leftmenu%}
+{%include 'users/left_users_menu_buttons.html' %}
+
+{%endblock leftmenu%}
+
+
+{%block centermenuhead%}
+<h4 class="text-center">Журнал заявок  СисАдмину </h4>
+{%endblock centermenuhead%}
+
+{%block centermenu%}
+<!------------------------------------------------------------------------------------>
+<div class="container-fluid">
+    <div class="row">
+        <div class="text-center">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                    data-placement="right" title="Нажать левую кнопку мыши для создания заявки инженеру"> Заявка
+                СисАдмину
+            </button>
+
+            <a href="{{ url_for('application_pc') }}">
+                <button type="button" class="btn btn-info btn-lg"
+                        data-placement="right" title="Нажать левую кнопку мыши для обновления информации">
+                    Обновить Информацию
+                </button>
+            </a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Заявка СисАдмину </h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="{{ url_for('operator') }}">
+                                <div class="form-group">
+                                    <label for="sel1">Быстрые варианты:</label>
+                                    <select class="form-control" name="select_operation" id="sel1">
+                                        <option class="text-center">&nbsp;</option>
+                                        <option class="text-center">Не работает Принтер!!!</option>
+                                        <option class="text-center">Не работает Сканер!!!</option>
+                                        <option class="text-center">Не работает Интернет!!!</option>
+                                        <option class="text-center">Не работает Почта!!!</option>
+                                        <option class="text-center">Обновить Антивирус!!!</option>
+                                        <option class="text-center">Обновить обновления Windows</option>
+                                        <option class="text-center">Установить</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Добавить текст если нужно:</label>
+                                    <textarea class="form-control" name="add_comment" rows="5" id="comment" > </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="submit" value="create_note" class="btn btn-warning">
+                                        Записать в журнал
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!------------------------------------------------------------------------------------>
+
+{%endblock centermenu%}
+
+
+{%block rightmenuhead%}
+<h4 class="text-center">Инженер</h4>
+{%endblock rightmenuhead%}
+
+{%block rightmenu%}
+
+{%endblock rightmenu%}

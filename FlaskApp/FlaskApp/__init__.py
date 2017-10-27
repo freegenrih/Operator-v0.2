@@ -10,7 +10,7 @@ from views.base_views import (signin,
                               users,
                               semple_page_users,
                               application_pc,
-                              report_test,
+                              report_tests,
                               operator,
                               operator_test,
                               engineer,
@@ -35,7 +35,7 @@ app.add_url_rule('/semple-page-engineer', view_func=semple_page_engineer, method
 app.add_url_rule('/semple-page-users', view_func=semple_page_users, methods=['GET', 'POST'])
 app.add_url_rule('/users', view_func=users, methods=['GET', 'POST'])
 app.add_url_rule('/users-application-pc', view_func=application_pc, methods=['GET', 'POST'])
-app.add_url_rule('/users-report-test', view_func=report_test, methods=['GET', 'POST'])
+app.add_url_rule('/users-report-tests', view_func=report_tests, methods=['GET', 'POST'])
 app.add_url_rule('/operator', view_func=operator, methods=['GET', 'POST'])
 app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POST'])
 app.add_url_rule('/engineer', view_func=engineer, methods=['GET', 'POST'])

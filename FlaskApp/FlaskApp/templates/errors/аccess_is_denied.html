@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
+    <title>Page Not Found</title>
+</head>
+<body style="background-color: #C2CEEE;">
+<div class="container" style="margin-left: 30%; margin-top: 5%;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-5 ">
+                <div class="panel  panel-primary">
+                    <div class="panel-heading">
+                        <div class="text-center">
+                            <img src="{{ url_for('static', filename='img/bg.svg') }}" style="height: 100px; height: 100px;border-radius: 3px;">
+                        </div>
+                        <div class="text-center">GHR</div>
+                        <div class="text-center">Control Systems</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="alert alert-danger">
+                            <h2 div class="text-center">
+                                Доступ зарещен<br>
+                                &nbsp;
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- url for -->
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>

@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Отчет тестов</title>
-</head>
-<body>
+{%extends 'base/base.html' %}
 
-</body>
-</html>
+{%block extralink%}
+{%endblock extralink%}
+
+
+{%block title%}Пользователь{%endblock title%}
+
+
+{%block leftmenu%}
+{%include 'users/left_users_menu_buttons.html' %}
+
+{%endblock leftmenu%}
+
+
+{%block centermenuhead%}
+<h4 class="text-center">Отчет по не тестируемым объектам </h4>
+{%endblock centermenuhead%}
+
+{%block centermenu%}
+
+{%endblock centermenu%}
+
+
+{%block rightmenuhead%}
+<h4 class="text-center">Пользователь</h4>
+{%endblock rightmenuhead%}
+
+{%block rightmenu%}
+
+{%endblock rightmenu%}

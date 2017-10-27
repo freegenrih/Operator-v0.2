@@ -106,7 +106,7 @@ def semple_page_users():
         if request.form['submit']=='application_pc':
             return redirect(url_for('application_pc'))
 
-        if request.form['submit']=='repport_tests':
+        if request.form['submit']=='report_tests':
             return redirect(url_for('report_tests'))
 
 # -------------------------------------------------Users----------------------------------------------------------------
@@ -118,7 +118,7 @@ def application_pc():
     return render_template('users/application_pc.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
 
-def report_test():
+def report_tests():
     return render_template('users/report_tests.html', user=get_sesion_user(), type_footer=get_sesion_user())
 # -----------------------------------------------End Users--------------------------------------------------------------
 
