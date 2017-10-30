@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 - phpMyAdmin XML Dump
-- version 4.6.6deb4
+- version 4.6.6deb5
 - https://www.phpmyadmin.net
 -
-- Host: localhost:3306
-- Generation Time: Sep 06, 2017 at 05:45 PM
-- Server version: 5.7.19-0ubuntu0.17.04.1
-- PHP Version: 7.0.22-0ubuntu0.17.04.1
+- Хост: localhost:3306
+- Время создания: Окт 30 2017 г., 12:36
+- Версия сервера: 5.7.20-0ubuntu0.17.10.1
+- Версия PHP: 7.1.8-1ubuntu1
 -->
 
 <pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
@@ -54,7 +54,7 @@
                   `date_of_completion` text NOT NULL,
                   `name_engineer_completion` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_users">
                 CREATE TABLE `dbo_users` (
@@ -64,23 +64,35 @@
                   `user_password` text NOT NULL,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="dbo_user_application_pc">
+                CREATE TABLE `dbo_user_application_pc` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `date_of_creation` text NOT NULL,
+                  `name_user_creation_app` text NOT NULL,
+                  `message` text NOT NULL,
+                  `checked_engineer` int(1) NOT NULL,
+                  `date_of_completion` text NOT NULL,
+                  `name_engineer_completion` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user_type">
                 CREATE TABLE `user_type` (
                   `id` int(2) NOT NULL AUTO_INCREMENT,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
             </pma:table>
         </pma:database>
     </pma:structure_schemas>
 
     <!--
-    - Database: 'Pult'
+    - База данных: 'Pult'
     -->
     <database name="Pult">
-        <!-- Table dbo_electrician_application -->
+        <!-- Таблица dbo_electrician_application -->
         <table name="dbo_electrician_application">
             <column name="id">28</column>
             <column name="date_of_creation">2017-09-06 16:29:40</column>
@@ -94,7 +106,7 @@
             <column name="on_which_date">20-01-2017 на 12:00</column>
             <column name="application_description">заменить лунь </column>
         </table>
-        <!-- Table dbo_no_tests -->
+        <!-- Таблица dbo_no_tests -->
         <table name="dbo_no_tests">
             <column name="id">33</column>
             <column name="date_no_test">2017-09-06 </column>
@@ -102,215 +114,21 @@
             <column name="name_operator">21</column>
             <column name="why_there_is_no_test">АКТ</column>
         </table>
-        <!-- Table dbo_operator_application -->
+        <!-- Таблица dbo_operator_application -->
         <table name="dbo_operator_application">
-            <column name="id">33</column>
-            <column name="date_of_creation">2017-09-02 00:30:20</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">2007</column>
-            <column name="message">Убрать из 220  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-09-02 00:30:35</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">81</column>
-            <column name="date_of_creation">2017-08-26 15:12:29</column>
-            <column name="name_operator">Еее</column>
+            <column name="id">117</column>
+            <column name="date_of_creation">2017-10-30 12:35:34</column>
+            <column name="name_operator">Admin</column>
             <column name="name_pult">Грифон</column>
             <column name="number_object">1111</column>
-            <column name="message">Убрать из 220 Ннн
-</column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-26 15:26:52</column>
-            <column name="name_engineer_completion">de</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">83</column>
-            <column name="date_of_creation">2017-08-26 15:29:38</column>
-            <column name="name_operator">de</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">2006</column>
-            <column name="message">Добавить Г.З Ukrain</column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-26 15:32:14</column>
-            <column name="name_engineer_completion">de</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">86</column>
-            <column name="date_of_creation">2017-08-26 15:45:18</column>
-            <column name="name_operator">de</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">2006</column>
-            <column name="message">Добавить </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-29 16:56:37</column>
-            <column name="name_engineer_completion">1</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">87</column>
-            <column name="date_of_creation">2017-08-27 14:04:23</column>
-            <column name="name_operator">k</column>
-            <column name="name_pult">Феникс</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить Г.З </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-29 16:56:41</column>
-            <column name="name_engineer_completion">1</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">88</column>
-            <column name="date_of_creation">2017-08-27 20:50:45</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить ТЛ. </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-29 16:57:00</column>
-            <column name="name_engineer_completion">1</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">89</column>
-            <column name="date_of_creation">2017-08-29 11:42:13</column>
-            <column name="name_operator">1</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить test</column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-29 16:57:03</column>
-            <column name="name_engineer_completion">1</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">90</column>
-            <column name="date_of_creation">2017-08-29 17:03:12</column>
-            <column name="name_operator">1</column>
-            <column name="name_pult">Феникс</column>
-            <column name="number_object">1111</column>
-            <column name="message">Удалить Х.О </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-29 17:05:28</column>
-            <column name="name_engineer_completion">1</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">91</column>
-            <column name="date_of_creation">2017-08-29 17:06:04</column>
-            <column name="name_operator">1</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить Г.З </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-30 02:22:15</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">92</column>
-            <column name="date_of_creation">2017-08-29 17:06:17</column>
-            <column name="name_operator">1</column>
-            <column name="name_pult">Феникс</column>
-            <column name="number_object">1111</column>
-            <column name="message">Удалить Х.О 212</column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-30 02:22:18</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">102</column>
-            <column name="date_of_creation">2017-08-30 09:41:10</column>
-            <column name="name_operator">a</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">2006</column>
-            <column name="message">Добавить klrfkj</column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-30 09:41:37</column>
-            <column name="name_engineer_completion">a</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">103</column>
-            <column name="date_of_creation">2017-08-30 11:34:15</column>
-            <column name="name_operator">a</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">111</column>
-            <column name="message">Добавить  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-31 00:41:55</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">104</column>
-            <column name="date_of_creation">2017-08-30 11:38:36</column>
-            <column name="name_operator">a</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">63466</column>
-            <column name="message">Добавить  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-31 00:41:58</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">105</column>
-            <column name="date_of_creation">2017-08-30 23:05:27</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-31 00:42:01</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">106</column>
-            <column name="date_of_creation">2017-08-30 23:06:52</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1111</column>
-            <column name="message">Добавить  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-08-31 15:52:11</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">107</column>
-            <column name="date_of_creation">2017-08-30 23:07:39</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1110</column>
-            <column name="message">Добавить  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-09-02 11:49:45</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">108</column>
-            <column name="date_of_creation">2017-08-30 23:13:40</column>
-            <column name="name_operator">admin@admin.ru</column>
-            <column name="name_pult">Грифон</column>
-            <column name="number_object">1233</column>
-            <column name="message">Добавить ТЛ.  </column>
-            <column name="checked_engineer">1</column>
-            <column name="date_of_completion">2017-09-05 14:53:37</column>
-            <column name="name_engineer_completion">admin@admin.ru</column>
-        </table>
-        <table name="dbo_operator_application">
-            <column name="id">111</column>
-            <column name="date_of_creation">2017-09-05 12:04:37</column>
-            <column name="name_operator">ф</column>
-            <column name="name_pult">Феникс</column>
-            <column name="number_object">123</column>
-            <column name="message">Убрать из 220  </column>
+            <column name="message">Добавить Х.О  111</column>
             <column name="checked_engineer">0</column>
             <column name="date_of_completion"></column>
             <column name="name_engineer_completion"> </column>
         </table>
-        <!-- Table dbo_users -->
-        <table name="dbo_users">
-            <column name="id">3</column>
-            <column name="date_register_user">2017-09-06 16:07:00</column>
-            <column name="user_name">wewwwww</column>
-            <column name="user_password">wwwwwwww</column>
-            <column name="user_type">Эк №2</column>
-        </table>
-        <!-- Table user_type -->
+        <!-- Таблица dbo_users -->
+        <!-- Таблица dbo_user_application_pc -->
+        <!-- Таблица user_type -->
         <table name="user_type">
             <column name="id">1</column>
             <column name="user_type">Оператор</column>
@@ -322,14 +140,6 @@
         <table name="user_type">
             <column name="id">3</column>
             <column name="user_type">Администратор</column>
-        </table>
-        <table name="user_type">
-            <column name="id">4</column>
-            <column name="user_type">Эк №2</column>
-        </table>
-        <table name="user_type">
-            <column name="id">5</column>
-            <column name="user_type">new type</column>
         </table>
     </database>
 </pma_xml_export>

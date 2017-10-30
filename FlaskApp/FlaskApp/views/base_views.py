@@ -103,8 +103,8 @@ def semple_page_engineer():
 
 def semple_page_users():
     if request.method =='POST':
-        if request.form['submit']=='application_pc':
-            return redirect(url_for('application_pc'))
+        if request.form['submit']=='users_application_pc':
+            return redirect(url_for('users_application_pc'))
 
         if request.form['submit']=='report_tests':
             return redirect(url_for('report_tests'))
@@ -114,8 +114,8 @@ def users():
     return render_template('users/users.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
 
-def application_pc():
-    return render_template('users/application_pc.html', user=get_sesion_user(), type_footer=get_sesion_user())
+def users_application_pc():
+    return render_template('users/users_application_pc.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
 
 def report_tests():

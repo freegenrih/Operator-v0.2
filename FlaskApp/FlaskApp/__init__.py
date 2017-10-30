@@ -9,7 +9,7 @@ from Settings_app import (key,
 from views.base_views import (signin,
                               users,
                               semple_page_users,
-                              application_pc,
+                              users_application_pc,
                               report_tests,
                               operator,
                               operator_test,
@@ -33,13 +33,17 @@ app.add_url_rule('/semple-page-signin', view_func=semple_page_signin, methods=['
 app.add_url_rule('/semple-page-operator', view_func=semple_page_operator, methods=['GET', 'POST'])
 app.add_url_rule('/semple-page-engineer', view_func=semple_page_engineer, methods=['GET', 'POST'])
 app.add_url_rule('/semple-page-users', view_func=semple_page_users, methods=['GET', 'POST'])
+
 app.add_url_rule('/users', view_func=users, methods=['GET', 'POST'])
-app.add_url_rule('/users-application-pc', view_func=application_pc, methods=['GET', 'POST'])
+app.add_url_rule('/users-application-pc', view_func=users_application_pc, methods=['GET', 'POST'])
 app.add_url_rule('/users-report-tests', view_func=report_tests, methods=['GET', 'POST'])
+
 app.add_url_rule('/operator', view_func=operator, methods=['GET', 'POST'])
 app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POST'])
+
 app.add_url_rule('/engineer', view_func=engineer, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-test', view_func=engineer_test, methods=['GET', 'POST'])
+
 app.add_url_rule('/admin', view_func=admin, methods=['GET', 'POST'])
 app.add_url_rule('/settigs-users', view_func=settings_users, methods=['GET', 'POST'])
 app.add_url_rule('/settigs-phone', view_func=settings_phone, methods=['GET', 'POST'])
