@@ -1,6 +1,7 @@
 import re
 import unittest
 
+
 class Validators:
     '''
         object: str or int
@@ -96,17 +97,14 @@ class Validators:
         return result_valid_name
 
 
-
-
-
 class TestUM(unittest.TestCase):
     # Name -------------------------------------------------------------------------------------------------------------
     name1 = 'Андрей'  # len=6
     name2 = 'Григорий'  # len=8
     name3 = 'SELECT *'  # len=6
-    nm1 = Validators(name1, 'name', min_len=4, max_len=10) # True
-    nm2 = Validators(name2, 'name', min_len=9, max_len=12) # False
-    nm3 = Validators(name3, 'name', min_len=7, max_len=10) # False
+    nm1 = Validators(name1, 'name', min_len=4, max_len=10)  # True
+    nm2 = Validators(name2, 'name', min_len=9, max_len=12)  # False
+    nm3 = Validators(name3, 'name', min_len=7, max_len=10)  # False
     # ------------------------------------------------------------------------------------------------------------------
 
     # test valodators password -----------------------------------------------------------------------------------------
@@ -117,11 +115,11 @@ class TestUM(unittest.TestCase):
     password5 = '<script'
     password6 = '123456789'
 
-    psw1 = Validators(password1, 'password', min_len=5, max_len=10) # False
-    psw2 = Validators(password2, 'password', min_len=5, max_len=10) # True
-    psw3 = Validators(password3, 'password', min_len=5, max_len=10) # False
-    psw4 = Validators(password4, 'password', min_len=5, max_len=10) # False
-    psw5 = Validators(password5, 'password', min_len=5, max_len=10) # False
+    psw1 = Validators(password1, 'password', min_len=5, max_len=10)  # False
+    psw2 = Validators(password2, 'password', min_len=5, max_len=10)  # True
+    psw3 = Validators(password3, 'password', min_len=5, max_len=10)  # False
+    psw4 = Validators(password4, 'password', min_len=5, max_len=10)  # False
+    psw5 = Validators(password5, 'password', min_len=5, max_len=10)  # False
     psw6 = Validators(password6, 'password', min_len=6, max_len=9)  # True
     # ------------------------------------------------------------------------------------------------------------------
 
@@ -132,11 +130,11 @@ class TestUM(unittest.TestCase):
     text3 = 'DELETE'
     text4 = 'select 857 '
 
-    id = Validators(idn, 'id')     # True
-    id_1 = Validators(text1, 'id') # False
-    id_2 = Validators(text2, 'id') # False
-    id_3 = Validators(text3, 'id') # False
-    id_4 = Validators(text4, 'id') # False
+    id = Validators(idn, 'id')  # True
+    id_1 = Validators(text1, 'id')  # False
+    id_2 = Validators(text2, 'id')  # False
+    id_3 = Validators(text3, 'id')  # False
+    id_4 = Validators(text4, 'id')  # False
 
     # ------------------------------------------------------------------------------------------------------------------
 
@@ -157,13 +155,13 @@ class TestUM(unittest.TestCase):
         self.assertEqual(self.id_4.valid_id(), False)
 
     def test_name_1(self):
-        self.assertEqual( self.nm1.valid_name(), True)
+        self.assertEqual(self.nm1.valid_name(), True)
 
     def test_name_2(self):
-        self.assertEqual( self.nm2.valid_name(), False)
+        self.assertEqual(self.nm2.valid_name(), False)
 
     def test_name_3(self):
-        self.assertEqual( self.nm3.valid_name(), False)
+        self.assertEqual(self.nm3.valid_name(), False)
 
     def test_password_1(self):
         self.assertEqual(self.psw1.valid_password(), False)

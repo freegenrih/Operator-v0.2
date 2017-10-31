@@ -3,26 +3,7 @@ from datetime import datetime
 from sqlrw import wraper_write, wraper_read
 
 
-class EngineerUpdate:
-    def __init__(self, id_update_note, name_user):
-        self.name_user = name_user
-        self.id_update_note = id_update_note
-        self.sql_update_note = "UPDATE `dbo_operator_application` " \
-                               "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
-                               "`name_engineer_completion` = '{}' " \
-                               "WHERE `dbo_operator_application`.`id` = {}".format(str(datetime.now())[0:-7],
-                                                                                   str(self.name_user),
-                                                                                   int(self.id_update_note))
-
-    def update_note(self):
-        return wraper_write(self.sql_update_note)
-
-
-class EngineerGet:
-    def get_list_note(self):
-        sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
-        return wraper_read(sql)
-
+# ----------------------------------------Операторская часть-----------------------------------------------
 
 class OperatorGet:
     def __init__(self, start_date=None, end_date=None, search_date=None):
@@ -74,8 +55,6 @@ class OperatorCreate:
         return wraper_write(self.sql_insert_note)
 
 
-
-
 class OperatorCreateNoTests:
     def __init__(self, object_number, name_operator, why_there_is_no_test):
         self.object_number = object_number
@@ -116,11 +95,19 @@ class OperatorDel:
     def delete_note_no_tests(self):
         return wraper_write(self.sql_delete_note_no_tests)
 
+# ---------------------------------------------------------------------------------------------------------
 
 class UsersGet:
     def __init__(self):
         self.sql_type_user = "SELECT * FROM `user_type`"
         self.sql_list_users = "SELECT * FROM `dbo_users`"
+
+        self.sql_get_application_pc = "SELECT * FROM `dbo_user_application_pc`"
+
+
+    def get_application_pc(self):
+        return wraper_read(self.sql_get_application_pc)
+
 
     def get_type_user(self):
         return wraper_read(self.sql_type_user)
@@ -128,6 +115,68 @@ class UsersGet:
     def get_list_user(self):
         return wraper_read(self.sql_list_users)
 
+
+# -------------------------------------------Юзер часть----------------------------------------------------
+class UsersPage:
+    def __init__(self, id=None):
+        self.id = id
+
+
+        self.sql_create_application_pc = "INSERT INTO `dbo_user_application_pc` (`id`, `date_of_creation`, ' \
+                                         '`name_user_creation_app`, `message`, `checked_engineer`, `date_of_completion`,' \
+                                         ' `name_engineer_completion`) ' \
+                                         'VALUES (NULL, '01-10-2017', '21', 'ok', '0', '', '')"
+
+        self.sql_delete_application_pc = "DELETE FROM `dbo_user_application_pc` " \
+                               "WHERE `dbo_user_application_pc`.`id` = {};".format(int(self.id))
+
+    def create_application_pc(self):
+        return wraper_write(self.sql_create_application_pc)
+
+
+    def delete_application_pc(self):
+        return wraper_write(self.sql_delete_application_pc)
+
+
+# ---------------------------------------------------------------------------------------------------------
+
+
+# -----------------------------------------Инженерная часть------------------------------------------------
+
+class EngineerUpdate:
+    def __init__(self, id_update_note, name_user):
+        self.name_user = name_user
+        self.id_update_note = id_update_note
+
+        self.sql_update_note = "UPDATE `dbo_operator_application` " \
+                               "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
+                               "`name_engineer_completion` = '{}' " \
+                               "WHERE `dbo_operator_application`.`id` = {}".format(str(datetime.now())[0:-7],
+                                                                                       str(self.name_user),
+                                                                                       int(self.id_update_note))
+        self.sql_update_application_pc = "UPDATE `dbo_user_application_pc` " \
+                               "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
+                               "`name_engineer_completion` = '{}' " \
+                               "WHERE `dbo_operator_application`.`id` = {}".format(str(datetime.now())[0:-7],
+                                                                                       str(self.name_user),
+                                                                                       int(self.id_update_note))
+
+    def update_note(self):
+        return wraper_write(self.sql_update_note)
+
+    def update_application_pc(self):
+        return wraper_write(self.sql_update_application_pc)
+
+class EngineerGet:
+
+    def get_list_note(self):
+        sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
+        return wraper_read(sql)
+
+# ---------------------------------------------------------------------------------------------------------
+
+
+# ------------------------------------------Админская часть------------------------------------------------
 
 class SettingsUsersRegUser:
     def __init__(self, user_name: str, user_password: str, user_type: str):
@@ -151,6 +200,7 @@ class SettingsUsersRegType:
         self.sql_reg_new_type_user = "INSERT INTO `user_type` (`id`, `user_type`) " \
                                      "VALUES (NULL, '{}')".format(str(self.name_type))
 
+
     def reg_new_type(self):
         return wraper_write(self.sql_reg_new_type_user)
 
@@ -169,3 +219,6 @@ class SettingsUsersDel:
 
     def delete_user_type(self):
         return wraper_write(self.sql_delete_user_type)
+# ---------------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------------

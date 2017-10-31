@@ -15,7 +15,8 @@ from views.executor import (EngineerGet,
                             SettingsUsersRegUser,
                             SettingsUsersRegType,
                             SettingsUsersDel,
-                            UsersGet
+                            UsersGet,
+                            UsersPage
                             )
 
 from views.validators import Validators
@@ -97,6 +98,9 @@ def semple_page_engineer():
         elif request.form['submit'] == 'Тесты':
             return redirect(url_for('engineer_test'))
 
+        elif request.form['submit'] == 'Заявки ЮЗР':
+            return redirect(url_for('engineer_users_application_pc'))
+
     else:
         return redirect(url_for('engineer'))
 
@@ -115,7 +119,11 @@ def users():
 
 
 def users_application_pc():
-    return render_template('users/users_application_pc.html', user=get_sesion_user(), type_footer=get_sesion_user())
+    return render_template('users/users_application_pc.html',
+                           user=get_sesion_user(),
+                           type_footer=get_sesion_user(),
+                           users_application_pc=UsersGet().get_application_pc()
+                           )
 
 
 def report_tests():
@@ -180,6 +188,12 @@ def engineer():
 
 def engineer_test():
     return render_template('engineer/engineer_test.html', user=get_sesion_user(), type_footer=get_sesion_user())
+
+def engineer_users_application_pc():
+    return render_template('engineer/engineer_application_pc_users.html',
+                           user=get_sesion_user(),
+                           type_footer=get_sesion_user()
+                           )
 # ---------------------------------------------End Engineer-------------------------------------------------------------
 
 

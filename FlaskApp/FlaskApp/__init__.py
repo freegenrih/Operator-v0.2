@@ -1,10 +1,10 @@
 from flask import Flask
 from Settings_app import (key,
-                         config_debug_local,
-                         config_debug_105,
-                         config_debug_my_work,
-                         config_no_debug
-                         )
+                          config_debug_local,
+                          config_debug_105,
+                          config_debug_my_work,
+                          config_no_debug
+                          )
 
 from views.base_views import (signin,
                               users,
@@ -15,6 +15,7 @@ from views.base_views import (signin,
                               operator_test,
                               engineer,
                               engineer_test,
+                              engineer_users_application_pc,
                               admin,
                               semple_page_signin,
                               semple_page_operator,
@@ -43,13 +44,13 @@ app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POS
 
 app.add_url_rule('/engineer', view_func=engineer, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-test', view_func=engineer_test, methods=['GET', 'POST'])
+app.add_url_rule('/engineer-users-application-pc', view_func=engineer_users_application_pc, methods=['GET', 'POST'])
 
 app.add_url_rule('/admin', view_func=admin, methods=['GET', 'POST'])
 app.add_url_rule('/settigs-users', view_func=settings_users, methods=['GET', 'POST'])
 app.add_url_rule('/settigs-phone', view_func=settings_phone, methods=['GET', 'POST'])
 app.add_url_rule('/logout', view_func=logout, methods=['GET'])
 app.add_url_rule('/info', view_func=info, methods=['GET'])
-
 
 # error handlers
 from views.error_handlers import page_not_found, page_error, bad_request
@@ -59,5 +60,4 @@ app.register_error_handler(404, page_not_found)
 app.register_error_handler(500, page_error)
 
 if __name__ == '__main__':
-     app.run(**config_debug_local)
-
+    app.run(host='localhost', port=5001, debug=True)

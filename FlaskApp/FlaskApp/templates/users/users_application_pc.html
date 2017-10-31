@@ -85,46 +85,43 @@
 <!-------------------------Конец Блока Создания заявки СисАдмину---------------------->
 
 <div style="padding-top: 10px;">
+    <div style="height:500px;overflow-y:scroll;;">
             <table class="table">
             <thead>
             <tr class="info">
                 <th width="12%" class="text-center">Дата создания</th>
                 <th width="10%" class="text-center">Пользователь</th>
-                <th width="44%" class="text-center">Описание</th>
+                <th width="72%" class="text-center">Описание</th>
                 <th width="1%" class="text-center">ОК</th>
                 <th width="3%" class="text-center">Выполнить</th>
-                <th width="2%" class="text-center"></th>
+{#                <th width="2%" class="text-center"></th>#}
             </tr>
             </thead>
-            </table>
+           <tbody>
+            {%if users_application_pc%}
+            {%for row in users_application_pc%}
 
-    <div style="height:500px;overflow-y:scroll;;">
-           <table class="table">
-            {%if application_operator%}
-            {%for row in application_operator%}
-            <tbody>
-            <form method="post" action="/operator">
+            <form method="post" action="{{ url_for('users_application_pc') }}">
                 <tr class="success">
                     <td class="text-center" width="12%"><strong>{{row.date_of_creation}}</strong></td>
-                    <td class="text-center" width="10%">{{row.name_operator}}</td>
-                    <td class="text-center" width="10%">{{row.name_pult}}</td>
-                    <td class="text-center" width="10%"><strong>{{row.number_object}}</strong></td>
-                    <td class="text-center" width="44%"><strong>{{row.message}}</strong></td>
-                    <td class="text-center" width="1%">
-                        <label style="padding-left: 5px; padding-top: 6px;">
+                    <td class="text-center" width="10%"><strong>{{row.name_user_creation_app}}</strong></td>
+                    <td class="text-center" width="67%"><strong>{{row.message}}</strong></td>
+                    <td class="text-center" width="5%">
+                        <label style="padding-left: 2px; padding-top: 6px;">
                             <input type="radio" name="optradio" value="{{row.id}}" required
                             title="Кликнуть для потверждения">
                         </label>
                     </td>
-                    <td class="text-center" width="3%">
+                    <td class="text-center" width="5%">
                         <button type="submit" name="submit" value="delete" class="btn btn-danger"
                         title="Кликнуть для Удаления">Удалить</button>
                     </td>
                 </tr>
             </form>
-            </tbody>
+
             {%endfor%}
             {%endif%}
+           </tbody>
         </table>
     </div>
 </div>
