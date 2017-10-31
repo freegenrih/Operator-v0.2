@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Хост: localhost:3306
-- Время создания: Окт 30 2017 г., 12:36
+- Время создания: Окт 31 2017 г., 13:28
 - Версия сервера: 5.7.20-0ubuntu0.17.10.1
 - Версия PHP: 7.1.8-1ubuntu1
 -->
@@ -54,7 +54,7 @@
                   `date_of_completion` text NOT NULL,
                   `name_engineer_completion` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_users">
                 CREATE TABLE `dbo_users` (
@@ -75,8 +75,9 @@
                   `checked_engineer` int(1) NOT NULL,
                   `date_of_completion` text NOT NULL,
                   `name_engineer_completion` text NOT NULL,
+                  `commit_of_close_applocation_pc` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user_type">
                 CREATE TABLE `user_type` (
@@ -122,12 +123,55 @@
             <column name="name_pult">Грифон</column>
             <column name="number_object">1111</column>
             <column name="message">Добавить Х.О  111</column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-30 13:00:02</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">118</column>
+            <column name="date_of_creation">2017-10-30 15:34:06</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">1111</column>
+            <column name="message">Добавить Х.О  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 11:33:00</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">120</column>
+            <column name="date_of_creation">2017-10-31 12:20:02</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">2222</column>
+            <column name="message">Убрать из 220  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 12:20:11</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">121</column>
+            <column name="date_of_creation">2017-10-31 12:50:25</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Феникс</column>
+            <column name="number_object">2012</column>
+            <column name="message">Убрать из 220  </column>
             <column name="checked_engineer">0</column>
             <column name="date_of_completion"></column>
             <column name="name_engineer_completion"> </column>
         </table>
         <!-- Таблица dbo_users -->
         <!-- Таблица dbo_user_application_pc -->
+        <table name="dbo_user_application_pc">
+            <column name="id">29</column>
+            <column name="date_of_creation">2017-10-31 13:22:31</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Монитор  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 13:23:26</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc">Произведена замена блока питания.</column>
+        </table>
         <!-- Таблица user_type -->
         <table name="user_type">
             <column name="id">1</column>
