@@ -93,13 +93,13 @@ def semple_page_operator():
 
 def semple_page_engineer():
     if request.method == 'POST':
-        if request.form['submit'] == 'Заявки ОПР':
+        if request.form['submit'] == 'opr_app':
             return redirect(url_for('engineer_application_operator'))
 
-        elif request.form['submit'] == 'Тесты':
+        elif request.form['submit'] == 'tests':
             return redirect(url_for('engineer_test'))
 
-        elif request.form['submit'] == 'Заявки ЮЗР':
+        elif request.form['submit'] == 'usr_app':
             return redirect(url_for('engineer_users_application_pc'))
 
     else:
@@ -198,7 +198,7 @@ def engineer():
                                operator_application_no_checked=EngineerGet().get_count_operator_application_no_checked(),
                                operator_application_checked=EngineerGet().get_count_operator_application_checked(),
                                count_operator_application_all=EngineerGet().get_count_operator_application_all(),
-                               count_application_pc_all=EngineerGet().get_count_application_pc_checed(),
+                               count_application_pc_all=EngineerGet().get_count_application_pc_all(),
                                )
 
 

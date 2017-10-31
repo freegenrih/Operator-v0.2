@@ -13,72 +13,85 @@
 {% endblock leftmenu %}
 
 {% block centermenuhead %}
-    <h4 class="text-center">Мини инфо Инженера</h4>
+    <h4 class="text-center">Мини Инфо Инженера</h4>
 {% endblock centermenuhead %}
 
 {% block centermenu %}
 
     <div class="container-fluid" style="padding-top: 15px">
         <div class="row">
-            <div class="col-xs-6">
-                <div class="alert alert-info" title="Инфо о заявках">
-                    <div class="text-center">Ожидают обработки:</div>
+            <div class="col-sm-4">
+                <div class="alert alert-danger" title="Инфо о заявках">
+                    <div class="text-center" style="font-size: 18px;">Ожидают обработки:</div>
                     <br>
-                    Заявки  Пользователей:&nbsp;&nbsp;&nbsp;
-                    {% if count_application_pc_no_checed %}
-                        {% for row in count_application_pc_no_checed %}
-                            {{ row.temp }}
-                        {% endfor %}
-                    {% endif %}
-                    <br>
-                    Заявки  Оператора:&nbsp;&nbsp;&nbsp;
-                    {% if operator_application_no_checked %}
-                        {% for row in operator_application_no_checked %}
-                            {{ row.temp }}
-                        {% endfor %}
-                    {% endif %}
+                    <div style="font-size: 16px;">
+                        Заявки Оператора:
+                        {% if operator_application_no_checked %}
+                            {% for row in operator_application_no_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+                        <br>
+                        Заявки Пользователей:
+                        {% if count_application_pc_no_checed %}
+                            {% for row in count_application_pc_no_checed %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                     <br>
                 </div>
             </div>
 
-            <div class="col-xs-6">
-                <div class="alert alert-info" title="Инфо о заявках">
-                    <div class="text-center">Отработано:</div>
+            <div class="col-sm-4">
+                <div class="alert alert-success" title="Инфо о заявках">
+                    <div class="text-center" style="font-size: 18px;">Обработано:</div>
                     <br>
-                    Заявки  Пользователей:&nbsp;&nbsp;&nbsp;
-                    {% if count_application_pc_checed %}
-                        {% for row in count_application_pc_checed %}
-                            {{ row.temp }}
-                        {% endfor %}
-                    {% endif %}
-                    <br>
-                    Заявки  Оператора:&nbsp;&nbsp;&nbsp;
-                    {% if operator_application_checked %}
-                        {% for row in operator_application_checked %}
-                            {{ row.temp }}
-                        {% endfor %}
-                    {% endif %}
+                    <div style="font-size: 16px;">
+                        Заявки Оператора:
+                        {% if operator_application_checked %}
+                            {% for row in operator_application_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+                        <br>
+                        Заявки Пользователей:&nbsp;
+                        {% if count_application_pc_checed %}
+                            {% for row in count_application_pc_checed %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+
+                    </div>
                     <br>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                {% if count_operator_application_all %}
-                    {% for row in count_operator_application_all %}
-                        {{ row.temp }}
-                    {% endfor %}
-                {% endif %}
 
-                {% if count_application_pc_all %}
-                    {% for row in count_application_pc_all %}
-                        {{ row.temp }}
-                    {% endfor %}
-                {% endif %}
+            <div class="col-sm-4">
+                <div class="alert alert-info" title="Инфо о заявках">
+                    <div class="text-center" style="font-size: 18px;">Общее количество:</div>
+                    <br>
+                    <div style="font-size: 16px;">
+                        Заявки Оператора:
+                        {% if count_operator_application_all %}
+                            {% for row in count_operator_application_all %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+                        <br>
+                        Заявки Пользователей:
+                        {% if count_application_pc_all %}
+                            {% for row in count_application_pc_all %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+
+                    </div>
+                    <br>
+                </div>
             </div>
         </div>
     </div>
-
 
 
 {% endblock centermenu %}
@@ -88,6 +101,5 @@
 {% endblock rightmenuhead %}
 
 {% block rightmenu %}
-
     {% include 'engineer/engineer_right_menu_info.html' %}
 {% endblock rightmenu %}
