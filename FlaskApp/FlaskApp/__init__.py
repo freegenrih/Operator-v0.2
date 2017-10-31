@@ -16,6 +16,7 @@ from views.base_views import (signin,
                               engineer,
                               engineer_test,
                               engineer_users_application_pc,
+                              engineer_application_operator,
                               admin,
                               semple_page_signin,
                               semple_page_operator,
@@ -45,6 +46,7 @@ app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POS
 app.add_url_rule('/engineer', view_func=engineer, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-test', view_func=engineer_test, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-users-application-pc', view_func=engineer_users_application_pc, methods=['GET', 'POST'])
+app.add_url_rule('/engineer-application-operator', view_func=engineer_application_operator, methods=['GET', 'POST'])
 
 app.add_url_rule('/admin', view_func=admin, methods=['GET', 'POST'])
 app.add_url_rule('/settigs-users', view_func=settings_users, methods=['GET', 'POST'])

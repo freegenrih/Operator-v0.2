@@ -94,7 +94,7 @@ def semple_page_operator():
 def semple_page_engineer():
     if request.method == 'POST':
         if request.form['submit'] == 'Заявки ОПР':
-            return redirect(url_for('engineer'))
+            return redirect(url_for('engineer_application_operator'))
 
         elif request.form['submit'] == 'Тесты':
             return redirect(url_for('engineer_test'))
@@ -187,14 +187,32 @@ def operator_test():
 def engineer():
     # completion operators note
     if request.method == 'POST':
+        return redirect(url_for('engineer'))
+    else:
+        return render_template('engineer/engineer.html',
+                               application_engineer=EngineerGet().get_list_note(),
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user(),
+                               count_application_pc_no_checed=EngineerGet().get_count_application_pc_no_checed(),
+                               count_application_pc_checed=EngineerGet().get_count_application_pc_checed(),
+                               operator_application_no_checked=EngineerGet().get_count_operator_application_no_checked(),
+                               operator_application_checked=EngineerGet().get_count_operator_application_checked(),
+                               count_operator_application_all=EngineerGet().get_count_operator_application_all(),
+                               count_application_pc_all=EngineerGet().get_count_application_pc_checed(),
+                               )
+
+
+def engineer_application_operator():
+    # completion operators note
+    if request.method == 'POST':
         if request.form['submit'] == 'completion':
             if Validators(int(request.form['optradio']), 'id').valid_id() == True:
                 EngineerUpdate(request.form['optradio'], get_sesion_user()).update_note()
-                return redirect(url_for('engineer'))
+                return redirect(url_for('engineer_application_operator'))
             else:
-                return redirect(url_for('engineer'))
+                return redirect(url_for('engineer_application_operator'))
     else:
-        return render_template('engineer/engineer.html',
+        return render_template('engineer/engineer_application_operaor.html',
                                application_engineer=EngineerGet().get_list_note(),
                                user=get_sesion_user(),type_footer=get_sesion_user())
 

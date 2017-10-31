@@ -182,6 +182,33 @@ class EngineerGet:
         sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         return wraper_read(sql)
 
+    def get_count_application_pc_no_checed(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE `checked_engineer`=0;"
+        return wraper_read(sql)
+
+
+    def get_count_application_pc_checed(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE `checked_engineer`=1;"
+        return wraper_read(sql)
+
+    def get_count_application_pc_all(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE 1;"
+        return wraper_read(sql)
+
+
+    def get_count_operator_application_no_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE `checked_engineer`=0;"
+        return wraper_read(sql)
+
+    def get_count_operator_application_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE `checked_engineer`=1;"
+        return wraper_read(sql)
+
+    def get_count_operator_application_all(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE 1;"
+        return wraper_read(sql)
+
+
 # ---------------------------------------------------------------------------------------------------------
 
 
