@@ -16,7 +16,8 @@ from views.executor import (EngineerGet,
                             SettingsUsersRegType,
                             SettingsUsersDel,
                             UsersGet,
-                            UsersPage
+                            UsersDel,
+                            UsersCreate
                             )
 
 from views.validators import Validators
@@ -119,7 +120,19 @@ def users():
 
 
 def users_application_pc():
-    return render_template('users/users_application_pc.html',
+    if request.method =='POST':
+        if request.form['submit']=='create_note':
+            UsersCreate(
+                name_user=get_sesion_user(),
+                message=str(request.form['select_operation']+' '+request.form['add_comment'])
+            ).create_application_pc()
+            return redirect(url_for('users_application_pc'))
+
+        elif request.form['submit']=='delete':
+            UsersDel(id=request.form['optradio']).delete_application_pc()
+            return redirect(url_for('users_application_pc'))
+    else:
+        return render_template('users/users_application_pc.html',
                            user=get_sesion_user(),
                            type_footer=get_sesion_user(),
                            users_application_pc=UsersGet().get_application_pc()
@@ -190,10 +203,21 @@ def engineer_test():
     return render_template('engineer/engineer_test.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
 def engineer_users_application_pc():
-    return render_template('engineer/engineer_application_pc_users.html',
-                           user=get_sesion_user(),
-                           type_footer=get_sesion_user()
-                           )
+    if request.method == 'POST':
+        if request.form['submit']=='completion':
+            EngineerUpdate(
+                id_update_note=request.form['optradio'],
+                name_user=get_sesion_user(),
+                comment=request.form['add_comment']
+            ).update_application_pc()
+            return redirect(url_for('engineer_users_application_pc'))
+
+    else:
+        return render_template('engineer/engineer_application_pc_users.html',
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user(),
+                               users_application_pc=UsersGet().get_application_pc()
+                               )
 # ---------------------------------------------End Engineer-------------------------------------------------------------
 
 

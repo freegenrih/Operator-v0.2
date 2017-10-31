@@ -102,7 +102,8 @@ class UsersGet:
         self.sql_type_user = "SELECT * FROM `user_type`"
         self.sql_list_users = "SELECT * FROM `dbo_users`"
 
-        self.sql_get_application_pc = "SELECT * FROM `dbo_user_application_pc`"
+        self.sql_get_application_pc = "SELECT * FROM `dbo_user_application_pc` " \
+                                      "WHERE `dbo_user_application_pc`.`checked_engineer` = 0;"
 
 
     def get_application_pc(self):
@@ -117,37 +118,44 @@ class UsersGet:
 
 
 # -------------------------------------------Юзер часть----------------------------------------------------
-class UsersPage:
-    def __init__(self, id=None):
+class UsersDel:
+    def __init__(self, id: int):
         self.id = id
-
-
-        self.sql_create_application_pc = "INSERT INTO `dbo_user_application_pc` (`id`, `date_of_creation`, ' \
-                                         '`name_user_creation_app`, `message`, `checked_engineer`, `date_of_completion`,' \
-                                         ' `name_engineer_completion`) ' \
-                                         'VALUES (NULL, '01-10-2017', '21', 'ok', '0', '', '')"
-
         self.sql_delete_application_pc = "DELETE FROM `dbo_user_application_pc` " \
                                "WHERE `dbo_user_application_pc`.`id` = {};".format(int(self.id))
-
-    def create_application_pc(self):
-        return wraper_write(self.sql_create_application_pc)
 
 
     def delete_application_pc(self):
         return wraper_write(self.sql_delete_application_pc)
 
 
+class UsersCreate:
+    def __init__(self, name_user:str, message:str ):
+        self.name_user = name_user
+        self.message = message
+        self.sql_create_application_pc = "INSERT INTO `dbo_user_application_pc` " \
+                                         "(`id`, `date_of_creation`, `name_user_creation_app`, `message`, " \
+                                         "`checked_engineer`, `date_of_completion`,`name_engineer_completion`," \
+                                         "`commit_of_close_applocation_pc`) " \
+                                         "VALUES (NULL, '{}', '{}', '{}', '0', ' ', ' ',' ');"\
+            .format(
+            str(datetime.now())[0:-7],
+            self.name_user,
+            self.message
+        )
+
+    def create_application_pc(self):
+        return wraper_write(self.sql_create_application_pc)
 # ---------------------------------------------------------------------------------------------------------
 
 
 # -----------------------------------------Инженерная часть------------------------------------------------
 
 class EngineerUpdate:
-    def __init__(self, id_update_note, name_user):
-        self.name_user = name_user
+    def __init__(self, id_update_note, name_user, comment=None):
         self.id_update_note = id_update_note
-
+        self.name_user = name_user
+        self.comment = comment
         self.sql_update_note = "UPDATE `dbo_operator_application` " \
                                "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
                                "`name_engineer_completion` = '{}' " \
@@ -156,10 +164,11 @@ class EngineerUpdate:
                                                                                        int(self.id_update_note))
         self.sql_update_application_pc = "UPDATE `dbo_user_application_pc` " \
                                "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
-                               "`name_engineer_completion` = '{}' " \
-                               "WHERE `dbo_operator_application`.`id` = {}".format(str(datetime.now())[0:-7],
-                                                                                       str(self.name_user),
-                                                                                       int(self.id_update_note))
+                               "`name_engineer_completion` = '{}', `commit_of_close_applocation_pc` = '{}' " \
+                               "WHERE `dbo_user_application_pc`.`id` = {}".format(str(datetime.now())[0:-7],
+                                                                                   str(self.name_user),
+                                                                                   str(self.comment),
+                                                                                   int(self.id_update_note))
 
     def update_note(self):
         return wraper_write(self.sql_update_note)

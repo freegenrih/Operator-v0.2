@@ -28,40 +28,90 @@
             <table class="table table-striped">
                 <thead>
                 <tr class="info">
-                <th width="12%" class="text-center">Дата создания</th>
-                <th width="10%" class="text-center">Пользователь</th>
-                <th width="44%" class="text-center">Описание</th>
-                <th width="1%" class="text-center">ОК</th>
-                <th width="3%" class="text-center">Выполнить</th>
-                <th width="2%" class="text-center"></th>
+                    <th width="12%" class="text-center">Дата создания</th>
+                    <th width="10%" class="text-center">Пользователь</th>
+                    <th width="72%" class="text-center">Описание</th>
+                    <th width="1%" class="text-center"></th>
+                    <th width="3%" class="text-center">Выполнить</th>
                 </tr>
                 </thead>
-
-                {% if application_engineer %}
-                    {% for row in application_engineer %}
-                        <tbody>
-                        <form method="post" action="{{ url_for('engineer') }}">
+                <tbody>
+                {% if users_application_pc %}
+                    {% for row in users_application_pc %}
+{#                        <form method="post" action="{{ url_for('users_application_pc') }}">#}
                             <tr class="success">
-                                <td class="text-center"><strong>{{ row.date_of_creation }}</strong></td>
-                                <td class="text-center">{{ row.name_operator }}</td>
-                                <td class="text-center">{{ row.name_pult }}</td>
-                                <td class="text-center"><strong>{{ row.number_object }}</strong></td>
-                                <td class="text-center"><strong>{{ row.message }}</strong></td>
-                                <td class="text-center">
-                                    <label style="padding-left: 5px; padding-top: 6px;">
-                                        <input type="radio" name="optradio" value="{{ row.id }}" required>
-                                    </label>
+                                <td class="text-center" width="12%"><strong>{{ row.date_of_creation }}</strong></td>
+                                <td class="text-center" width="10%"><strong>{{ row.name_user_creation_app }}</strong>
                                 </td>
-                                <td class="text-center">
-                                    <button type="submit" name="submit" value="completion" class="btn btn-success">
-                                        Отработать
-                                    </button>
+                                <td class="text-center" width="67%"><strong>{{ row.message }}</strong></td>
+                                <td class="text-center" width="5%"></td>
+                                <td class="text-center" width="5%">
+
+                                    <!------------------------------Блок мод меню отработки заявки юзера------------------------>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="text-center">
+                                                <!-- Trigger the modal with a button -->
+                                                <button type="button" class="btn btn-warning" data-toggle="modal"
+                                                        data-target="#myModal"
+                                                        data-placement="right"
+                                                        title="Нажать левую кнопку мыши для отработки заявки">
+                                                    Отработать
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="myModal" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;
+                                                                </button>
+                                                                <h4 class="modal-title">Выполненная работа</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="post"
+                                                                      action="{{ url_for('engineer_users_application_pc') }}">
+                                                                    <div class="form-group">
+                                                                        <label for="comment">Какая работа выполнена                                                                          нужно:</label>
+                                                                        <textarea class="form-control"
+                                                                                  name="add_comment" rows="5"
+                                                                                  id="comment"> </textarea>
+                                                                    </div>
+                                                                    <label style="padding-left: 2px; padding-top: 6px;">
+                                                                        <input type="radio" name="optradio"
+                                                                               value="{{ row.id }}" required
+                                                                               title="Кликнуть для потверждения">
+                                                                        Выделить для потверждения
+                                                                    </label>
+                                                                    <div class="form-group">
+                                                                        <button type="submit" name="submit"
+                                                                                value="completion"
+                                                                                class="btn btn-success">
+                                                                            Закрыть Заявку
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default"
+                                                                        data-dismiss="modal">Закрыть
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-------------------------Конец Блока  мод меню отработки заявки юзера---------------------->
                                 </td>
                             </tr>
-                        </form>
-                        </tbody>
+{#                        </form>#}
                     {% endfor %}
                 {% endif %}
+                </tbody>
             </table>
         </div>
     </div>

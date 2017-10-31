@@ -45,7 +45,7 @@
                             <h4 class="modal-title">Заявка СисАдмину </h4>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="{{ url_for('operator') }}">
+                            <form method="post" action="{{ url_for('users_application_pc') }}">
                                 <div class="form-group">
                                     <label for="sel1">Быстрые варианты:</label>
                                     <select class="form-control" name="select_operation" id="sel1">
@@ -100,7 +100,6 @@
            <tbody>
             {%if users_application_pc%}
             {%for row in users_application_pc%}
-
             <form method="post" action="{{ url_for('users_application_pc') }}">
                 <tr class="success">
                     <td class="text-center" width="12%"><strong>{{row.date_of_creation}}</strong></td>
@@ -118,7 +117,6 @@
                     </td>
                 </tr>
             </form>
-
             {%endfor%}
             {%endif%}
            </tbody>
@@ -131,7 +129,7 @@
 
 
 {%block rightmenuhead%}
-<h4 class="text-center">Инженер</h4>
+<h4 class="text-center">Пользователь</h4>
 {%endblock rightmenuhead%}
 
 {%block rightmenu%}
