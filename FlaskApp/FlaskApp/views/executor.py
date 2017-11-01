@@ -32,7 +32,6 @@ class OperatorGet:
         return wraper_read(self.sql_get_list_electrician_application)
 
     def get_list_no_tests_now(self):
-        print(str(datetime.now())[0:-16])
         return wraper_read(self.sql_list_no_tests)
 
     def get_list_no_test_search_date(self):
