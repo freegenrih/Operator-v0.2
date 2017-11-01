@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Хост: localhost:3306
-- Время создания: Окт 31 2017 г., 13:28
+- Время создания: Ноя 01 2017 г., 17:25
 - Версия сервера: 5.7.20-0ubuntu0.17.10.1
 - Версия PHP: 7.1.8-1ubuntu1
 -->
@@ -40,7 +40,7 @@
                   `name_operator` text NOT NULL,
                   `why_there_is_no_test` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_operator_application">
                 CREATE TABLE `dbo_operator_application` (
@@ -54,7 +54,14 @@
                   `date_of_completion` text NOT NULL,
                   `name_engineer_completion` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="dbo_settings">
+                CREATE TABLE `dbo_settings` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `data_search_no_tests` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_users">
                 CREATE TABLE `dbo_users` (
@@ -77,7 +84,7 @@
                   `name_engineer_completion` text NOT NULL,
                   `commit_of_close_applocation_pc` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user_type">
                 CREATE TABLE `user_type` (
@@ -109,11 +116,18 @@
         </table>
         <!-- Таблица dbo_no_tests -->
         <table name="dbo_no_tests">
-            <column name="id">33</column>
-            <column name="date_no_test">2017-09-06 </column>
-            <column name="object_number">9090</column>
-            <column name="name_operator">21</column>
-            <column name="why_there_is_no_test">АКТ</column>
+            <column name="id">41</column>
+            <column name="date_no_test">2017-11-02 </column>
+            <column name="object_number">1000</column>
+            <column name="name_operator">Admin</column>
+            <column name="why_there_is_no_test">ТЛ</column>
+        </table>
+        <table name="dbo_no_tests">
+            <column name="id">52</column>
+            <column name="date_no_test">2017-11-01 </column>
+            <column name="object_number">1000</column>
+            <column name="name_operator">Admin</column>
+            <column name="why_there_is_no_test">ТЛ</column>
         </table>
         <!-- Таблица dbo_operator_application -->
         <table name="dbo_operator_application">
@@ -150,15 +164,141 @@
             <column name="name_engineer_completion">Admin</column>
         </table>
         <table name="dbo_operator_application">
-            <column name="id">121</column>
-            <column name="date_of_creation">2017-10-31 12:50:25</column>
+            <column name="id">122</column>
+            <column name="date_of_creation">2017-10-31 15:25:07</column>
             <column name="name_operator">Admin</column>
-            <column name="name_pult">Феникс</column>
-            <column name="number_object">2012</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">1100</column>
             <column name="message">Убрать из 220  </column>
-            <column name="checked_engineer">0</column>
-            <column name="date_of_completion"></column>
-            <column name="name_engineer_completion"> </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 15:26:35</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">123</column>
+            <column name="date_of_creation">2017-10-31 15:29:26</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">1020</column>
+            <column name="message">Убрать из 220  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 15:30:23</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">124</column>
+            <column name="date_of_creation">2017-10-31 15:29:36</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">1</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 15:31:12</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">125</column>
+            <column name="date_of_creation">2017-10-31 15:29:40</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">2</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 15:31:13</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">126</column>
+            <column name="date_of_creation">2017-10-31 15:29:42</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">3</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:02</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">130</column>
+            <column name="date_of_creation">2017-10-31 15:29:57</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">7</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:03</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">131</column>
+            <column name="date_of_creation">2017-10-31 15:30:01</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">9090</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:04</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">132</column>
+            <column name="date_of_creation">2017-10-31 17:49:56</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">2020</column>
+            <column name="message">Убрать из 220  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:50:04</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">133</column>
+            <column name="date_of_creation">2017-10-31 17:52:14</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">1111</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:57:10</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">134</column>
+            <column name="date_of_creation">2017-10-31 17:52:33</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">4646</column>
+            <column name="message">Добавить ТЛ.  346436</column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:57:12</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">135</column>
+            <column name="date_of_creation">2017-10-31 23:14:54</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">2020</column>
+            <column name="message">Убрать из 220  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-11-01 00:34:22</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">136</column>
+            <column name="date_of_creation">2017-10-31 23:15:16</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">2020</column>
+            <column name="message">Добавить  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-11-01 00:34:24</column>
+            <column name="name_engineer_completion">Admin</column>
+        </table>
+        <!-- Таблица dbo_settings -->
+        <table name="dbo_settings">
+            <column name="id">1</column>
+            <column name="data_search_no_tests">2017-11-01</column>
         </table>
         <!-- Таблица dbo_users -->
         <!-- Таблица dbo_user_application_pc -->
@@ -171,6 +311,166 @@
             <column name="date_of_completion">2017-10-31 13:23:26</column>
             <column name="name_engineer_completion">Admin</column>
             <column name="commit_of_close_applocation_pc">Произведена замена блока питания.</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">31</column>
+            <column name="date_of_creation">2017-10-31 15:24:56</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Обновить Антивирус!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 15:32:49</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> Отбиты руки</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">32</column>
+            <column name="date_of_creation">2017-10-31 15:25:50</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 15:34:40</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> работает</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">33</column>
+            <column name="date_of_creation">2017-10-31 15:25:55</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Монитор  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:08</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> edd</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">34</column>
+            <column name="date_of_creation">2017-10-31 15:25:59</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Системный блок  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:11</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> e</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">35</column>
+            <column name="date_of_creation">2017-10-31 15:26:04</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Принтер!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:14</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> e</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">36</column>
+            <column name="date_of_creation">2017-10-31 15:26:08</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Сканер!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:17</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> ddd</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">37</column>
+            <column name="date_of_creation">2017-10-31 15:26:12</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Интернет!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 16:44:20</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> e</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">38</column>
+            <column name="date_of_creation">2017-10-31 15:26:17</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Обновить Антивирус!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:31:19</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> wwe</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">39</column>
+            <column name="date_of_creation">2017-10-31 15:26:21</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Почта!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:31:24</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> wewe</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">40</column>
+            <column name="date_of_creation">2017-10-31 15:26:26</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Обновить обновления Windows  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:31:27</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> ww</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">41</column>
+            <column name="date_of_creation">2017-10-31 15:32:23</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Руки</column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:57:00</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> s</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">42</column>
+            <column name="date_of_creation">2017-10-31 17:30:58</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Монитор  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:57:04</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> s</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">43</column>
+            <column name="date_of_creation">2017-10-31 17:31:09</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Системный блок  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 17:57:08</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> s</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">44</column>
+            <column name="date_of_creation">2017-10-31 20:58:19</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Принтер!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 23:12:20</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> 1</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">45</column>
+            <column name="date_of_creation">2017-10-31 23:13:11</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Системный блок  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-10-31 23:19:36</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> уцв</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">46</column>
+            <column name="date_of_creation">2017-11-01 09:36:19</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Принтер!!!  </column>
+            <column name="checked_engineer">0</column>
+            <column name="date_of_completion"> </column>
+            <column name="name_engineer_completion"> </column>
+            <column name="commit_of_close_applocation_pc"> </column>
         </table>
         <!-- Таблица user_type -->
         <table name="user_type">
