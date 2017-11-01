@@ -9,6 +9,7 @@ from flask import (render_template,
 from views.executor import (EngineerGet,
                             EngineerUpdate,
                             OperatorCreate,
+                            OperatorConfig,
                             OperatorCreateNoTests,
                             OperatorGet,
                             OperatorDel,
@@ -187,6 +188,18 @@ def operator_test():
                                   why_there_is_no_test=request.form['why_there_is_no_test']
                                   ).create_note_no_test()
             return redirect(url_for('operator_test'))
+
+        elif request.form['submit']=='copy':
+            OperatorCreateNoTests(object_number=request.form['number_object'],
+                                  name_operator=get_sesion_user(),
+                                  why_there_is_no_test=request.form['why_there_is_no_test']
+                                  ).create_note_no_test()
+            return redirect(url_for('operator_test'))
+
+        elif request.form['submit']=='select_for_date':
+            OperatorConfig(date_save=request.form['date']).write_date_search_no_test()
+            return redirect(url_for('operator_test'))
+
         elif request.form['submit']=='delete':
             OperatorDel(id=request.form['optradio']).delete_note_no_tests()
             return redirect(url_for('operator_test'))
@@ -311,11 +324,6 @@ def settings_users():
 
 def settings_phone():
     if request.method == 'POST' and request.form['submit'] == 'confirm':
-        # print(request.form['oil'])
-        # print(request.form['price_oil'])
-        # print(request.form['distance'])
-        # print(request.form['price_day'])
-        # print(request.form['spent time'])
         result_price_oil = int(request.form['oil']) / 100 * int(request.form['price_oil']) * int(
             request.form['distance'])
         result_peopl_price = int(request.form['price_day']) / 8 * int(request.form['spent time'])

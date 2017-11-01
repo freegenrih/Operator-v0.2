@@ -11,6 +11,7 @@ class OperatorGet:
         self.end_date = end_date
         self.search_date = search_date
 
+        self.sql_read_date_search_no_tests = "SELECT `data_search_no_tests` FROM `dbo_settings`"
 
         self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
 
@@ -23,20 +24,38 @@ class OperatorGet:
 
         self.sql_list_no_tests_search_date = "SELECT * FROM `dbo_no_tests` " \
                                              "WHERE `date_no_test` " \
-                                             "LIKE'{}'".format(str(self.search_date)+'%')
+                                             "LIKE'{}'".format(self.read_date_search_in_db()+'%')
+
+
+    def read_date_search_in_db(self):
+        return str(wraper_read(self.sql_read_date_search_no_tests)[0]['data_search_no_tests'])
+
 
     def get_list_note(self):
         return wraper_read(self.sql_get_list_note)
 
+
     def get_list_electritian_application(self):
         return wraper_read(self.sql_get_list_electrician_application)
+
 
     def get_list_no_tests_now(self):
         return wraper_read(self.sql_list_no_tests)
 
-    def get_list_no_test_search_date(self):
 
+    def get_list_no_test_search_date(self):
+        self.read_date_search_in_db()
         return wraper_read(self.sql_list_no_tests_search_date)  # доделать
+
+
+class OperatorConfig:
+    def __init__(self, date_save=None):
+        self.date_save = str(date_save)
+        self.sql_write_date_search_no_tests = "UPDATE `dbo_settings` SET `data_search_no_tests` = '{}' " \
+                                              "WHERE `dbo_settings`.`id` = 1;".format(self.date_save)
+
+    def write_date_search_no_test(self):
+        return wraper_write(self.sql_write_date_search_no_tests)
 
 
 class OperatorCreate:
