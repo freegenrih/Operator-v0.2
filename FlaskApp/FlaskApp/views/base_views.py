@@ -175,11 +175,31 @@ def operator():
     else:
         return render_template('operator/operator.html',
                                application_operator=OperatorGet().get_list_note(),
-                               user=get_sesion_user(),type_footer=get_sesion_user())
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user())
 
 
 def operator_test():
-    pass
+    if request.method == 'POST':
+        if request.form['submit']=='create_note':
+            OperatorCreateNoTests(object_number=request.form['number_object'],
+                                  name_operator=get_sesion_user(),
+                                  why_there_is_no_test=request.form['why_there_is_no_test']
+                                  ).create_note_no_test()
+            return redirect(url_for('operator_test'))
+        elif request.form['submit']=='delete':
+            OperatorDel(id=request.form['optradio']).delete_note_no_tests()
+            return redirect(url_for('operator_test'))
+
+        else:
+            return redirect(url_for('operator_test'))
+    else:
+        return render_template('operator/operator_test.html',
+                       user=get_sesion_user(),
+                       type_footer=get_sesion_user(),
+                       no_tests=OperatorGet().get_list_no_tests_now(),
+                       no_test_date_search=OperatorGet(search_date='2017-11-02').get_list_no_test_search_date())
+
 # ---------------------------------------------End Operator-------------------------------------------------------------
 
 

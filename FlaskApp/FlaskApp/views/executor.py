@@ -10,10 +10,17 @@ class OperatorGet:
         self.start_date = start_date
         self.end_date = end_date
         self.search_date = search_date
+
+
         self.sql_get_list_note = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
+
         self.sql_get_list_electrician_application = "SELECT * FROM `dbo_electrician_application` " \
                                                     "WHERE `checked_electrician`=0"
-        self.sql_list_no_tests = "SELECT * FROM `dbo_no_tests`"
+
+        self.sql_list_no_tests = "SELECT * FROM `dbo_no_tests` " \
+                                 "WHERE `date_no_test` " \
+                                 "LIKE'{}'".format(str(datetime.now())[0:-16] +'%')
+
         self.sql_list_no_tests_search_date = "SELECT * FROM `dbo_no_tests` " \
                                              "WHERE `date_no_test` " \
                                              "LIKE'{}'".format(str(self.search_date)+'%')
@@ -24,10 +31,12 @@ class OperatorGet:
     def get_list_electritian_application(self):
         return wraper_read(self.sql_get_list_electrician_application)
 
-    def get_list_no_tests_all(self):
+    def get_list_no_tests_now(self):
+        print(str(datetime.now())[0:-16])
         return wraper_read(self.sql_list_no_tests)
 
     def get_list_no_test_search_date(self):
+
         return wraper_read(self.sql_list_no_tests_search_date)  # доделать
 
 
@@ -38,6 +47,7 @@ class OperatorCreate:
         self.namber_object = number_object
         self.select_operation = select_operation
         self.add_comment = add_comment
+
         self.sql_insert_note = "INSERT INTO `dbo_operator_application` " \
                                "(`id`, `date_of_creation`, `name_operator`, `name_pult`, `number_object`, `message`," \
                                "`checked_engineer`, `date_of_completion`, `name_engineer_completion`) " \
@@ -46,8 +56,7 @@ class OperatorCreate:
             str(self.name_user),
             str(self.select_pult),
             str(self.namber_object),
-            str(self.select_operation)
-            + ' ' + str(self.add_comment)
+            str(self.select_operation)+ ' ' + str(self.add_comment)
         )
 
 
@@ -83,8 +92,8 @@ class OperatorDel:
 
         self.sql_delete_note_electrician = "DELETE FROM `dbo_electrician_application` " \
                                            "WHERE `dbo_electrician_application`.`id` = {};".format(int(self.id))
-        self.sql_delete_note_no_tests = "DELETE FROM `dbo_no_tests` WHERE `dbo_no_tests`.`id` = {};".format(
-            int(self.id))
+
+        self.sql_delete_note_no_tests = "DELETE FROM `dbo_no_tests` WHERE `dbo_no_tests`.`id` = {};".format(int(self.id))
 
     def delete_note(self):
         return wraper_write(self.sql_delete_note)
