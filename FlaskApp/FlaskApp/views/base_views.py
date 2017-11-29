@@ -125,7 +125,7 @@ def users_application_pc():
         if request.form['submit']=='create_note':
             UsersCreate(
                 name_user=get_sesion_user(),
-                message=str(request.form['select_operation']+' '+request.form['add_comment'])
+                message=str(request.form['select_operation']+' '+request.form['add_comment']).replace("'","\"")
             ).create_application_pc()
             return redirect(url_for('users_application_pc'))
 
@@ -156,10 +156,10 @@ def operator():
                     and Validators(request.form['add_comment'], 'name', min_len=1, max_len=300).valid_name() == True:
 
                 OperatorCreate(get_sesion_user(),
-                               request.form['select_pult'],
-                               request.form['number_object'],
-                               request.form['select_operation'],
-                               request.form['add_comment']
+                               request.form['select_pult'].replace("'","\""),
+                               request.form['number_object'].replace("'","\""),
+                               request.form['select_operation'].replace("'","\""),
+                               request.form['add_comment'].replace("'","\"")
                                ).create_note()
                 return redirect(url_for('operator'))
             else:
@@ -183,9 +183,9 @@ def operator():
 def operator_test():
     if request.method == 'POST':
         if request.form['submit']=='create_note':
-            OperatorCreateNoTests(object_number=request.form['number_object'],
+            OperatorCreateNoTests(object_number=request.form['number_object'].replace("'","\""),
                                   name_operator=get_sesion_user(),
-                                  why_there_is_no_test=request.form['why_there_is_no_test']
+                                  why_there_is_no_test=request.form['why_there_is_no_test'].replace("'","\"")
                                   ).create_note_no_test()
             return redirect(url_for('operator_test'))
 
@@ -211,7 +211,7 @@ def operator_test():
                        user=get_sesion_user(),
                        type_footer=get_sesion_user(),
                        no_tests=OperatorGet().get_list_no_tests_now(),
-                       no_test_date_search=OperatorGet(search_date='2017-11-02').get_list_no_test_search_date())
+                       no_test_date_search=OperatorGet().get_list_no_test_search_date())
 
 # ---------------------------------------------End Operator-------------------------------------------------------------
 
@@ -259,7 +259,7 @@ def engineer_users_application_pc():
             EngineerUpdate(
                 id_update_note=request.form['optradio'],
                 name_user=get_sesion_user(),
-                comment=request.form['add_comment']
+                comment=request.form['add_comment'].replace("'","\"")
             ).update_application_pc()
             return redirect(url_for('engineer_users_application_pc'))
 

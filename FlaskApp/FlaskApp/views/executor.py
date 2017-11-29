@@ -27,8 +27,11 @@ class OperatorGet:
                                              "LIKE'{}'".format(self.read_date_search_in_db()+'%')
 
 
+    def counter_no_test(self):
+        pass
+
     def read_date_search_in_db(self):
-        return str(wraper_read(self.sql_read_date_search_no_tests)[0]['data_search_no_tests'])
+        return wraper_read(self.sql_read_date_search_no_tests)[0]['data_search_no_tests']
 
 
     def get_list_note(self):

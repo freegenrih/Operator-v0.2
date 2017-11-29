@@ -23,20 +23,13 @@
 {#                    <div class="alert alert-success" title="Инфо о заявках">#}
                         <div class="row" style="padding-top: 10px">
                             <div class="text-center">
+                                <div class="col-sm-3 " style="padding-left: 100px;">
                                 <!-- Trigger the modal with a button -->
                                 <button type="button" class="btn btn-warning btn-lg" data-toggle="modal"
                                         data-target="#myModal"
                                         data-placement="right"
                                         title="Нажать левую кнопку мыши для записи в не терстируемые">Нет Теста
                                 </button>
-
-                                <a href="{{ url_for('operator_test') }}">
-                                    <button type="button" class="btn btn-info btn-lg"
-                                            data-placement="right"
-                                            title="Нажать левую кнопку мыши для обновления информации">
-                                        Обновить Информацию
-                                    </button>
-                                </a>
                                 <!-- Modal -->
                                 <div class="modal fade" id="myModal" role="dialog">
                                     <div class="modal-dialog">
@@ -84,7 +77,23 @@
                                         </div>
                                     </div>
                                 </div>
+                                </div>
+                                <div class="col-sm-5" style="padding-left: 100px;">
+                                <a href="{{ url_for('operator_test') }}">
+                                    <button type="button" class="btn btn-info btn-lg"
+                                            data-placement="right"
+                                            title="Нажать левую кнопку мыши для обновления информации">
+                                        Обновить Информацию
+                                    </button>
+                                </a>
+
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="alert alert-info" title="Инфо">Счетчик тестов:</div>
+                                </div>
                             </div>
+
                         </div>
                         <div class="panel-body" style="min-height:300px;">
                             <table class="table table table-condensed ">
@@ -154,6 +163,7 @@
                     <div class="panel-heading">
                         <div class="text-center">
                             <div class="row">
+
                                 <form method="post" action="{{ url_for('operator_test') }}">
                                     <div class="col-xs-4 col-xs-offset-1 ">
                                         <div class="form-group">
@@ -170,6 +180,9 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="col-sm-3" style="padding-top: 12px;">
+                                    <div class="alert alert-info" title="Инфо">Счетчик тестов:</div>
+                                </div>
                             </div>
                         </div>
                     </div>
