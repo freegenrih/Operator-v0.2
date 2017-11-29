@@ -115,6 +115,12 @@ def semple_page_users():
         if request.form['submit']=='report_tests':
             return redirect(url_for('report_tests'))
 
+        if request.form['submit']=='users_update_object_users':
+            return redirect(url_for('users_update_object_users'))
+
+        if request.form['submit']=='users_operational_map':
+            return redirect(url_for('users_operational_map'))
+
 # -------------------------------------------------Users----------------------------------------------------------------
 def users():
     return render_template('users/users.html', user=get_sesion_user(), type_footer=get_sesion_user())
@@ -142,6 +148,16 @@ def users_application_pc():
 
 def report_tests():
     return render_template('users/report_tests.html', user=get_sesion_user(), type_footer=get_sesion_user())
+
+
+def users_operational_map():
+    return render_template("users/users_operational_map.html", user=get_sesion_user(), type_footer=get_sesion_user())
+
+
+def users_update_object_users():
+    return render_template("users/users_update_object_users.html", user=get_sesion_user(), type_footer=get_sesion_user())
+
+
 # -----------------------------------------------End Users--------------------------------------------------------------
 
 

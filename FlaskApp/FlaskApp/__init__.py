@@ -10,6 +10,8 @@ from views.base_views import (signin,
                               users,
                               semple_page_users,
                               users_application_pc,
+                              users_operational_map,
+                              users_update_object_users,
                               report_tests,
                               operator,
                               operator_test,
@@ -39,6 +41,8 @@ app.add_url_rule('/semple-page-users', view_func=semple_page_users, methods=['GE
 app.add_url_rule('/users', view_func=users, methods=['GET', 'POST'])
 app.add_url_rule('/users-application-pc', view_func=users_application_pc, methods=['GET', 'POST'])
 app.add_url_rule('/users-report-tests', view_func=report_tests, methods=['GET', 'POST'])
+app.add_url_rule('/users-operational-map', view_func=users_operational_map, methods=['GET', 'POST'])
+app.add_url_rule('/users-update-object-users', view_func=users_update_object_users, methods=['GET', 'POST'])
 
 app.add_url_rule('/operator', view_func=operator, methods=['GET', 'POST'])
 app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POST'])
