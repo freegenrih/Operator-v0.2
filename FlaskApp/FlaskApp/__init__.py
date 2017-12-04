@@ -1,13 +1,20 @@
 from flask import Flask
-from Settings_app import (key,
+
+
+from Settings_app import KEY
+
+
+from Settings_app import (
                           config_debug_local,
                           config_debug_105,
                           config_debug_my_work,
                           config_no_debug
                           )
 
-from views.base_views import (signin,
+from views.base_views import (app,
+                              signin,
                               users,
+                              # upload_file,
                               semple_page_users,
                               users_application_pc,
                               users_operational_map,
@@ -29,8 +36,10 @@ from views.base_views import (signin,
                               info
                               )
 
+
 app = Flask(__name__)
-app.secret_key = key
+app.secret_key = KEY
+
 
 app.add_url_rule('/', view_func=signin, methods=['GET', 'POST'])
 app.add_url_rule('/semple-page-signin', view_func=semple_page_signin, methods=['GET', 'POST'])
@@ -57,6 +66,10 @@ app.add_url_rule('/settigs-users', view_func=settings_users, methods=['GET', 'PO
 app.add_url_rule('/settigs-phone', view_func=settings_phone, methods=['GET', 'POST'])
 app.add_url_rule('/logout', view_func=logout, methods=['GET'])
 app.add_url_rule('/info', view_func=info, methods=['GET'])
+
+
+# app.add_url_rule('/uploads', view_func=upload_file, methods=['GET','POST'])
+
 
 # error handlers
 from views.error_handlers import page_not_found, page_error, bad_request

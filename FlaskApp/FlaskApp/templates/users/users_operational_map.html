@@ -1,29 +1,50 @@
-{%extends 'base/base.html' %}
-{%block extralink%}
-{%endblock extralink%}
+{% extends 'base/base.html' %}
+{% block extralink %}
+{% endblock extralink %}
 
 
-{%block title%}Пользователь{%endblock title%}
+{% block title %}Пользователь{% endblock title %}
 
 
-{%block leftmenu%}
-{%include 'users/left_users_menu_buttons.html' %}
-{%endblock leftmenu%}
+{% block leftmenu %}
+    {% include 'users/left_users_menu_buttons.html' %}
+{% endblock leftmenu %}
 
 
-{%block centermenuhead%}
-<h4 class="text-center">Оперативная Карточка На ПЦН</h4>
-{%endblock centermenuhead%}
+{% block centermenuhead %}
+    <h4 class="text-center">Оперативная Карточка На ПЦН</h4>
+{% endblock centermenuhead %}
 
-{%block centermenu%}
+{% block centermenu %}
     <span class="glyphicon glyphicon-file" style="color: #337ab7; "></span>
-    <span class="glyphicon-record glyphicon glyphicon-save " style="color: #337ab7; "></span>
-{%endblock centermenu%}
+    <span class="glyphicon-record glyphicon glyphicon-save " style="color: #337ab7; " ></span>
+    <div>
+        <form action="{{ url_for('users_operational_map') }}" method=post enctype=multipart/form-data>
+            <p>
+                {#            <input type=file name=file >#}
+                {#            <input type=submit value=Upload>#}
+                <label for="file-upload" class="custom-file-upload" >
+                    Выбрать Файл
+                </label>
+                <input id="file-upload" type="file" name="file" />
+                <br>
+                <button type="submit" value="Upload">Загрузить</button>
+        </form>
+    </div>
+    <div>
+        {% if list_files %}
+            {% for file in list_files %}
+                {{ file }}<span class="glyphicon-record glyphicon glyphicon-save " style="color: #337ab7; " ></span><br>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>  </div>
+{% endblock centermenu %}
 
-{%block rightmenuhead%}
-<h4 class="text-center">Пользователь</h4>
-{%endblock rightmenuhead%}
+{% block rightmenuhead %}
+    <h4 class="text-center">Пользователь</h4>
+{% endblock rightmenuhead %}
 
-{%block rightmenu%}
+{% block rightmenu %}
 
-{%endblock rightmenu%}
+{% endblock rightmenu %}

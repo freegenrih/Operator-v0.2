@@ -1,3 +1,7 @@
+import os
+BASE_DIR = os.path.abspath(os.curdir)
+
+
 config_db = {
     'user': 'root',
     'password': 'password',
@@ -6,7 +10,7 @@ config_db = {
     'charset': 'utf8mb4'
 }
 
-key = 'ThisIsSecretKey:)'
+KEY = 'ThisIsSecretKey:)'
 
 config_debug_local = {'host': 'localhost',
                       'debug': 'True'}
@@ -18,5 +22,6 @@ config_debug_my_work = {'host': '192.168.100.181',
                         'debug': 'True'}
 
 config_no_debug = {'debug': 'False'}
+
 
 #

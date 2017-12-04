@@ -1,10 +1,14 @@
-from flask import (render_template,
+import os
+from werkzeug.utils import secure_filename
+from flask import (Flask,
+                   render_template,
                    request,
                    session,
                    escape,
                    url_for,
                    redirect
                    )
+
 
 from views.executor import (EngineerGet,
                             EngineerUpdate,
@@ -21,7 +25,42 @@ from views.executor import (EngineerGet,
                             UsersCreate
                             )
 
+from Settings_app import (KEY,
+                          BASE_DIR
+                          )
 from views.validators import Validators
+
+app = Flask(__name__)
+UPLOAD_FOLDER = BASE_DIR+"/media/objects"
+ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg'])
+
+
+app.secret_key = KEY
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+# def upload_file():
+#     if request.method == 'POST':
+#         file = request.files['file']
+#         if file and allowed_file(file.filename):
+#             filename = secure_filename(file.filename)
+#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+#             return redirect(url_for('upload_file'))
+#     return """
+#     <!doctype html>
+#     <title>Upload new File</title>
+#     <h1>Upload new File</h1>
+#     <form action="" method=post enctype=multipart/form-data>
+#       <p><input type=file name=file>
+#          <input type=submit value=Upload>
+#     </form>
+#     <p>%s</p>
+#     """ % "<br>".join(os.listdir(app.config['UPLOAD_FOLDER'],))
 
 
 def type_user():
@@ -151,7 +190,26 @@ def report_tests():
 
 
 def users_operational_map():
-    return render_template("users/users_operational_map.html", user=get_sesion_user(), type_footer=get_sesion_user())
+
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('users_operational_map'))
+        else:
+            return render_template("users/users_operational_map.html",
+                                   user=get_sesion_user(),
+                                   type_footer=get_sesion_user(),
+                                   list_files=os.listdir(app.config['UPLOAD_FOLDER'])
+                                   )
+
+    else:
+        return render_template("users/users_operational_map.html",
+                           user=get_sesion_user(),
+                           type_footer=get_sesion_user(),
+                           list_files=os.listdir(app.config['UPLOAD_FOLDER'])
+                           )
 
 
 def users_update_object_users():
@@ -350,4 +408,3 @@ def settings_phone():
     else:
         return render_template('admin/settings_phone.html', user=get_sesion_user(),type_footer=get_sesion_user())
 # -----------------------------------------------End Admin--------------------------------------------------------------
-
