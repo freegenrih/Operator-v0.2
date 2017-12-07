@@ -16,29 +16,134 @@
 {% endblock centermenuhead %}
 
 {% block centermenu %}
-    <span class="glyphicon glyphicon-file" style="color: #337ab7; "></span>
-    <span class="glyphicon-record glyphicon glyphicon-save " style="color: #337ab7; " ></span>
-    <div>
-        <form action="{{ url_for('users_operational_map') }}" method=post enctype=multipart/form-data>
-            <p>
-                {#            <input type=file name=file >#}
-                {#            <input type=submit value=Upload>#}
-                <label for="file-upload" class="custom-file-upload" >
-                    Выбрать Файл
-                </label>
-                <input id="file-upload" type="file" name="file" />
-                <br>
-                <button type="submit" value="Upload">Загрузить</button>
-        </form>
+    <!------------------------------Блок Создания Оперативной Карточки------------------------>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-center">
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                        data-placement="right" title="Нажать левую кнопку мыши для создания заявки инженеру">
+                    Отпр. Опер. Карту
+                </button>
+
+                <a href="{{ url_for('users_operational_map') }}">
+                    <button type="button" class="btn btn-info btn-lg"
+                            data-placement="right" title="Нажать левую кнопку мыши для обновления информации">
+                        Обновить Информацию
+                    </button>
+                </a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Отправка Оперативной Карты </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ url_for('users_operational_map') }}" method=post
+                                      enctype=multipart/form-data>
+                                    <p>
+                                        {#            <input type=file name=file >#}
+                                        {#            <input type=submit value=Upload>#}
+                                        {#                <label for="file-upload" class="custom-file-upload">#}
+                                        {#                    Выбрать Файл#}
+                                        {#                </label>#}
+                                        <label for="file-upload">Выберете файл опер. карты:</label>
+                                        <input id="file-upload" type="file" name="file"/>
+                                        <br>
+                                    <div class="form-group">
+                                        <label for="comment">Добавить текст описания если нужно:</label>
+                                        <textarea class="form-control" name="add_comment" rows="5"
+                                                  id="comment"> </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" value="Upload" class="btn btn-warning">
+                                            Отправить Карточку
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        {% if list_files %}
-            {% for file in list_files %}
-                {{ file }}<span class="glyphicon-record glyphicon glyphicon-save " style="color: #337ab7; " ></span><br>
-            {% endfor %}
-        {% endif %}
+    <!-------------------------Конец Блока Создания Оперативной Карточки----------------------->
+
+    <!------------------------------Блок таблицы с оперативными карточками--------------------->
+    <div style="padding-top: 10px;">
+        <div style="height:500px;overflow-y:scroll;;">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th width="12%" class="text-center">Дата создания</th>
+                    <th width="10%" class="text-center">Пользователь</th>
+                    <th width="36%" class="text-center">Описание</th>
+                    <th width="36%" class="text-center">Файл</th>
+                    <th width="1%" class="text-center">ОК</th>
+                    <th width="3%" class="text-center">Выполнить</th>
+                    {#                <th width="2%" class="text-center"></th>#}
+                </tr>
+                </thead>
+                <tbody>
+                {#            {%if users_application_pc%}#}
+                {#            {%for row in users_application_pc%}#}
+                <form method="post" action="{{ url_for('users_operational_map') }}">
+                    {% if list_files %}
+                        <tr class="success">
+                            <td class="text-center" width="12%"><strong>06-12-2017 16:40:22</strong></td>
+                            <td class="text-center" width="10%"><strong>Admin</strong></td>
+                            <td class="text-center" width="34%"><strong>jnjksdj</strong></td>
+                            <td class="text-center" width="33%"><strong>
+
+                                {% for file in list_files %}
+                                    {% if  file =="map.jpeg" %}
+                                        {{ file }}
+
+                                        <a href="static/media/objects/{{ file }}" download="map">
+                                            <span class="glyphicon-record glyphicon glyphicon-save "
+                                                  style="color: #337ab7; "></span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </strong>
+                            </td>
+                            <td class="text-center" width="5%">
+                                <label style="padding-left: 2px; padding-top: 6px;">
+                                    <input type="radio" name="optradio" value="1" required
+                                           title="Кликнуть для потверждения">
+                                </label>
+                            </td>
+                            <td class="text-center" width="5%">
+                                <button type="submit" name="submit" value="delete" class="btn btn-danger"
+                                        title="Кликнуть для Удаления">Удалить
+                                </button>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </form>
+                {#            {%endfor%}#}
+                {#            {%endif%}#}
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div>  </div>
+    <!-------------------------Конец Блока таблицы с оперативными карточками----------------------->
+
+
+    <div>
+
+    </div>
+
+
 {% endblock centermenu %}
 
 {% block rightmenuhead %}

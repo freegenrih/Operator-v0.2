@@ -31,8 +31,8 @@ from Settings_app import (KEY,
 from views.validators import Validators
 
 app = Flask(__name__)
-UPLOAD_FOLDER = BASE_DIR+"/media/objects"
-ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg'])
+UPLOAD_FOLDER = BASE_DIR+"/static/media/objects"
+ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg','jpeg'])
 
 
 app.secret_key = KEY
@@ -142,6 +142,13 @@ def semple_page_engineer():
         elif request.form['submit'] == 'usr_app':
             return redirect(url_for('engineer_users_application_pc'))
 
+        elif request.form['submit'] == 'engineer_operational_map':
+            return redirect(url_for('engineer_operational_map'))
+
+
+        elif request.form['submit'] == 'engineer_update_object_users':
+            return redirect(url_for('engineer_update_object_users'))
+
     else:
         return redirect(url_for('engineer'))
 
@@ -193,9 +200,13 @@ def users_operational_map():
 
     if request.method == 'POST':
         file = request.files['file']
+        print(request.form['add_comment'])
+        print(get_sesion_user())
+
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print("+++"+str(app.config['UPLOAD_FOLDER'])+"/"+ str(filename)+"+++")
             return redirect(url_for('users_operational_map'))
         else:
             return render_template("users/users_operational_map.html",
@@ -327,6 +338,7 @@ def engineer_application_operator():
 def engineer_test():
     return render_template('engineer/engineer_test.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
+
 def engineer_users_application_pc():
     if request.method == 'POST':
         if request.form['submit']=='completion':
@@ -343,6 +355,15 @@ def engineer_users_application_pc():
                                type_footer=get_sesion_user(),
                                users_application_pc=UsersGet().get_application_pc()
                                )
+
+
+def engineer_operational_map():
+    return render_template("engineer/engineer_operational_map.html", user=get_sesion_user(), type_footer=get_sesion_user())
+
+
+
+def engineer_update_object_users():
+    return render_template("engineer/engineer_update_object_users.html", user=get_sesion_user(), type_footer=get_sesion_user())
 # ---------------------------------------------End Engineer-------------------------------------------------------------
 
 
