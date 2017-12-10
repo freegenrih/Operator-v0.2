@@ -43,24 +43,28 @@
                                 <h4 class="modal-title">Отправка Оперативной Карты </h4>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ url_for('users_operational_map') }}" method=post
-                                      enctype=multipart/form-data>
-                                    <p>
-                                        {#            <input type=file name=file >#}
-                                        {#            <input type=submit value=Upload>#}
-                                        {#                <label for="file-upload" class="custom-file-upload">#}
-                                        {#                    Выбрать Файл#}
-                                        {#                </label>#}
-                                        <label for="file-upload">Выберете файл опер. карты:</label>
-                                        <input id="file-upload" type="file" name="file"/>
-                                        <br>
+                                <form action="{{ url_for('users_upload_file') }}" method="post"
+                                      enctype="multipart/form-data">
+
+                                    <div class="form-group">
+                                            <label for="object-number">Введите номер объекта:<br></label><br>
+                                            <input id="object-number" type="number" name="object_number" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <center>
+                                            <label for="file-upload">Выберете файл опер. карты:</label>
+                                            <input id="file-upload" type="file" name="file"
+                                                    style="border: 1px solid grey;border-radius: 5px; "
+                                            required>
+                                        </center>
+                                    </div>
                                     <div class="form-group">
                                         <label for="comment">Добавить текст описания если нужно:</label>
                                         <textarea class="form-control" name="add_comment" rows="5"
                                                   id="comment"> </textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" value="Upload" class="btn btn-warning">
+                                        <button type="submit" value="file" class="btn btn-warning">
                                             Отправить Карточку
                                         </button>
                                     </div>
@@ -84,7 +88,8 @@
                 <thead>
                 <tr class="info">
                     <th width="12%" class="text-center">Дата создания</th>
-                    <th width="10%" class="text-center">Пользователь</th>
+                    <th width="5%" class="text-center">Пользователь</th>
+                    <th width="5%" class="text-center">Объект</th>
                     <th width="36%" class="text-center">Описание</th>
                     <th width="36%" class="text-center">Файл</th>
                     <th width="1%" class="text-center">ОК</th>
@@ -96,39 +101,45 @@
                 {#            {%if users_application_pc%}#}
                 {#            {%for row in users_application_pc%}#}
                 <form method="post" action="{{ url_for('users_operational_map') }}">
-                    {% if list_files %}
+                        {%if list_map  %}
+                            {% for row in list_map %}
                         <tr class="success">
-                            <td class="text-center" width="12%"><strong>06-12-2017 16:40:22</strong></td>
-                            <td class="text-center" width="10%"><strong>Admin</strong></td>
-                            <td class="text-center" width="34%"><strong>jnjksdj</strong></td>
+                            <td class="text-center" width="12%"><strong>{{ row.date_of_creation}}</strong></td>
+                            <td class="text-center" width="10%"><strong>{{ row.username_create}}</strong></td>
+                            <td class="text-center" width="10%"><strong>{{ row.object_number}}</strong></td>
+                            <td class="text-center" width="34%"><strong>{{ row.message}}</strong></td>
                             <td class="text-center" width="33%"><strong>
-
+                                {% if list_files %}
                                 {% for file in list_files %}
-                                    {% if  file =="map.jpeg" %}
+                                    {% if  file ==row.link_file %}
                                         {{ file }}
-
-                                        <a href="static/media/objects/{{ file }}" download="map">
+                                        <a href="static/media/objects/{{ file }}" download="{{ file }}">
                                             <span class="glyphicon-record glyphicon glyphicon-save "
                                                   style="color: #337ab7; "></span>
+                                        <input type="hidden" name="file_name" value="{{ file }}">
                                         </a>
                                     {% endif %}
                                 {% endfor %}
+                                {% endif %}
 
                             </strong>
                             </td>
+
                             <td class="text-center" width="5%">
                                 <label style="padding-left: 2px; padding-top: 6px;">
-                                    <input type="radio" name="optradio" value="1" required
+                                    <input type="radio" name="optradio" value="{{ row.id }}" required
                                            title="Кликнуть для потверждения">
                                 </label>
-                            </td>
+
                             <td class="text-center" width="5%">
                                 <button type="submit" name="submit" value="delete" class="btn btn-danger"
                                         title="Кликнуть для Удаления">Удалить
                                 </button>
                             </td>
+
                         </tr>
-                    {% endif %}
+                            {% endfor %}
+                        {% endif %}
                 </form>
                 {#            {%endfor%}#}
                 {#            {%endif%}#}
@@ -138,8 +149,11 @@
     </div>
     <!-------------------------Конец Блока таблицы с оперативными карточками----------------------->
 
-
+{#test render#}
     <div>
+{%if list_map  %}
+{{ list_map }}
+{% endif %}
 
     </div>
 

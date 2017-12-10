@@ -20,12 +20,11 @@ class OperatorGet:
 
         self.sql_list_no_tests = "SELECT * FROM `dbo_no_tests` " \
                                  "WHERE `date_no_test` " \
-                                 "LIKE'{}'".format(str(datetime.now())[0:-16] +'%')
+                                 "LIKE'{}'".format(str(datetime.now())[0:-16] + '%')
 
         self.sql_list_no_tests_search_date = "SELECT * FROM `dbo_no_tests` " \
                                              "WHERE `date_no_test` " \
-                                             "LIKE'{}'".format(self.read_date_search_in_db()+'%')
-
+                                             "LIKE'{}'".format(self.read_date_search_in_db() + '%')
 
     def counter_no_test(self):
         pass
@@ -33,18 +32,14 @@ class OperatorGet:
     def read_date_search_in_db(self):
         return wraper_read(self.sql_read_date_search_no_tests)[0]['data_search_no_tests']
 
-
     def get_list_note(self):
         return wraper_read(self.sql_get_list_note)
-
 
     def get_list_electritian_application(self):
         return wraper_read(self.sql_get_list_electrician_application)
 
-
     def get_list_no_tests_now(self):
         return wraper_read(self.sql_list_no_tests)
-
 
     def get_list_no_test_search_date(self):
         self.read_date_search_in_db()
@@ -77,9 +72,8 @@ class OperatorCreate:
             str(self.name_user),
             str(self.select_pult),
             str(self.namber_object),
-            str(self.select_operation)+ ' ' + str(self.add_comment)
+            str(self.select_operation) + ' ' + str(self.add_comment)
         )
-
 
     def create_note(self):
         return wraper_write(self.sql_insert_note)
@@ -114,7 +108,8 @@ class OperatorDel:
         self.sql_delete_note_electrician = "DELETE FROM `dbo_electrician_application` " \
                                            "WHERE `dbo_electrician_application`.`id` = {};".format(int(self.id))
 
-        self.sql_delete_note_no_tests = "DELETE FROM `dbo_no_tests` WHERE `dbo_no_tests`.`id` = {};".format(int(self.id))
+        self.sql_delete_note_no_tests = "DELETE FROM `dbo_no_tests` WHERE `dbo_no_tests`.`id` = {};".format(
+            int(self.id))
 
     def delete_note(self):
         return wraper_write(self.sql_delete_note)
@@ -124,6 +119,7 @@ class OperatorDel:
 
     def delete_note_no_tests(self):
         return wraper_write(self.sql_delete_note_no_tests)
+
 
 # ---------------------------------------------------------------------------------------------------------
 
@@ -135,10 +131,8 @@ class UsersGet:
         self.sql_get_application_pc = "SELECT * FROM `dbo_user_application_pc` " \
                                       "WHERE `dbo_user_application_pc`.`checked_engineer` = 0;"
 
-
     def get_application_pc(self):
         return wraper_read(self.sql_get_application_pc)
-
 
     def get_type_user(self):
         return wraper_read(self.sql_type_user)
@@ -152,22 +146,21 @@ class UsersDel:
     def __init__(self, id: int):
         self.id = id
         self.sql_delete_application_pc = "DELETE FROM `dbo_user_application_pc` " \
-                               "WHERE `dbo_user_application_pc`.`id` = {};".format(int(self.id))
-
+                                         "WHERE `dbo_user_application_pc`.`id` = {};".format(int(self.id))
 
     def delete_application_pc(self):
         return wraper_write(self.sql_delete_application_pc)
 
 
 class UsersCreate:
-    def __init__(self, name_user:str, message:str ):
+    def __init__(self, name_user: str, message: str):
         self.name_user = name_user
         self.message = message
         self.sql_create_application_pc = "INSERT INTO `dbo_user_application_pc` " \
                                          "(`id`, `date_of_creation`, `name_user_creation_app`, `message`, " \
                                          "`checked_engineer`, `date_of_completion`,`name_engineer_completion`," \
                                          "`commit_of_close_applocation_pc`) " \
-                                         "VALUES (NULL, '{}', '{}', '{}', '0', ' ', ' ',' ');"\
+                                         "VALUES (NULL, '{}', '{}', '{}', '0', ' ', ' ',' ');" \
             .format(
             str(datetime.now())[0:-7],
             self.name_user,
@@ -176,6 +169,54 @@ class UsersCreate:
 
     def create_application_pc(self):
         return wraper_write(self.sql_create_application_pc)
+
+
+# работа с оперативными карточками
+class OperMap:
+    def __init__(self, username=None, message_text=None, link_file=None, object_number=None, id=None ):
+        self.id = id
+        self.username = username
+        self.message_text = message_text
+        self.link_file = link_file
+        self.object_number = object_number
+
+        self.sql_get_oper_map = "SELECT * FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`checked_engineer`=0 ;"
+        self.sql_detete = "DELETE FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`id` = {};".format(self.id)
+        self.sql_write_oper_map = "INSERT INTO `dbo_application_map_for_pult` (" \
+                                  "`id`, " \
+                                  "`date_of_creation`, " \
+                                  "`username_create`, " \
+                                  "`object_number`, " \
+                                  "`checked_engineer`, " \
+                                  "`link_file`, " \
+                                  "`date_of_completion`, " \
+                                  "`name_engineer_completion`, " \
+                                  "`message`) " \
+                                  "VALUES (NULL, '{}', '{}', '{}', '0', '{}', '', '', '{}');".format(
+            str(datetime.now())[0:-7],
+            self.username ,
+            self.object_number,
+            self.link_file,
+            self.message_text
+            )
+        self.sql_update_oper_map = ""
+
+
+    def get_map(self):
+        return wraper_read(self.sql_get_oper_map)
+
+    def create_map(self):
+        return wraper_write(self.sql_write_oper_map)
+
+    def update_map(self):
+        return wraper_write(self.sql_update_oper_map)
+
+    def delete_map(self):
+        return wraper_write(self.sql_detete)
+
+
+
+
 # ---------------------------------------------------------------------------------------------------------
 
 
@@ -190,15 +231,15 @@ class EngineerUpdate:
                                "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
                                "`name_engineer_completion` = '{}' " \
                                "WHERE `dbo_operator_application`.`id` = {}".format(str(datetime.now())[0:-7],
-                                                                                       str(self.name_user),
-                                                                                       int(self.id_update_note))
-        self.sql_update_application_pc = "UPDATE `dbo_user_application_pc` " \
-                               "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
-                               "`name_engineer_completion` = '{}', `commit_of_close_applocation_pc` = '{}' " \
-                               "WHERE `dbo_user_application_pc`.`id` = {}".format(str(datetime.now())[0:-7],
                                                                                    str(self.name_user),
-                                                                                   str(self.comment),
                                                                                    int(self.id_update_note))
+        self.sql_update_application_pc = "UPDATE `dbo_user_application_pc` " \
+                                         "SET `checked_engineer` = '1', `date_of_completion` = '{}', " \
+                                         "`name_engineer_completion` = '{}', `commit_of_close_applocation_pc` = '{}' " \
+                                         "WHERE `dbo_user_application_pc`.`id` = {}".format(str(datetime.now())[0:-7],
+                                                                                            str(self.name_user),
+                                                                                            str(self.comment),
+                                                                                            int(self.id_update_note))
 
     def update_note(self):
         return wraper_write(self.sql_update_note)
@@ -206,8 +247,8 @@ class EngineerUpdate:
     def update_application_pc(self):
         return wraper_write(self.sql_update_application_pc)
 
-class EngineerGet:
 
+class EngineerGet:
     def get_list_note(self):
         sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         return wraper_read(sql)
@@ -216,7 +257,6 @@ class EngineerGet:
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE `checked_engineer`=0;"
         return wraper_read(sql)
 
-
     def get_count_application_pc_checed(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE `checked_engineer`=1;"
         return wraper_read(sql)
@@ -224,7 +264,6 @@ class EngineerGet:
     def get_count_application_pc_all(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE 1;"
         return wraper_read(sql)
-
 
     def get_count_operator_application_no_checked(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE `checked_engineer`=0;"
@@ -266,7 +305,6 @@ class SettingsUsersRegType:
         self.sql_reg_new_type_user = "INSERT INTO `user_type` (`id`, `user_type`) " \
                                      "VALUES (NULL, '{}')".format(str(self.name_type))
 
-
     def reg_new_type(self):
         return wraper_write(self.sql_reg_new_type_user)
 
@@ -278,13 +316,11 @@ class SettingsUsersDel:
         self.sql_delete_user_type = "DELETE FROM `user_type` " \
                                     "WHERE `user_type`.`id` = {} ".format(int(self.id))
 
-
     def delete_users(self):
         return wraper_write(self.sql_delete_user)
 
-
     def delete_user_type(self):
         return wraper_write(self.sql_delete_user_type)
-# ---------------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------------------------------------
 
-# ---------------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------------------------------------

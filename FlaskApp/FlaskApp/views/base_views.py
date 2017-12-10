@@ -22,7 +22,8 @@ from views.executor import (EngineerGet,
                             SettingsUsersDel,
                             UsersGet,
                             UsersDel,
-                            UsersCreate
+                            UsersCreate,
+                            OperMap
                             )
 
 from Settings_app import (KEY,
@@ -31,7 +32,8 @@ from Settings_app import (KEY,
 from views.validators import Validators
 
 app = Flask(__name__)
-UPLOAD_FOLDER = BASE_DIR+"/static/media/objects"
+UPLOAD_FOLDER = BASE_DIR+"/static/media/objects_maps"
+UPLOAD_FOLDER_USERS_PHONES = BASE_DIR+"/static/media/Users_Phones"
 ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg','jpeg'])
 
 
@@ -44,23 +46,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
-# def upload_file():
-#     if request.method == 'POST':
-#         file = request.files['file']
-#         if file and allowed_file(file.filename):
-#             filename = secure_filename(file.filename)
-#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-#             return redirect(url_for('upload_file'))
-#     return """
-#     <!doctype html>
-#     <title>Upload new File</title>
-#     <h1>Upload new File</h1>
-#     <form action="" method=post enctype=multipart/form-data>
-#       <p><input type=file name=file>
-#          <input type=submit value=Upload>
-#     </form>
-#     <p>%s</p>
-#     """ % "<br>".join(os.listdir(app.config['UPLOAD_FOLDER'],))
+
 
 
 def type_user():
@@ -195,31 +181,53 @@ def users_application_pc():
 def report_tests():
     return render_template('users/report_tests.html', user=get_sesion_user(), type_footer=get_sesion_user())
 
+def users_upload_file():
+    try:
+        if request.method == 'POST':
+            print("POST")
+            if request.files['file']:
+                file = request.files['file']
+                if file and allowed_file(file.filename):
+
+                        filename = secure_filename(file.filename)
+                        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                        OperMap(
+                            username=get_sesion_user(),
+                            message_text=str(request.form['add_comment']),
+                            link_file=str(filename),
+                            object_number=str(request.form['object_number'])
+                        ).create_map()
+                        # return redirect(url_for('users_operational_map'))
+
+    except:
+        return redirect(url_for('users_operational_map'))
+    finally:
+        return redirect(url_for('users_operational_map'))
+
+
 
 def users_operational_map():
-
     if request.method == 'POST':
-        file = request.files['file']
-        print(request.form['add_comment'])
-        print(get_sesion_user())
+        if request.form['submit'] == "delete":
+            if request.form['submit'] == "delete":
+                try:
+                    os.remove(os.path.join(UPLOAD_FOLDER, str(request.form['file_name'])))
+                    OperMap(id=request.form['optradio']).delete_map()
+                except:
+                    return redirect(url_for('users_operational_map'))
+                finally:
 
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            print("+++"+str(app.config['UPLOAD_FOLDER'])+"/"+ str(filename)+"+++")
-            return redirect(url_for('users_operational_map'))
-        else:
-            return render_template("users/users_operational_map.html",
-                                   user=get_sesion_user(),
-                                   type_footer=get_sesion_user(),
-                                   list_files=os.listdir(app.config['UPLOAD_FOLDER'])
-                                   )
+                    return redirect(url_for('users_operational_map'))
+
+            else:
+                return redirect(url_for('users_operational_map'))
 
     else:
         return render_template("users/users_operational_map.html",
                            user=get_sesion_user(),
                            type_footer=get_sesion_user(),
-                           list_files=os.listdir(app.config['UPLOAD_FOLDER'])
+                           list_files=os.listdir(app.config['UPLOAD_FOLDER']),
+                           list_map=OperMap().get_map()
                            )
 
 
@@ -358,7 +366,11 @@ def engineer_users_application_pc():
 
 
 def engineer_operational_map():
-    return render_template("engineer/engineer_operational_map.html", user=get_sesion_user(), type_footer=get_sesion_user())
+    return render_template("engineer/engineer_operational_map.html",
+                           user=get_sesion_user(),
+                           type_footer=get_sesion_user(),
+                           list_files=os.listdir(app.config['UPLOAD_FOLDER']),
+                           list_map=OperMap().get_map())
 
 
 
