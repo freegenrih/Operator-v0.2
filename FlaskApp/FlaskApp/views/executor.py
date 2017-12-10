@@ -175,13 +175,15 @@ class UsersCreate:
 class OperMap:
     def __init__(self, username=None, message_text=None, link_file=None, object_number=None, id=None ):
         self.id = id
-        self.username = username
-        self.message_text = message_text
-        self.link_file = link_file
+        self.username = str(username)
+        self.message_text = str(message_text)
+        self.link_file = str(link_file)
         self.object_number = object_number
 
         self.sql_get_oper_map = "SELECT * FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`checked_engineer`=0 ;"
+
         self.sql_detete = "DELETE FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`id` = {};".format(self.id)
+
         self.sql_write_oper_map = "INSERT INTO `dbo_application_map_for_pult` (" \
                                   "`id`, " \
                                   "`date_of_creation`, " \
@@ -199,7 +201,15 @@ class OperMap:
             self.link_file,
             self.message_text
             )
-        self.sql_update_oper_map = ""
+
+        self.sql_update_oper_map = "UPDATE `dbo_application_map_for_pult` " \
+                                   "SET `checked_engineer` = '1', `name_engineer_completion` = '{}'," \
+                                   "`date_of_completion` = '{}'" \
+                                   "WHERE `dbo_application_map_for_pult`.`id` = {};".format(
+            self.username,
+            str(datetime.now())[0:-7],
+            self.id,
+            )
 
 
     def get_map(self):

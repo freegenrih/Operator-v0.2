@@ -366,12 +366,21 @@ def engineer_users_application_pc():
 
 
 def engineer_operational_map():
-    return render_template("engineer/engineer_operational_map.html",
-                           user=get_sesion_user(),
-                           type_footer=get_sesion_user(),
-                           list_files=os.listdir(app.config['UPLOAD_FOLDER']),
-                           list_map=OperMap().get_map())
-
+    if request.method =="POST":
+        if request.form['submit']=='completion':
+            print("update app map"+request.form['optradio'])
+            try:
+                OperMap(username=get_sesion_user(), id=request.form['optradio']).update_map()
+            except:
+                return redirect(url_for('engineer_operational_map'))
+            finally:
+                return redirect(url_for('engineer_operational_map'))
+    else:
+        return render_template("engineer/engineer_operational_map.html",
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user(),
+                               list_files=os.listdir(app.config['UPLOAD_FOLDER']),
+                               list_map=OperMap().get_map())
 
 
 def engineer_update_object_users():

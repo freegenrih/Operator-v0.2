@@ -16,6 +16,12 @@
 {% endblock centermenuhead %}
 
 {% block centermenu %}
+        <div class="text-center">
+        <a href="{{ url_for('engineer_operational_map') }}">
+            <button type="button" class="btn btn-info btn-lg" data-placement="right" title="11">Обновить Информацию
+            </button>
+        </a>
+    </div>
     <!------------------------------Блок таблицы с оперативными карточками--------------------->
     <div style="padding-top: 10px;">
         <div style="height:500px;overflow-y:scroll;;">
@@ -35,7 +41,7 @@
                 <tbody>
                 {#            {%if users_application_pc%}#}
                 {#            {%for row in users_application_pc%}#}
-                <form method="post" action="{{ url_for('users_operational_map') }}">
+                <form method="post" action="{{ url_for('engineer_operational_map') }}">
                         {%if list_map  %}
                             {% for row in list_map %}
                         <tr class="success">
@@ -67,8 +73,8 @@
                                 </label>
 
                             <td class="text-center" width="5%">
-                                <button type="submit" name="submit" value="delete" class="btn btn-danger"
-                                        title="Кликнуть для Удаления">Удалить
+                                <button type="submit" name="submit" value="completion" class="btn btn-warning"
+                                        title="Кликнуть для Удаления">Отработать
                                 </button>
                             </td>
 
