@@ -173,7 +173,7 @@ class UsersCreate:
 
 # работа с оперативными карточками
 class OperMap:
-    def __init__(self, username=None, message_text=None, link_file=None, object_number=None, id=None ):
+    def __init__(self, username=None, message_text=None, link_file=None, object_number=None, id=None):
         self.id = id
         self.username = str(username)
         self.message_text = str(message_text)
@@ -182,7 +182,8 @@ class OperMap:
 
         self.sql_get_oper_map = "SELECT * FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`checked_engineer`=0 ;"
 
-        self.sql_detete = "DELETE FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`id` = {};".format(self.id)
+        self.sql_detete = "DELETE FROM `dbo_application_map_for_pult` WHERE `dbo_application_map_for_pult`.`id` = {};".format(
+            self.id)
 
         self.sql_write_oper_map = "INSERT INTO `dbo_application_map_for_pult` (" \
                                   "`id`, " \
@@ -196,11 +197,11 @@ class OperMap:
                                   "`message`) " \
                                   "VALUES (NULL, '{}', '{}', '{}', '0', '{}', '', '', '{}');".format(
             str(datetime.now())[0:-7],
-            self.username ,
+            self.username,
             self.object_number,
             self.link_file,
             self.message_text
-            )
+        )
 
         self.sql_update_oper_map = "UPDATE `dbo_application_map_for_pult` " \
                                    "SET `checked_engineer` = '1', `name_engineer_completion` = '{}'," \
@@ -209,8 +210,7 @@ class OperMap:
             self.username,
             str(datetime.now())[0:-7],
             self.id,
-            )
-
+        )
 
     def get_map(self):
         return wraper_read(self.sql_get_oper_map)
@@ -224,7 +224,41 @@ class OperMap:
     def delete_map(self):
         return wraper_write(self.sql_detete)
 
+# месячный отчет по нетестируемым объектам
+class ObjectsNoTests:
+    def __init__(self, id=None, username=None,  link_file=None,):
+        self.id = id
+        self.username = str(username)
+        self.link_file = str(link_file)
 
+        self.get_report_no_tests_object = "SELECT * FROM `dbo_reports_no_tets_objects`" \
+                                          "WHERE `dbo_reports_no_tets_objects`.`checked_user` = 0;"
+        self.create_report_no_test_object = ";"
+
+
+        self.update_report_no_test_object = "UPDATE `dbo_reports_no_tets_objects` " \
+                                             "SET `checked_user` = '1',`date_of_completion`='{}',`username_completion` = '{}'" \
+                                             "WHERE `dbo_reports_no_tets_objects`.`id` = {};".format(
+
+            str(datetime.now())[0:-7],
+            self.username,
+            self.id,
+        )
+
+
+        self.delete_report_no_test_objects = ";"
+
+    def get_report_no_tests_objects(self):
+        return wraper_read(self.get_report_no_tests_object)
+
+    def create_report_no_test_objects(self):
+        return wraper_write(self.create_report_no_test_objects)
+
+    def update_report_no_test_objects(self):
+        return wraper_write(self.update_report_no_test_object)
+
+    def delete_report_no_test_objects(self):
+        return wraper_write(self.delete_report_no_test_object)
 
 
 # ---------------------------------------------------------------------------------------------------------
@@ -287,11 +321,9 @@ class EngineerGet:
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE 1;"
         return wraper_read(sql)
 
-
     def count_application_map_no_checked(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE `checked_engineer`=0;"
         return wraper_read(sql)
-
 
     def count_application_map_checked(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE `checked_engineer`=1;"

@@ -116,7 +116,7 @@
                                 {% for file in list_files %}
                                     {% if  file ==row.link_file %}
                                         {{ file }}
-{#    static/media/objects_maps/{{ file }}                                    #}
+
                                         <a href="{{ url_for('static', filename="media/objects_maps/"+file) }}" download="{{ file }}">
                                             <span class="glyphicon-record glyphicon glyphicon-save "
                                                   style="color: #337ab7; "></span>

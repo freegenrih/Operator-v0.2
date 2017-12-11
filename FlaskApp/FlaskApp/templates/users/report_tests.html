@@ -18,6 +18,12 @@
 {%endblock centermenuhead%}
 
 {%block centermenu%}
+            <div class="text-center">
+        <a href="{{ url_for('report_tests') }}">
+            <button type="button" class="btn btn-info btn-lg" data-placement="right" title="11">Обновить Информацию
+            </button>
+        </a>
+    </div>
         <!------------------------------Блок таблицы с отчетами по тестам--->
     <div style="padding-top: 10px;">
         <div style="height:500px;overflow-y:scroll;;">
@@ -25,9 +31,9 @@
                 <thead>
                 <tr class="info">
                     <th width="12%" class="text-center">Дата создания</th>
-                    <th width="5%" class="text-center">Пользователь</th>
-                    <th width="36%" class="text-center">Описание</th>
-                    <th width="36%" class="text-center">Файл</th>
+                    <th width="11%" class="text-center">Пользователь</th>
+                    <th width="11%" class="text-center">За месяц</th>
+                    <th width="60%" class="text-center">Файл</th>
                     <th width="1%" class="text-center">ОК</th>
                     <th width="3%" class="text-center">Выполнить</th>
                 </tr>
@@ -36,18 +42,19 @@
 
 
                         {%if list_no_test  %}
-                            {% for row in no_test  %}
-                <form method="post" action="{{ url_for('users_operational_map') }}">
+                            {{ list_no_test }}
+                            {% for row in list_no_test  %}
+                <form method="post" action="{{ url_for('report_tests') }}">
                         <tr class="success">
                             <td class="text-center" width="12%"><strong>{{ row.date_of_creation}}</strong></td>
-                            <td class="text-center" width="10%"><strong>{{ row.username_create}}</strong></td>
-                            <td class="text-center" width="34%"><strong>{{ row.message}}</strong></td>
+                            <td class="text-center" width="11%"><strong>{{ row.username_create}}</strong></td>
+                            <td class="text-center" width="11%"><strong>{{ row.for_what_month}}</strong></td>
                             <td class="text-center" width="33%"><strong>
                                 {% if list_files %}
                                 {% for file in list_files %}
                                     {% if  file ==row.link_file %}
                                         {{ file }}
-                                        <a href="{{ url_for('static', filename="media/objects_maps/"+file) }}" download="{{ file }}">
+                                        <a href="{{ url_for('static', filename="media/NoTests/"+file) }}" download="{{ file }}">
                                             <span class="glyphicon-record glyphicon glyphicon-save "
                                                   style="color: #337ab7; "></span>
                                         <input type="hidden" name="file_name" value="{{ file }}">
@@ -66,8 +73,8 @@
                                 </label>
 
                             <td class="text-center" width="5%">
-                                <button type="submit" name="submit" value="delete" class="btn btn-danger"
-                                        title="Кликнуть для Удаления">Отменить
+                                <button type="submit" name="submit" value="update" class="btn btn-warning"
+                                        title="Кликнуть для Удаления">Благодарю
                                 </button>
                             </td>
 
@@ -75,9 +82,6 @@
                 </form>
                             {% endfor %}
                         {% endif %}
-
-                {#            {%endfor%}#}
-                {#            {%endif%}#}
                 </tbody>
             </table>
         </div>

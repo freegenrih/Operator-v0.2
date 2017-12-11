@@ -23,7 +23,8 @@ from views.executor import (EngineerGet,
                             UsersGet,
                             UsersDel,
                             UsersCreate,
-                            OperMap
+                            OperMap,
+                            ObjectsNoTests
                             )
 
 from Settings_app import (KEY,
@@ -34,6 +35,7 @@ from views.validators import Validators
 app = Flask(__name__)
 UPLOAD_FOLDER = BASE_DIR+"/static/media/objects_maps"
 UPLOAD_FOLDER_USERS_PHONES = BASE_DIR+"/static/media/Users_Phones"
+UPLOAD_FOLDER_NO_TEST = BASE_DIR+"/static/media/NoTests"
 ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg','jpeg'])
 
 
@@ -178,8 +180,42 @@ def users_application_pc():
                            )
 
 
+def upload_file_no_test():
+    try:
+        if request.method == 'POST':
+            print("POST")
+            if request.files['file']:
+                file = request.files['file']
+                if file and allowed_file(file.filename):
+                        filename = secure_filename(file.filename)
+                        file.save(os.path.join(UPLOAD_FOLDER_NO_TEST, filename))
+                        ObjectsNoTests(
+                            username=get_sesion_user(),
+                            link_file=str(filename)
+                        ).create_report_no_test_objects()
+                        # return redirect(url_for('users_operational_map'))
+
+    except:
+        return redirect(url_for('engineer_test'))
+    finally:
+        return redirect(url_for('engineer_test'))
+
+
+
 def report_tests():
-    return render_template('users/report_tests.html', user=get_sesion_user(), type_footer=get_sesion_user())
+    if request.method == 'POST':
+        if request.form['submit']=='update':
+            print("update no test users page")
+            ObjectsNoTests(id=request.form['optradio'],username=get_sesion_user()).update_report_no_test_objects()
+            return redirect(url_for('report_tests'))
+    else:
+        return render_template('users/report_tests.html',
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user(),
+                               list_no_test=ObjectsNoTests().get_report_no_tests_objects(),
+                               list_files=os.listdir(UPLOAD_FOLDER_NO_TEST)
+                               )
+
 
 def users_upload_file():
     try:
@@ -350,7 +386,9 @@ def engineer_application_operator():
 
 
 def engineer_test():
-    return render_template('engineer/engineer_test.html', user=get_sesion_user(), type_footer=get_sesion_user())
+    return render_template('engineer/engineer_test.html',
+                           user=get_sesion_user(),
+                           type_footer=get_sesion_user())
 
 
 def engineer_users_application_pc():
