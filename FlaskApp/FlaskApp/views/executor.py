@@ -226,8 +226,9 @@ class OperMap:
 
 # месячный отчет по нетестируемым объектам
 class ObjectsNoTests:
-    def __init__(self, id=None, username=None,  link_file=None,):
+    def __init__(self, id=None, username=None,  link_file=None, month_number=None):
         self.id = id
+        self.month_number = idmonth_number
         self.username = str(username)
         self.link_file = str(link_file)
 

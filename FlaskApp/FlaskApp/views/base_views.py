@@ -180,25 +180,7 @@ def users_application_pc():
                            )
 
 
-def upload_file_no_test():
-    try:
-        if request.method == 'POST':
-            print("POST")
-            if request.files['file']:
-                file = request.files['file']
-                if file and allowed_file(file.filename):
-                        filename = secure_filename(file.filename)
-                        file.save(os.path.join(UPLOAD_FOLDER_NO_TEST, filename))
-                        ObjectsNoTests(
-                            username=get_sesion_user(),
-                            link_file=str(filename)
-                        ).create_report_no_test_objects()
-                        # return redirect(url_for('users_operational_map'))
 
-    except:
-        return redirect(url_for('engineer_test'))
-    finally:
-        return redirect(url_for('engineer_test'))
 
 
 
@@ -312,43 +294,64 @@ def operator():
                                type_footer=get_sesion_user())
 
 
-def operator_test():
-    if request.method == 'POST':
-        if request.form['submit']=='create_note':
-            OperatorCreateNoTests(object_number=request.form['number_object'].replace("'","\""),
-                                  name_operator=get_sesion_user(),
-                                  why_there_is_no_test=request.form['why_there_is_no_test'].replace("'","\"")
-                                  ).create_note_no_test()
-            return redirect(url_for('operator_test'))
-
-        elif request.form['submit']=='copy':
-            OperatorCreateNoTests(object_number=request.form['number_object'],
-                                  name_operator=get_sesion_user(),
-                                  why_there_is_no_test=request.form['why_there_is_no_test']
-                                  ).create_note_no_test()
-            return redirect(url_for('operator_test'))
-
-        elif request.form['submit']=='select_for_date':
-            OperatorConfig(date_save=request.form['date']).write_date_search_no_test()
-            return redirect(url_for('operator_test'))
-
-        elif request.form['submit']=='delete':
-            OperatorDel(id=request.form['optradio']).delete_note_no_tests()
-            return redirect(url_for('operator_test'))
-
-        else:
-            return redirect(url_for('operator_test'))
-    else:
-        return render_template('operator/operator_test.html',
-                       user=get_sesion_user(),
-                       type_footer=get_sesion_user(),
-                       no_tests=OperatorGet().get_list_no_tests_now(),
-                       no_test_date_search=OperatorGet().get_list_no_test_search_date())
+# def operator_test():
+#     if request.method == 'POST':
+#         if request.form['submit']=='create_note':
+#             OperatorCreateNoTests(object_number=request.form['number_object'].replace("'","\""),
+#                                   name_operator=get_sesion_user(),
+#                                   why_there_is_no_test=request.form['why_there_is_no_test'].replace("'","\"")
+#                                   ).create_note_no_test()
+#             return redirect(url_for('operator_test'))
+#
+#         elif request.form['submit']=='copy':
+#             OperatorCreateNoTests(object_number=request.form['number_object'],
+#                                   name_operator=get_sesion_user(),
+#                                   why_there_is_no_test=request.form['why_there_is_no_test']
+#                                   ).create_note_no_test()
+#             return redirect(url_for('operator_test'))
+#
+#         elif request.form['submit']=='select_for_date':
+#             OperatorConfig(date_save=request.form['date']).write_date_search_no_test()
+#             return redirect(url_for('operator_test'))
+#
+#         elif request.form['submit']=='delete':
+#             OperatorDel(id=request.form['optradio']).delete_note_no_tests()
+#             return redirect(url_for('operator_test'))
+#
+#         else:
+#             return redirect(url_for('operator_test'))
+#     else:
+#         return render_template('operator/operator_test.html',
+#                        user=get_sesion_user(),
+#                        type_footer=get_sesion_user(),
+#                        no_tests=OperatorGet().get_list_no_tests_now(),
+#                        no_test_date_search=OperatorGet().get_list_no_test_search_date())
 
 # ---------------------------------------------End Operator-------------------------------------------------------------
 
 
 # ------------------------------------------------Engineer--------------------------------------------------------------
+def upload_file_no_test():
+    try:
+        if request.method == 'POST':
+            print("POST")
+            if request.files['file']:
+                file = request.files['file']
+                if file and allowed_file(file.filename):
+                        filename = secure_filename(file.filename)
+                        file.save(os.path.join(UPLOAD_FOLDER_NO_TEST, filename))
+                        ObjectsNoTests(
+                            username=get_sesion_user(),
+                            link_file=str(filename)
+                        ).create_report_no_test_objects()
+                        # return redirect(url_for('users_operational_map'))
+
+    except:
+        return redirect(url_for('engineer_test'))
+    finally:
+        return redirect(url_for('engineer_test'))
+
+
 def engineer():
     # completion operators note
     if request.method == 'POST':
@@ -388,7 +391,10 @@ def engineer_application_operator():
 def engineer_test():
     return render_template('engineer/engineer_test.html',
                            user=get_sesion_user(),
-                           type_footer=get_sesion_user())
+                           type_footer=get_sesion_user(),
+                           list_no_test=ObjectsNoTests().get_report_no_tests_objects(),
+                           list_files=os.listdir(UPLOAD_FOLDER_NO_TEST)
+                           )
 
 
 def engineer_users_application_pc():

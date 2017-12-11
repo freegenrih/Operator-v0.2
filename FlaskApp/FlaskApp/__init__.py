@@ -22,7 +22,7 @@ from views.base_views import (app,
                               users_upload_file,
                               report_tests,
                               operator,
-                              operator_test,
+                              # operator_test,
                               engineer,
                               engineer_test,
                               engineer_users_application_pc,
@@ -58,7 +58,8 @@ app.add_url_rule('/users-update-object-users', view_func=users_update_object_use
 app.add_url_rule('/users-upload-file', view_func=users_upload_file, methods=['POST'])
 
 app.add_url_rule('/operator', view_func=operator, methods=['GET', 'POST'])
-app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POST'])
+# на развитие
+# app.add_url_rule('/operator-test', view_func=operator_test, methods=['GET', 'POST'])
 
 app.add_url_rule('/engineer', view_func=engineer, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-test', view_func=engineer_test, methods=['GET', 'POST'])
@@ -85,4 +86,7 @@ app.register_error_handler(404, page_not_found)
 app.register_error_handler(500, page_error)
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.74', port=5001, debug=True)
+    app.run(host='localhost',
+            # host='192.168.100.74',
+            port=5001,
+            debug=True)
