@@ -209,18 +209,21 @@ def users_upload_file():
 def users_operational_map():
     if request.method == 'POST':
         if request.form['submit'] == "delete":
-            if request.form['submit'] == "delete":
-                try:
-                    os.remove(os.path.join(UPLOAD_FOLDER, str(request.form['file_name'])))
-                    OperMap(id=request.form['optradio']).delete_map()
-                except:
-                    return redirect(url_for('users_operational_map'))
-                finally:
+            try:
+                OperMap(id=request.form['optradio']).delete_map()
+                print("delete of DB")
+                print(os.path.join(UPLOAD_FOLDER, str(request.form['file_name'])))
+                os.remove(os.path.join(UPLOAD_FOLDER, str(request.form['file_name'])))
+                print("delete of folder ="+request.form['file_name'])
 
-                    return redirect(url_for('users_operational_map'))
-
-            else:
+            except:
                 return redirect(url_for('users_operational_map'))
+            finally:
+                return redirect(url_for('users_operational_map'))
+
+        else:
+            return redirect(url_for('users_operational_map'))
+
 
     else:
         return render_template("users/users_operational_map.html",
@@ -325,6 +328,9 @@ def engineer():
                                operator_application_checked=EngineerGet().get_count_operator_application_checked(),
                                count_operator_application_all=EngineerGet().get_count_operator_application_all(),
                                count_application_pc_all=EngineerGet().get_count_application_pc_all(),
+                               count_application_map_no_checked =EngineerGet().count_application_map_no_checked(),
+                               count_application_map_checked =EngineerGet().count_application_map_checked(),
+                               count_application_map_all =EngineerGet().count_application_map_all(),
                                )
 
 

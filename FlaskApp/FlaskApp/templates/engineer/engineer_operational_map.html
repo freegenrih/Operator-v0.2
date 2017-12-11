@@ -54,7 +54,7 @@
                                 {% for file in list_files %}
                                     {% if  file ==row.link_file %}
                                         {{ file }}
-                                        <a href="static/media/objects/{{ file }}" download="{{ file }}">
+                                        <a href="{{ url_for('static', filename="media/objects_maps/"+file) }}" download="{{ file }}">
                                             <span class="glyphicon-record glyphicon glyphicon-save "
                                                   style="color: #337ab7; "></span>
                                         <input type="hidden" name="file_name" value="{{ file }}">
@@ -89,8 +89,6 @@
         </div>
     </div>
     <!-------------------------Конец Блока таблицы с оперативными карточками----------------------->
-
-
 
 {% endblock centermenu %}
 

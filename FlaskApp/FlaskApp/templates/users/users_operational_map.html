@@ -52,7 +52,9 @@
                                     </div>
                                     <div class="form-group">
                                         <center>
-                                            <label for="file-upload">Выберете файл опер. карты:</label>
+                                            <label for="file-upload">Выберете файл опер. карты:<br>
+                                            Пример имени файла 2000.xlsx
+                                            </label>
                                             <input id="file-upload" type="file" name="file"
                                                     style="border: 1px solid grey;border-radius: 5px; "
                                             required>
@@ -89,7 +91,7 @@
                 <tr class="info">
                     <th width="12%" class="text-center">Дата создания</th>
                     <th width="5%" class="text-center">Пользователь</th>
-                    <th width="5%" class="text-center">Объект</th>
+                    <th width="5%" class="text-center">Объект№</th>
                     <th width="36%" class="text-center">Описание</th>
                     <th width="36%" class="text-center">Файл</th>
                     <th width="1%" class="text-center">ОК</th>
@@ -100,9 +102,10 @@
                 <tbody>
                 {#            {%if users_application_pc%}#}
                 {#            {%for row in users_application_pc%}#}
-                <form method="post" action="{{ url_for('users_operational_map') }}">
+
                         {%if list_map  %}
                             {% for row in list_map %}
+                <form method="post" action="{{ url_for('users_operational_map') }}">
                         <tr class="success">
                             <td class="text-center" width="12%"><strong>{{ row.date_of_creation}}</strong></td>
                             <td class="text-center" width="10%"><strong>{{ row.username_create}}</strong></td>
@@ -113,7 +116,8 @@
                                 {% for file in list_files %}
                                     {% if  file ==row.link_file %}
                                         {{ file }}
-                                        <a href="static/media/objects/{{ file }}" download="{{ file }}">
+{#    static/media/objects_maps/{{ file }}                                    #}
+                                        <a href="{{ url_for('static', filename="media/objects_maps/"+file) }}" download="{{ file }}">
                                             <span class="glyphicon-record glyphicon glyphicon-save "
                                                   style="color: #337ab7; "></span>
                                         <input type="hidden" name="file_name" value="{{ file }}">
@@ -138,9 +142,10 @@
                             </td>
 
                         </tr>
+                </form>
                             {% endfor %}
                         {% endif %}
-                </form>
+
                 {#            {%endfor%}#}
                 {#            {%endif%}#}
                 </tbody>
@@ -149,11 +154,9 @@
     </div>
     <!-------------------------Конец Блока таблицы с оперативными карточками----------------------->
 
-{#test render#}
+
     <div>
-{%if list_map  %}
-{{ list_map }}
-{% endif %}
+
 
     </div>
 

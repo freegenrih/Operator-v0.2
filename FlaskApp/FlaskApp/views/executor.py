@@ -288,6 +288,20 @@ class EngineerGet:
         return wraper_read(sql)
 
 
+    def count_application_map_no_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE `checked_engineer`=0;"
+        return wraper_read(sql)
+
+
+    def count_application_map_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE `checked_engineer`=1;"
+        return wraper_read(sql)
+
+    def count_application_map_all(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE 1;"
+        return wraper_read(sql)
+
+
 # ---------------------------------------------------------------------------------------------------------
 
 

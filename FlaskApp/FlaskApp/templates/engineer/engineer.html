@@ -37,9 +37,14 @@
                                 {{ row.temp }}
                             {% endfor %}
                         {% endif %}
-                         <br>
-                        Оперативная Карта
-                         <br>
+                        <br>
+                        Оперативная Карта:
+                        {% if count_application_map_no_checked %}
+                            {% for row in count_application_map_no_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
+                        <br>
                         Обновление Х.О
                     </div>
                     <br>
@@ -65,7 +70,12 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Оперативная Карта
+                        Оперативная Карта:
+                        {% if count_application_map_checked %}
+                            {% for row in count_application_map_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
                         <br>
                         Обновление Х.О
                     </div>
@@ -93,6 +103,11 @@
                         {% endif %}
                         <br>
                         Оперативная Карта
+                        {% if count_application_map_all %}
+                            {% for row in count_application_map_all %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
                         <br>
                         Обновление Х.О
                     </div>
