@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: localhost:3306
-- Generation Time: Dec 10, 2017 at 09:49 PM
+- Generation Time: Dec 12, 2017 at 03:20 PM
 - Server version: 5.7.20-0ubuntu0.17.10.1
 - PHP Version: 7.1.11-0ubuntu0.17.10.1
 -->
@@ -28,7 +28,7 @@
                   `name_engineer_completion` text NOT NULL,
                   `message` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_electrician_application">
                 CREATE TABLE `dbo_electrician_application` (
@@ -68,7 +68,20 @@
                   `date_of_completion` text NOT NULL,
                   `name_engineer_completion` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="dbo_reports_no_tets_objects">
+                CREATE TABLE `dbo_reports_no_tets_objects` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `date_of_creation` text NOT NULL,
+                  `username_create` text NOT NULL,
+                  `for_what_month` text NOT NULL,
+                  `link_file` text NOT NULL,
+                  `checked_user` text NOT NULL,
+                  `date_of_completion` text NOT NULL,
+                  `username_completion` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_settings">
                 CREATE TABLE `dbo_settings` (
@@ -98,14 +111,14 @@
                   `name_engineer_completion` text NOT NULL,
                   `commit_of_close_applocation_pc` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user_type">
                 CREATE TABLE `user_type` (
                   `id` int(2) NOT NULL AUTO_INCREMENT,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
             </pma:table>
         </pma:database>
     </pma:structure_schemas>
@@ -116,15 +129,48 @@
     <database name="Pult">
         <!-- Table dbo_application_map_for_pult -->
         <table name="dbo_application_map_for_pult">
-            <column name="id">48</column>
-            <column name="date_of_creation">2017-12-10 21:02:46</column>
+            <column name="id">115</column>
+            <column name="date_of_creation">2017-12-11 13:36:55</column>
+            <column name="username_create">Admin</column>
+            <column name="object_number">1</column>
+            <column name="checked_engineer">1</column>
+            <column name="link_file">2001.jpg</column>
+            <column name="date_of_completion">2017-12-11 13:55:57</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="message"> </column>
+        </table>
+        <table name="dbo_application_map_for_pult">
+            <column name="id">116</column>
+            <column name="date_of_creation">2017-12-11 13:37:01</column>
+            <column name="username_create">Admin</column>
+            <column name="object_number">2</column>
+            <column name="checked_engineer">1</column>
+            <column name="link_file">2002.jpg</column>
+            <column name="date_of_completion">2017-12-11 13:55:54</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="message"> </column>
+        </table>
+        <table name="dbo_application_map_for_pult">
+            <column name="id">117</column>
+            <column name="date_of_creation">2017-12-11 13:37:07</column>
+            <column name="username_create">Admin</column>
+            <column name="object_number">3</column>
+            <column name="checked_engineer">1</column>
+            <column name="link_file">2003.jpg</column>
+            <column name="date_of_completion">2017-12-11 13:55:52</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="message"> </column>
+        </table>
+        <table name="dbo_application_map_for_pult">
+            <column name="id">119</column>
+            <column name="date_of_creation">2017-12-12 13:47:22</column>
             <column name="username_create">Admin</column>
             <column name="object_number">2001</column>
             <column name="checked_engineer">0</column>
-            <column name="link_file">4KJFVUcSnik.jpg</column>
+            <column name="link_file">test.xlsx</column>
             <column name="date_of_completion"></column>
             <column name="name_engineer_completion"></column>
-            <column name="message"> </column>
+            <column name="message"> 654564564</column>
         </table>
         <!-- Table dbo_electrician_application -->
         <table name="dbo_electrician_application">
@@ -264,6 +310,40 @@
             <column name="checked_engineer">1</column>
             <column name="date_of_completion">2017-11-24 09:48:07</column>
             <column name="name_engineer_completion">Admin</column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">144</column>
+            <column name="date_of_creation">2017-12-11 22:17:50</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Феникс</column>
+            <column name="number_object">2001</column>
+            <column name="message">Добавить Х.О  Иванюк Дмитрий Сергеевич 067 566 55 66
+</column>
+            <column name="checked_engineer">0</column>
+            <column name="date_of_completion"></column>
+            <column name="name_engineer_completion"> </column>
+        </table>
+        <table name="dbo_operator_application">
+            <column name="id">145</column>
+            <column name="date_of_creation">2017-12-12 15:02:26</column>
+            <column name="name_operator">Admin</column>
+            <column name="name_pult">Грифон</column>
+            <column name="number_object">1010</column>
+            <column name="message">Убрать из 220  </column>
+            <column name="checked_engineer">0</column>
+            <column name="date_of_completion"></column>
+            <column name="name_engineer_completion"> </column>
+        </table>
+        <!-- Table dbo_reports_no_tets_objects -->
+        <table name="dbo_reports_no_tets_objects">
+            <column name="id">10</column>
+            <column name="date_of_creation">2017-12-12 12:57:34</column>
+            <column name="username_create">Admin</column>
+            <column name="for_what_month">12</column>
+            <column name="link_file">test.xlsx</column>
+            <column name="checked_user">0</column>
+            <column name="date_of_completion"> </column>
+            <column name="username_completion"> </column>
         </table>
         <!-- Table dbo_settings -->
         <table name="dbo_settings">
@@ -503,10 +583,31 @@
             <column name="commit_of_close_applocation_pc"> usb cales replase </column>
         </table>
         <table name="dbo_user_application_pc">
-            <column name="id">54</column>
-            <column name="date_of_creation">2017-12-10 21:23:44</column>
+            <column name="id">57</column>
+            <column name="date_of_creation">2017-12-11 22:18:37</column>
             <column name="name_user_creation_app">Admin</column>
-            <column name="message">Не работает Сканер!!! Срочно</column>
+            <column name="message">Не работает Сканер!!!  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-12-11 22:19:09</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc">Замена юсб кабеля
+</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">61</column>
+            <column name="date_of_creation">2017-12-12 13:54:01</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает Монитор  </column>
+            <column name="checked_engineer">1</column>
+            <column name="date_of_completion">2017-12-12 13:54:14</column>
+            <column name="name_engineer_completion">Admin</column>
+            <column name="commit_of_close_applocation_pc"> лорваполрап</column>
+        </table>
+        <table name="dbo_user_application_pc">
+            <column name="id">62</column>
+            <column name="date_of_creation">2017-12-12 14:10:21</column>
+            <column name="name_user_creation_app">Admin</column>
+            <column name="message">Не работает  </column>
             <column name="checked_engineer">0</column>
             <column name="date_of_completion"> </column>
             <column name="name_engineer_completion"> </column>
@@ -524,6 +625,10 @@
         <table name="user_type">
             <column name="id">3</column>
             <column name="user_type">Администратор</column>
+        </table>
+        <table name="user_type">
+            <column name="id">4</column>
+            <column name="user_type">Пользователь</column>
         </table>
     </database>
 </pma_xml_export>
