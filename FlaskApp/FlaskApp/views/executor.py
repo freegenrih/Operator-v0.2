@@ -228,16 +228,23 @@ class OperMap:
 class ObjectsNoTests:
     def __init__(self, id=None, username=None,  link_file=None, month_number=None):
         self.id = id
-        self.month_number = idmonth_number
+        self.month_number = month_number
         self.username = str(username)
         self.link_file = str(link_file)
 
-        self.get_report_no_tests_object = "SELECT * FROM `dbo_reports_no_tets_objects`" \
+        self.sql_get_report_no_tests_object = "SELECT * FROM `dbo_reports_no_tets_objects`" \
                                           "WHERE `dbo_reports_no_tets_objects`.`checked_user` = 0;"
-        self.create_report_no_test_object = ";"
+
+        self.sql_create_report_no_test_object = "INSERT INTO `dbo_reports_no_tets_objects` (`id`, `date_of_creation`, `username_create`, `for_what_month`, `link_file`, `checked_user`, `date_of_completion`, `username_completion`) " \
+                                            "VALUES (NULL, '{}', '{}', '{}', '{}', '0',' ',' ' );".format(
+            str(datetime.now())[0:-7],
+            self.username,
+            self.month_number,
+            self.link_file
+        )
 
 
-        self.update_report_no_test_object = "UPDATE `dbo_reports_no_tets_objects` " \
+        self.sql_update_report_no_test_object = "UPDATE `dbo_reports_no_tets_objects` " \
                                              "SET `checked_user` = '1',`date_of_completion`='{}',`username_completion` = '{}'" \
                                              "WHERE `dbo_reports_no_tets_objects`.`id` = {};".format(
 
@@ -247,19 +254,20 @@ class ObjectsNoTests:
         )
 
 
-        self.delete_report_no_test_objects = ";"
+        self.sql_delete_report_no_test_object = "DELETE FROM `dbo_reports_no_tets_objects` " \
+                                             "WHERE `dbo_reports_no_tets_objects`.`id` = {};".format(self.id)
 
     def get_report_no_tests_objects(self):
-        return wraper_read(self.get_report_no_tests_object)
+        return wraper_read(self.sql_get_report_no_tests_object)
 
     def create_report_no_test_objects(self):
-        return wraper_write(self.create_report_no_test_objects)
+        return wraper_write(self.sql_create_report_no_test_object)
 
     def update_report_no_test_objects(self):
-        return wraper_write(self.update_report_no_test_object)
+        return wraper_write(self.sql_update_report_no_test_object)
 
     def delete_report_no_test_objects(self):
-        return wraper_write(self.delete_report_no_test_object)
+        return wraper_write(self.sql_delete_report_no_test_object)
 
 
 # ---------------------------------------------------------------------------------------------------------

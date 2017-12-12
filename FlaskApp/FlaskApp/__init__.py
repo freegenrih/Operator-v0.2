@@ -29,6 +29,7 @@ from views.base_views import (app,
                               engineer_application_operator,
                               engineer_operational_map,
                               engineer_update_object_users,
+                              engineer_upload_file_no_test,
                               admin,
                               semple_page_signin,
                               semple_page_operator,
@@ -63,6 +64,7 @@ app.add_url_rule('/operator', view_func=operator, methods=['GET', 'POST'])
 
 app.add_url_rule('/engineer', view_func=engineer, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-test', view_func=engineer_test, methods=['GET', 'POST'])
+app.add_url_rule('/engineer-upload-file-no-test', view_func=engineer_upload_file_no_test, methods=['POST'])
 app.add_url_rule('/engineer-users-application-pc', view_func=engineer_users_application_pc, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-application-operator', view_func=engineer_application_operator, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-operational-map', view_func=engineer_operational_map, methods=['GET', 'POST'])
@@ -86,7 +88,10 @@ app.register_error_handler(404, page_not_found)
 app.register_error_handler(500, page_error)
 
 if __name__ == '__main__':
-    app.run(host='localhost',
-            # host='192.168.100.74',
+    app.run(
+            # host='localhost',
+            host='192.168.100.74',
             port=5001,
-            debug=True)
+            debug=True
+            # debug=False
+    )

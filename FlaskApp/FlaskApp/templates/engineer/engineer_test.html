@@ -1,23 +1,23 @@
-{%extends 'base/base.html' %}
-{%block extralink%}
-{%endblock extralink%}
+{% extends 'base/base.html' %}
+{% block extralink %}
+{% endblock extralink %}
 
 
-{%block title%}Инженер{%endblock title%}
+{% block title %}Инженер{% endblock title %}
 
 
-{%block leftmenu%}
-{%include 'engineer/left_engineer_menu_buttons.html' %}
-{%endblock leftmenu%}
+{% block leftmenu %}
+    {% include 'engineer/left_engineer_menu_buttons.html' %}
+{% endblock leftmenu %}
 
 
-{%block centermenuhead%}
-<h4 class="text-center">Тесты</h4>
-{%endblock centermenuhead%}
+{% block centermenuhead %}
+    <h4 class="text-center">Тесты</h4>
+{% endblock centermenuhead %}
 
 
-{%block centermenu%}
-        <!------------------------------Блок отправки нетестируемых объектов------------------------>
+{% block centermenu %}
+    <!------------------------------Блок отправки нетестируемых объектов------------------------>
     <div class="container-fluid">
         <div class="row">
             <div class="text-center">
@@ -44,40 +44,40 @@
                                 <h4 class="modal-title">Отправка отчета не тестируемых объектов </h4>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ url_for('users_upload_file') }}" method="post"
+                                <form action="{{ url_for('engineer_upload_file_no_test') }}" method="post"
                                       enctype="multipart/form-data">
                                     <div class="form-group">
-                                            <label for="month-number">Выбрать за какой месяц:<br></label><br>
-                                            <select class="form-control" name="month_number" id="month-number">
-                                                <option class="text-center">1</option>
-                                                <option class="text-center">2</option>
-                                                <option class="text-center">3</option>
-                                                <option class="text-center">4</option>
-                                                <option class="text-center">5</option>
-                                                <option class="text-center">6</option>
-                                                <option class="text-center">7</option>
-                                                <option class="text-center">8</option>
-                                                <option class="text-center">9</option>
-                                                <option class="text-center">10</option>
-                                                <option class="text-center">11</option>
-                                                <option class="text-center">12</option>
-                                            </select>
+                                        <label for="month-number">Выбрать за какой месяц:<br></label><br>
+                                        <select class="form-control" name="month_number" id="month-number">
+                                            <option class="text-center">1</option>
+                                            <option class="text-center">2</option>
+                                            <option class="text-center">3</option>
+                                            <option class="text-center">4</option>
+                                            <option class="text-center">5</option>
+                                            <option class="text-center">6</option>
+                                            <option class="text-center">7</option>
+                                            <option class="text-center">8</option>
+                                            <option class="text-center">9</option>
+                                            <option class="text-center">10</option>
+                                            <option class="text-center">11</option>
+                                            <option class="text-center">12</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <center>
                                             <label for="file-upload">Выберете файл отчета:<br>
-                                            Пример имени файла 20012018.xlsx
+                                                Пример имени файла 20012018.xlsx
                                             </label>
                                             <input id="file-upload" type="file" name="file"
-                                                    style="border: 1px solid grey;border-radius: 5px; "
-                                            required>
+                                                   style="border: 1px solid grey;border-radius: 5px; "
+                                                   required>
                                         </center>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="comment">Добавить текст описания если нужно:</label>
-                                        <textarea class="form-control" name="add_comment" rows="5"
-                                                  id="comment"> </textarea>
-                                    </div>
+{#                                    <div class="form-group">#}
+{#                                        <label for="comment">Добавить текст описания если нужно:</label>#}
+{#                                        <textarea class="form-control" name="add_comment" rows="5"#}
+{#                                                  id="comment"> </textarea>#}
+{#                                    </div>#}
                                     <div class="form-group">
                                         <button type="submit" value="file" class="btn btn-warning">
                                             Отправить Отчет
@@ -97,7 +97,7 @@
     <!-------------------------Конец Блока отправки нетестируемых объектов----------------------->
 
     <!------------------------------Блок таблицы нетестируемых объектов--------------------->
- <div style="padding-top: 10px;">
+    <div style="padding-top: 10px;">
         <div style="height:500px;overflow-y:scroll;;">
             <table class="table">
                 <thead>
@@ -111,49 +111,44 @@
                 </tr>
                 </thead>
                 <tbody>
-
-
-                        {%if list_no_test  %}
-{#                            {{ list_no_test }}#}
-                            {% for row in list_no_test  %}
-                <form method="post" action="{{ url_for('report_tests') }}">
-                        <tr class="success">
-                            <td class="text-center" width="12%"><strong>{{ row.date_of_creation}}</strong></td>
-                            <td class="text-center" width="11%"><strong>{{ row.username_create}}</strong></td>
-                            <td class="text-center" width="11%"><strong>{{ row.for_what_month}}</strong></td>
-                            <td class="text-center" width="33%"><strong>
-                                {% if list_files %}
-                                {% for file in list_files %}
-                                    {% if  file ==row.link_file %}
-                                        {{ file }}
-                                        <a href="{{ url_for('static', filename="media/NoTests/"+file) }}" download="{{ file }}">
+                {% if list_no_test %}
+                    {% for row in list_no_test %}
+                        <form method="post" action="{{ url_for('engineer_test') }}">
+                            <tr class="success">
+                                <td class="text-center" width="12%"><strong>{{ row.date_of_creation }}</strong></td>
+                                <td class="text-center" width="11%"><strong>{{ row.username_create }}</strong></td>
+                                <td class="text-center" width="11%"><strong>{{ row.for_what_month }}</strong></td>
+                                <td class="text-center" width="33%"><strong>
+                                    {% if list_files %}
+                                        {% for file in list_files %}
+                                            {% if  file ==row.link_file %}
+                                                {{ file }}
+                                                <a href="{{ url_for('static', filename="media/NoTests/"+file) }}"
+                                                   download="{{ file }}">
                                             <span class="glyphicon-record glyphicon glyphicon-save "
                                                   style="color: #337ab7; "></span>
-                                        <input type="hidden" name="file_name" value="{{ file }}">
-                                        </a>
+                                                    <input type="hidden" name="file_name" value="{{ file }}">
+                                                </a>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% endif %}
-                                {% endfor %}
-                                {% endif %}
 
-                            </strong>
-                            </td>
-
-                            <td class="text-center" width="5%">
-                                <label style="padding-left: 2px; padding-top: 6px;">
-                                    <input type="radio" name="optradio" value="{{ row.id }}" required
-                                           title="Кликнуть для потверждения">
-                                </label>
-
-                            <td class="text-center" width="5%">
-                                <button type="submit" name="submit" value="delete" class="btn btn-warning"
-                                        title="Кликнуть для Удаления">Отменить
-                                </button>
-                            </td>
-
-                        </tr>
-                </form>
-                            {% endfor %}
-                        {% endif %}
+                                </strong>
+                                </td>
+                                <td class="text-center" width="5%">
+                                    <label style="padding-left: 2px; padding-top: 6px;">
+                                        <input type="radio" name="optradio" value="{{ row.id }}" required
+                                               title="Кликнуть для потверждения">
+                                    </label>
+                                <td class="text-center" width="5%">
+                                    <button type="submit" name="submit" value="delete" class="btn btn-success"
+                                            title="Кликнуть для Удаления">Отменить
+                                    </button>
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                {% endif %}
                 </tbody>
             </table>
         </div>
@@ -161,13 +156,13 @@
     <!-------------------------Конец Блока таблицы нетестируемых объектов----------------------->
 
 
-{%endblock centermenu%}
+{% endblock centermenu %}
 
 
-{%block rightmenuhead%}
-<h4 class="text-center">Инженер</h4>
-{%endblock rightmenuhead%}
+{% block rightmenuhead %}
+    <h4 class="text-center">Инженер</h4>
+{% endblock rightmenuhead %}
 
-{%block rightmenu%}
-{%include 'engineer/engineer_right_menu_info.html' %}
-{%endblock rightmenu%}
+{% block rightmenu %}
+    {% include 'engineer/engineer_right_menu_info.html' %}
+{% endblock rightmenu %}

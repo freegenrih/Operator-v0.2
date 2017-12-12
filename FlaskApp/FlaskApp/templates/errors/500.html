@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
-    <title>Page Not Found</title>
+    <title>Error 500</title>
+    <meta http-equiv="refresh" content="5;{{ url_for('signin') }}">
 </head>
 <body style="background-color: #C2CEEE;">
 <div class="container" style="margin-left: 30%; margin-top: 5%;">

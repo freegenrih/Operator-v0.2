@@ -36,7 +36,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = BASE_DIR+"/static/media/objects_maps"
 UPLOAD_FOLDER_USERS_PHONES = BASE_DIR+"/static/media/Users_Phones"
 UPLOAD_FOLDER_NO_TEST = BASE_DIR+"/static/media/NoTests"
-ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg','jpeg'])
+ALLOWED_EXTENSIONS = set(['txt','py','pdf','png','jpg','jpeg','xlsx'])
 
 
 app.secret_key = KEY
@@ -331,7 +331,7 @@ def operator():
 
 
 # ------------------------------------------------Engineer--------------------------------------------------------------
-def upload_file_no_test():
+def engineer_upload_file_no_test():
     try:
         if request.method == 'POST':
             print("POST")
@@ -340,15 +340,21 @@ def upload_file_no_test():
                 if file and allowed_file(file.filename):
                         filename = secure_filename(file.filename)
                         file.save(os.path.join(UPLOAD_FOLDER_NO_TEST, filename))
-                        ObjectsNoTests(
-                            username=get_sesion_user(),
-                            link_file=str(filename)
-                        ).create_report_no_test_objects()
+                        print("file save no test")
+                        print(request.form['month_number'])
+
+
                         # return redirect(url_for('users_operational_map'))
 
     except:
         return redirect(url_for('engineer_test'))
     finally:
+        ObjectsNoTests(
+            username=get_sesion_user(),
+            link_file=str(filename),
+            month_number=str(request.form['month_number'])
+        ).create_report_no_test_objects()
+        print("create no test")
         return redirect(url_for('engineer_test'))
 
 
@@ -389,6 +395,20 @@ def engineer_application_operator():
 
 
 def engineer_test():
+    if request.method == 'POST':
+        if request.form['submit']=='delete':
+            try:
+                ObjectsNoTests(id=request.form['optradio']).delete_report_no_test_objects()
+                print("delete of DB")
+                print(os.path.join(UPLOAD_FOLDER_NO_TEST, str(request.form['file_name'])))
+                os.remove(os.path.join(UPLOAD_FOLDER_NO_TEST, str(request.form['file_name'])))
+                print("delete of folder ="+request.form['file_name'])
+
+            except:
+                return redirect(url_for('engineer_test'))
+            finally:
+                return redirect(url_for('engineer_test'))
+
     return render_template('engineer/engineer_test.html',
                            user=get_sesion_user(),
                            type_footer=get_sesion_user(),
