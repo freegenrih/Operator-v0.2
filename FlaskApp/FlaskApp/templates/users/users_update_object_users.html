@@ -1,27 +1,143 @@
-{%extends 'base/base.html' %}
-{%block extralink%}
-{%endblock extralink%}
+{% extends 'base/base.html' %}
+{% block extralink %}
+{% endblock extralink %}
 
 
-{%block title%}Пользователь{%endblock title%}
+{% block title %}Пользователь{% endblock title %}
 
 
-{%block leftmenu%}
-{%include 'users/left_users_menu_buttons.html' %}
-{%endblock leftmenu%}
+{% block leftmenu %}
+    {% include 'users/left_users_menu_buttons.html' %}
+{% endblock leftmenu %}
 
 
-{%block centermenuhead%}
-<h4 class="text-center">Обновление Х.О. На ПЦН</h4>
-{%endblock centermenuhead%}
+{% block centermenuhead %}
+    <h4 class="text-center">Обновление Х.О. На ПЦН</h4>
+{% endblock centermenuhead %}
 
-{%block centermenu%}
-{%endblock centermenu%}
+{% block centermenu %}
 
-{%block rightmenuhead%}
-<h4 class="text-center">Пользователь</h4>
-{%endblock rightmenuhead%}
+    <!------------------------------Блок Создания заявки СисАдмину------------------------>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-center">
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                        data-placement="right" title="Нажать левую кнопку мыши для создания заявки инженеру">
+                    Внести Х.О.
+                </button>
 
-{%block rightmenu%}
+                <a href="{{ url_for('users_update_object_users') }}">
+                    <button type="button" class="btn btn-info btn-lg"
+                            data-placement="right" title="Нажать левую кнопку мыши для обновления информации">
+                        Обновить Информацию
+                    </button>
+                </a>
 
-{%endblock rightmenu%}
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Обновление Х.О. На ПЦН </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="{{ url_for('users_application_pc') }}">
+                                    <div class="form-group">
+                                        <label for="object_number">Ввести номер объекта:</label>
+                                        <input id="object_number" class="form-control text-center" type="number" min="0" name="object" placeholder="Номер объекта" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="object_name">Ввести название объекта:</label>
+                                        <input id="object_name" class="form-control text-center" type="text" name="object_name" placeholder="Название объекта"  size="30" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="object_address">Ввести адрес объекта:</label>
+                                        <input type="text" class="form-control text-center" name="object_address" placeholder="Адрес объекта" size="30"required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Ввести данные ответственных объекта:</label>
+                                        <textarea id="message" type="text" name="message" rows="10" cols="70"
+                                        placeholder="Данные для ПЦН
+Фамилия Имя Отчество
+Должность
+к.т.+380670001122"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="padding-left: 2px; padding-top: 6px;">
+                                            <input type="radio" name="optradio" value="" required
+                                                   title="Кликнуть для потверждения">Согласен(а) с
+                                            <ins>условиями внесения данных</ins>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit" value="create_note" class="btn btn-warning">
+                                            Обновить Х.О.
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------Конец Блока Создания заявки СисАдмину---------------------->
+
+    <div style="padding-top: 10px;">
+        <div style="height:500px;overflow-y:scroll;;">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th width="12%" class="text-center">Дата создания</th>
+                    <th width="10%" class="text-center">Пользователь</th>
+                    <th width="72%" class="text-center">Описание</th>
+                    <th width="1%" class="text-center">ОК</th>
+                    <th width="3%" class="text-center">Выполнить</th>
+                    {#                <th width="2%" class="text-center"></th>#}
+                </tr>
+                </thead>
+                <tbody>
+                {% if users_application_pc %}
+                    {% for row in users_application_pc %}
+                        <form method="post" action="{{ url_for('users_application_pc') }}">
+                            <tr class="success">
+                                <td class="text-center" width="12%"><strong>{{ row.date_of_creation }}</strong></td>
+                                <td class="text-center" width="10%"><strong>{{ row.name_user_creation_app }}</strong>
+                                </td>
+                                <td class="text-center" width="67%"><strong>{{ row.message }}</strong></td>
+                                <td class="text-center" width="5%">
+                                    <label style="padding-left: 2px; padding-top: 6px;">
+                                        <input type="radio" name="optradio" value="{{ row.id }}" required
+                                               title="Кликнуть для потверждения">
+                                    </label>
+                                </td>
+                                <td class="text-center" width="5%">
+                                    <button type="submit" name="submit" value="delete" class="btn btn-danger"
+                                            title="Кликнуть для Удаления">Отменить
+                                    </button>
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock centermenu %}
+
+{% block rightmenuhead %}
+    <h4 class="text-center">Пользователь</h4>
+{% endblock rightmenuhead %}
+
+{% block rightmenu %}
+
+{% endblock rightmenu %}
