@@ -32,7 +32,7 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Заявки Пользователей:
+                        Заявки СисАдмину:
                         {% if count_application_pc_no_checed %}
                             {% for row in count_application_pc_no_checed %}
                                 {{ row.temp }}
@@ -46,7 +46,12 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Обновление Х.О
+                        Обновление Х.О:
+                        {% if count_app_update_data_object_no_checked %}
+                            {% for row in count_app_update_data_object_no_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <br>
                 </div>
@@ -64,7 +69,7 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Заявки Пользователей:&nbsp;
+                        Заявки СисАдмину:
                         {% if count_application_pc_checed %}
                             {% for row in count_application_pc_checed %}
                                 {{ row.temp }}
@@ -78,7 +83,12 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Обновление Х.О
+                        Обновление Х.О:
+                        {% if count_app_update_data_object_checked %}
+                            {% for row in count_app_update_data_object_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <br>
                 </div>
@@ -96,7 +106,7 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Заявки Пользователей:
+                        Заявки СисАдмину:
                         {% if count_application_pc_all %}
                             {% for row in count_application_pc_all %}
                                 {{ row.temp }}
@@ -110,7 +120,12 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                        Обновление Х.О
+                        Обновление Х.О:
+                        {% if count_app_update_data_object_all %}
+                            {% for row in count_app_update_data_object_all %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <br>
                 </div>

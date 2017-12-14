@@ -17,7 +17,7 @@
 
 {% block centermenu %}
 
-    <!------------------------------Блок Создания заявки СисАдмину------------------------>
+    <!------------------------------Блок Обновление Х.О. На ПЦН------------------------>
     <div class="container-fluid">
         <div class="row">
             <div class="text-center">
@@ -48,7 +48,7 @@
                                     <div class="form-group">
                                         <label for="object_number">Ввести номер объекта:</label>
                                         <input id="object_number" class="form-control text-center" type="number" min="0"
-                                               name="object" placeholder="Номер объекта " required>
+                                               name="object_number" placeholder="Номер объекта " required>
                                     </div>
                                     <div class="form-group">
                                         <label for="object_name">Ввести название объекта:</label>
@@ -70,8 +70,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label style="padding-left: 2px; padding-top: 6px;">
-                                            <input type="radio"  required
-                                                   title="Кликнуть для потверждения">Согласен(а) с
+                                            <input type="radio" name="confirm" title="Кликнуть для потверждения" required>Согласен(а) с
                                             <ins>условиями внесения данных</ins>
                                         </label>
                                     </div>
@@ -91,7 +90,7 @@
             </div>
         </div>
     </div>
-    <!-------------------------Конец Блока Создания заявки СисАдмину---------------------->
+    <!-------------------------Конец Блока Обновление Х.О. На ПЦН---------------------->
 
     <div style="padding-top: 10px;">
         <div style="height:500px;overflow-y:scroll;;">
@@ -100,7 +99,8 @@
                 <tr class="info">
                     <th width="12%" class="text-center">Дата создания</th>
                     <th width="10%" class="text-center">Пользователь</th>
-                    <th width="72%" class="text-center">Описание</th>
+                    <th width="10%" class="text-center">Объект</th>
+                    <th width="62%" class="text-center">Описание</th>
                     <th width="1%" class="text-center">ОК</th>
                     <th width="3%" class="text-center">Выполнить</th>
                     {#                <th width="2%" class="text-center"></th>#}
@@ -108,7 +108,7 @@
                 </thead>
                 <tbody>
                 {% if objects_data %}
-                    {{ objects_data }}
+{#                    {{ objects_data }}#}
                     {% for row in objects_data %}
                         <form method="post" action="{{ url_for('users_update_object_users') }}">
                             <tr class="success">
@@ -119,13 +119,17 @@
                                     {{ row.username_creation }}
                                 </strong>
                                 </td>
+                                <td class="text-center" width="10%"><strong>
+                                    {{ row.object_number }}
+                                </strong>
+                                </td>
                                 <td class="text-center" width="67%">
-                                    <btn class="btn btn-warning " data-toggle="modal" data-target="#distally"
+                                    <btn class="btn btn-warning " data-toggle="modal" data-target="#distally{{ row.id }}"
                                          title="Подробнее о заявке...">Подробнее...
                                     </btn>
                                     {#       Modal   app objects users #}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="distally" role="dialog">
+                                    <div class="modal fade" id="distally{{ row.id }}" role="dialog">
                                         <div class="modal-dialog modal-lg">
                                             <!-- Modal content-->
                                             <div class="modal-content">
@@ -159,10 +163,8 @@
                                                                 class="info text-center">{{ row.message_object }}
                                                             </th>
                                                         </tr>
-
                                                         </thead>
                                                         <tbody>
-
                                                         </tbody>
                                                     </table>
                                                 </div>

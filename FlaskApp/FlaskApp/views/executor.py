@@ -280,7 +280,7 @@ class UpdateObjectsData:
         self.address_object = address_object
         self.message_object = message_object
 
-        self.sql_get_object_datas ="SELECT * FROM `dbo_application_update_users_objects`;"
+        self.sql_get_object_datas ="SELECT * FROM `dbo_application_update_users_objects` WHERE `checked_engineer` = '0';"
 
         self.sql_create_object_datas ="INSERT INTO `dbo_application_update_users_objects` (" \
                                       "`id`, `date_of_creation`, `username_creation`, `object_number`, `name_object`," \
@@ -293,10 +293,17 @@ class UpdateObjectsData:
             self.name_object,
             self.address_object,
             self.message_object
-
         )
 
-        self.sql_update_object_datas =";"
+        self.sql_update_object_datas ="UPDATE `dbo_application_update_users_objects` SET `checked_engineer` = '1'," \
+                                      "`date_of_completion` = '{}',`name_engineer_completion` = '{}' " \
+                                      "WHERE `dbo_application_update_users_objects`.`id` = {};".format(
+
+            str(datetime.now())[0:-7],
+            self.username,
+            self.id
+        )
+
 
         self.sql_delete_object_datas ="DELETE FROM `dbo_application_update_users_objects` " \
                                       "WHERE `dbo_application_update_users_objects`.`id` = {};".format(self.id)
@@ -349,7 +356,7 @@ class EngineerGet:
     def get_list_note(self):
         sql = "SELECT * FROM `dbo_operator_application` WHERE `checked_engineer`=0"
         return wraper_read(sql)
-
+# заявки сисадмину
     def get_count_application_pc_no_checed(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE `checked_engineer`=0;"
         return wraper_read(sql)
@@ -361,6 +368,8 @@ class EngineerGet:
     def get_count_application_pc_all(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_user_application_pc` WHERE 1;"
         return wraper_read(sql)
+# заявки от оператора
+
 
     def get_count_operator_application_no_checked(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE `checked_engineer`=0;"
@@ -373,7 +382,7 @@ class EngineerGet:
     def get_count_operator_application_all(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_operator_application` WHERE 1;"
         return wraper_read(sql)
-
+# оперативные карточки
     def count_application_map_no_checked(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE `checked_engineer`=0;"
         return wraper_read(sql)
@@ -386,7 +395,18 @@ class EngineerGet:
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_map_for_pult` WHERE 1;"
         return wraper_read(sql)
 
+# обновление хоз органов
+    def count_app_update_data_object_no_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_update_users_objects` WHERE `checked_engineer`=0;"
+        return wraper_read(sql)
 
+    def count_app_update_data_object_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_update_users_objects` WHERE `checked_engineer`=1;"
+        return wraper_read(sql)
+
+    def count_app_update_data_object_all(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_update_users_objects` WHERE 1;"
+        return wraper_read(sql)
 # ---------------------------------------------------------------------------------------------------------
 
 

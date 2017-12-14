@@ -14,8 +14,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="57" column="44" lean-forward="true" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+            <state relative-caret-position="578">
+              <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -23,126 +23,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base_views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/base_views.py">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/base/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="265" column="48" lean-forward="true" selection-start-line="265" selection-start-column="48" selection-end-line="265" selection-end-column="48" />
+            <state relative-caret-position="492">
+              <caret line="78" column="66" lean-forward="false" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="66" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#2014#2110#0" expanded="false" />
-                <element signature="e#2129#2224#0" expanded="false" />
-                <element signature="e#3183#3470#0" expanded="false" />
-                <element signature="e#3505#4206#0" expanded="false" />
-                <element signature="e#4238#4746#0" expanded="false" />
-                <element signature="e#4884#4981#0" expanded="false" />
-                <element signature="e#5882#6556#0" expanded="false" />
-                <element signature="e#6588#7500#0" expanded="false" />
-                <element signature="e#7537#8576#0" expanded="false" />
-                <element signature="e#9659#9779#0" expanded="false" />
-                <element signature="e#9923#11643#0" expanded="false" />
-                <element signature="e#11643#11665#0" expanded="false" />
-                <element signature="e#13652#14555#0" expanded="false" />
-                <element signature="e#14578#15984#0" expanded="false" />
-                <element signature="e#16761#17752#0" expanded="false" />
-                <element signature="e#17796#18504#0" expanded="false" />
-                <element signature="e#18543#19314#0" expanded="false" />
-                <element signature="e#19357#19480#0" expanded="false" />
-                <element signature="e#19742#19838#0" expanded="false" />
-                <element signature="e#19867#22200#0" expanded="false" />
-                <element signature="e#22229#22961#0" expanded="false" />
+                <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#3198#3204#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="executor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/executor.py">
+      <file leaf-file-name="body.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/body.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="291" column="31" lean-forward="true" selection-start-line="291" selection-start-column="31" selection-end-line="291" selection-end-column="31" />
-              <folding>
-                <element signature="e#80#109#0" expanded="true" />
-                <element signature="e#289#1939#0" expanded="false" />
-                <element signature="e#1968#2359#0" expanded="false" />
-                <element signature="e#2388#3407#0" expanded="false" />
-                <element signature="e#3443#4261#0" expanded="false" />
-                <element signature="e#4287#5128#0" expanded="false" />
-                <element signature="e#5257#5820#0" expanded="false" />
-                <element signature="e#5948#6286#0" expanded="false" />
-                <element signature="e#6312#7136#0" expanded="false" />
-                <element signature="e#7190#9373#0" expanded="false" />
-                <element signature="e#13502#15173#0" expanded="false" />
-                <element signature="e#15199#16945#0" expanded="false" />
-                <element signature="e#17196#18056#0" expanded="false" />
-                <element signature="e#18091#18419#0" expanded="false" />
-                <element signature="e#18450#19158#0" expanded="false" />
-                <marker date="1513248934772" expanded="true" signature="515:564" ph="SELECT `data... dbo_settings" />
-                <marker date="1513248934772" expanded="true" signature="601:668" ph="SELECT * FRO... dbo_operator_application" />
-                <marker date="1513248934772" expanded="true" signature="724:854" ph="SELECT * FRO... dbo_electrician_application" />
-                <marker date="1513248934772" expanded="true" signature="891:1025" ph="SELECT * FRO... dbo_no_tests" />
-                <marker date="1513248934772" expanded="true" signature="1115:1273" ph="SELECT * FRO... dbo_no_tests" />
-                <marker date="1513248934772" expanded="true" signature="2091:2227" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="2741:3096" ph="INSERT INTO `dbo_operator_application`... " />
-                <marker date="1513248934772" expanded="true" signature="3698:3975" ph="INSERT INTO `dbo_no_tests`... " />
-                <marker date="1513248934772" expanded="true" signature="4369:4484" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="4555:4688" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="4756:4811" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="5307:5332" ph="SELECT * FRO... user_type" />
-                <marker date="1513248934772" expanded="true" signature="5365:5390" ph="SELECT * FRO... dbo_users" />
-                <marker date="1513248934772" expanded="true" signature="5432:5569" ph="SELECT * FRO... dbo_user_application_pc" />
-                <marker date="1513248934772" expanded="true" signature="6040:6163" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="6470:6908" ph="INSERT INTO `dbo_user_application_pc`... " />
-                <marker date="1513248934772" expanded="true" signature="7511:7555" ph="SELECT * FRO... dbo_application_map_for_pult" />
-                <marker date="1513248934772" expanded="true" signature="7511:7613" ph="SELECT * FRO... dbo_application_map_for_pult" />
-                <marker date="1513248934772" expanded="true" signature="7645:7732" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="7645:7734" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="7802:8448" ph="INSERT INTO `dbo_application_map_for_pult`... " />
-                <marker date="1513248934772" expanded="true" signature="8662:8955" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="8662:8958" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="9710:9853" ph="SELECT * FRO... dbo_reports_no_tets_objects" />
-                <marker date="1513248934772" expanded="true" signature="9710:9854" ph="SELECT * FRO... dbo_reports_no_tets_objects" />
-                <marker date="1513248934772" expanded="true" signature="9907:9950" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-                <marker date="1513248934772" expanded="true" signature="9907:9955" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-                <marker date="1513248934772" expanded="true" signature="9907:10187" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-                <marker date="1513248934772" expanded="true" signature="9907:10188" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-                <marker date="1513248934772" expanded="true" signature="10383:10642" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="10383:10644" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="10383:10645" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="10804:10939" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="10804:10941" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="11859:11911" ph="SELECT * FRO... dbo_application_update_users_objects" />
-                <marker date="1513248934772" expanded="true" signature="11954:12425" ph="INSERT INTO `dbo_application_update_users_objects`... " />
-                <marker date="1513248934772" expanded="true" signature="12723:12869" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="13706:13981" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="14274:14618" ph="UPDATE `dbo_... " />
-                <marker date="1513248934772" expanded="true" signature="15239:15306" ph="SELECT * FRO... dbo_operator_application" />
-                <marker date="1513248934772" expanded="true" signature="15406:15489" ph="SELECT COUNT... dbo_user_application_pc" />
-                <marker date="1513248934772" expanded="true" signature="15587:15670" ph="SELECT COUNT... dbo_user_application_pc" />
-                <marker date="1513248934772" expanded="true" signature="15765:15829" ph="SELECT COUNT... dbo_user_application_pc" />
-                <marker date="1513248934772" expanded="true" signature="15937:16021" ph="SELECT COUNT... dbo_operator_application" />
-                <marker date="1513248934772" expanded="true" signature="16126:16210" ph="SELECT COUNT... dbo_operator_application" />
-                <marker date="1513248934772" expanded="true" signature="16311:16376" ph="SELECT COUNT... dbo_operator_application" />
-                <marker date="1513248934772" expanded="true" signature="16475:16563" ph="SELECT COUNT... dbo_application_map_for_pult" />
-                <marker date="1513248934772" expanded="true" signature="16659:16747" ph="SELECT COUNT... dbo_application_map_for_pult" />
-                <marker date="1513248934772" expanded="true" signature="16839:16908" ph="SELECT COUNT... dbo_application_map_for_pult" />
-                <marker date="1513248934772" expanded="true" signature="17410:17576" ph="INSERT INTO `dbo_users`... " />
-                <marker date="1513248934772" expanded="true" signature="18200:18305" ph="INSERT INTO `user_type`... " />
-                <marker date="1513248934772" expanded="true" signature="18532:18580" ph="DELETE FROM " />
-                <marker date="1513248934772" expanded="true" signature="18643:18733" ph="DELETE FROM " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_update_object_users.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/users/users_update_object_users.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="75" column="48" lean-forward="true" selection-start-line="75" selection-start-column="48" selection-end-line="75" selection-end-column="48" />
-              <folding>
-                <element signature="e#6817#10407#0#HTML" expanded="false" />
-              </folding>
+            <state relative-caret-position="288">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -185,7 +88,6 @@
         <option value="$PROJECT_DIR$/folder_upload.py" />
         <option value="$PROJECT_DIR$/new.py" />
         <option value="$PROJECT_DIR$/templates/engineer/left_engineer_menu_buttons.html" />
-        <option value="$PROJECT_DIR$/templates/engineer/engineer_update_object_users.html" />
         <option value="$PROJECT_DIR$/templates/engineer/engineer_application_operaor.html" />
         <option value="$PROJECT_DIR$/templates/users/users_operational_map.html" />
         <option value="$PROJECT_DIR$/templates/operator/left_operator_menu_buttons.html" />
@@ -193,17 +95,19 @@
         <option value="$PROJECT_DIR$/templates/errors/500.html" />
         <option value="$PROJECT_DIR$/templates/errors/404.html" />
         <option value="$PROJECT_DIR$/templates/errors/400.html" />
-        <option value="$PROJECT_DIR$/templates/engineer/engineer.html" />
         <option value="$PROJECT_DIR$/templates/users/users_application_pc.html" />
-        <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/templates/engineer/engineer_test.html" />
         <option value="$PROJECT_DIR$/templates/engineer/engineer_operational_map.html" />
-        <option value="$PROJECT_DIR$/static/css/body.css" />
         <option value="$PROJECT_DIR$/templates/operator/operator.html" />
-        <option value="$PROJECT_DIR$/templates/base/base.html" />
         <option value="$PROJECT_DIR$/views/executor.py" />
         <option value="$PROJECT_DIR$/views/base_views.py" />
+        <option value="$PROJECT_DIR$/templates/engineer/engineer.html" />
         <option value="$PROJECT_DIR$/templates/users/users_update_object_users.html" />
+        <option value="$PROJECT_DIR$/templates/engineer/engineer_update_object_users.html" />
+        <option value="$PROJECT_DIR$/__init__.py" />
+        <option value="$PROJECT_DIR$/templates/signin.html" />
+        <option value="$PROJECT_DIR$/static/css/body.css" />
+        <option value="$PROJECT_DIR$/templates/base/base.html" />
       </list>
     </option>
   </component>
@@ -213,7 +117,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="y" value="-1" />
     <option name="width" value="1922" />
@@ -234,7 +138,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -251,12 +154,25 @@
             <path>
               <item name="FlaskApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="FlaskApp" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlaskApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlaskApp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlaskApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlaskApp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -317,20 +233,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-1" width="1282" height="1006" extended-state="7" />
-    <editor active="true" />
+    <frame x="-1" y="-1" width="1282" height="1006" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31171876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -351,7 +266,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.115625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -385,11 +300,6 @@
           <url>file://$PROJECT_DIR$/views/executor.py</url>
           <line>273</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/views/base_views.py</url>
-          <line>460</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="15" />
@@ -468,18 +378,17 @@
             <element signature="e#5882#6556#0" expanded="false" />
             <element signature="e#6588#7500#0" expanded="false" />
             <element signature="e#7537#8576#0" expanded="false" />
-            <element signature="e#9659#9779#0" expanded="false" />
-            <element signature="e#9923#11643#0" expanded="false" />
-            <element signature="e#11643#11665#0" expanded="false" />
-            <element signature="e#13652#14555#0" expanded="false" />
-            <element signature="e#14578#15984#0" expanded="false" />
-            <element signature="e#16761#17752#0" expanded="false" />
-            <element signature="e#17796#18504#0" expanded="false" />
-            <element signature="e#18543#19314#0" expanded="false" />
-            <element signature="e#19357#19480#0" expanded="false" />
-            <element signature="e#19742#19838#0" expanded="false" />
-            <element signature="e#19867#22200#0" expanded="false" />
-            <element signature="e#22229#22961#0" expanded="false" />
+            <element signature="e#10057#10177#0" expanded="false" />
+            <element signature="e#10321#12041#0" expanded="false" />
+            <element signature="e#12041#12063#0" expanded="false" />
+            <element signature="e#14050#14953#0" expanded="false" />
+            <element signature="e#16789#17526#0" expanded="false" />
+            <element signature="e#18588#19296#0" expanded="false" />
+            <element signature="e#19335#20106#0" expanded="false" />
+            <element signature="e#20149#20862#0" expanded="false" />
+            <element signature="e#21123#21219#0" expanded="false" />
+            <element signature="e#21248#23581#0" expanded="false" />
+            <element signature="e#23610#24342#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -501,14 +410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer_update_object_users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -632,22 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer_application_operaor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="54" column="86" lean-forward="true" selection-start-line="54" selection-start-column="86" selection-end-line="54" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/errors/500.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
@@ -671,26 +556,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer_application_pc_users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="65" column="82" lean-forward="false" selection-start-line="65" selection-start-column="82" selection-end-line="65" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/users/users.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/signin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -720,18 +590,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/body.css">
+    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer_application_operaor.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        <state relative-caret-position="576">
+          <caret line="54" column="86" lean-forward="true" selection-start-line="54" selection-start-column="86" selection-end-line="54" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer_application_pc_users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="65" column="82" lean-forward="false" selection-start-line="65" selection-start-column="82" selection-end-line="65" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/engineer/engineer_update_object_users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+          <folding>
+            <element signature="e#734#760#0#HTML" expanded="true" />
+            <element signature="e#775#815#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/users/users_update_object_users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-619">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="34" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/executor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="291" column="31" lean-forward="true" selection-start-line="291" selection-start-column="31" selection-end-line="291" selection-end-column="31" />
+        <state relative-caret-position="573">
+          <caret line="406" column="8" lean-forward="false" selection-start-line="406" selection-start-column="8" selection-end-line="406" selection-end-column="40" />
           <folding>
             <element signature="e#80#109#0" expanded="true" />
             <element signature="e#289#1939#0" expanded="false" />
@@ -743,82 +648,76 @@
             <element signature="e#5948#6286#0" expanded="false" />
             <element signature="e#6312#7136#0" expanded="false" />
             <element signature="e#7190#9373#0" expanded="false" />
-            <element signature="e#13502#15173#0" expanded="false" />
-            <element signature="e#15199#16945#0" expanded="false" />
-            <element signature="e#17196#18056#0" expanded="false" />
-            <element signature="e#18091#18419#0" expanded="false" />
-            <element signature="e#18450#19158#0" expanded="false" />
-            <marker date="1513248934772" expanded="true" signature="515:564" ph="SELECT `data... dbo_settings" />
-            <marker date="1513248934772" expanded="true" signature="601:668" ph="SELECT * FRO... dbo_operator_application" />
-            <marker date="1513248934772" expanded="true" signature="724:854" ph="SELECT * FRO... dbo_electrician_application" />
-            <marker date="1513248934772" expanded="true" signature="891:1025" ph="SELECT * FRO... dbo_no_tests" />
-            <marker date="1513248934772" expanded="true" signature="1115:1273" ph="SELECT * FRO... dbo_no_tests" />
-            <marker date="1513248934772" expanded="true" signature="2091:2227" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="2741:3096" ph="INSERT INTO `dbo_operator_application`... " />
-            <marker date="1513248934772" expanded="true" signature="3698:3975" ph="INSERT INTO `dbo_no_tests`... " />
-            <marker date="1513248934772" expanded="true" signature="4369:4484" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="4555:4688" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="4756:4811" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="5307:5332" ph="SELECT * FRO... user_type" />
-            <marker date="1513248934772" expanded="true" signature="5365:5390" ph="SELECT * FRO... dbo_users" />
-            <marker date="1513248934772" expanded="true" signature="5432:5569" ph="SELECT * FRO... dbo_user_application_pc" />
-            <marker date="1513248934772" expanded="true" signature="6040:6163" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="6470:6908" ph="INSERT INTO `dbo_user_application_pc`... " />
-            <marker date="1513248934772" expanded="true" signature="7511:7555" ph="SELECT * FRO... dbo_application_map_for_pult" />
-            <marker date="1513248934772" expanded="true" signature="7511:7613" ph="SELECT * FRO... dbo_application_map_for_pult" />
-            <marker date="1513248934772" expanded="true" signature="7645:7732" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="7645:7734" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="7802:8448" ph="INSERT INTO `dbo_application_map_for_pult`... " />
-            <marker date="1513248934772" expanded="true" signature="8662:8955" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="8662:8958" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="9710:9853" ph="SELECT * FRO... dbo_reports_no_tets_objects" />
-            <marker date="1513248934772" expanded="true" signature="9710:9854" ph="SELECT * FRO... dbo_reports_no_tets_objects" />
-            <marker date="1513248934772" expanded="true" signature="9907:9950" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-            <marker date="1513248934772" expanded="true" signature="9907:9955" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-            <marker date="1513248934772" expanded="true" signature="9907:10187" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-            <marker date="1513248934772" expanded="true" signature="9907:10188" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
-            <marker date="1513248934772" expanded="true" signature="10383:10642" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="10383:10644" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="10383:10645" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="10804:10939" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="10804:10941" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="11859:11911" ph="SELECT * FRO... dbo_application_update_users_objects" />
-            <marker date="1513248934772" expanded="true" signature="11954:12425" ph="INSERT INTO `dbo_application_update_users_objects`... " />
-            <marker date="1513248934772" expanded="true" signature="12723:12869" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="13706:13981" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="14274:14618" ph="UPDATE `dbo_... " />
-            <marker date="1513248934772" expanded="true" signature="15239:15306" ph="SELECT * FRO... dbo_operator_application" />
-            <marker date="1513248934772" expanded="true" signature="15406:15489" ph="SELECT COUNT... dbo_user_application_pc" />
-            <marker date="1513248934772" expanded="true" signature="15587:15670" ph="SELECT COUNT... dbo_user_application_pc" />
-            <marker date="1513248934772" expanded="true" signature="15765:15829" ph="SELECT COUNT... dbo_user_application_pc" />
-            <marker date="1513248934772" expanded="true" signature="15937:16021" ph="SELECT COUNT... dbo_operator_application" />
-            <marker date="1513248934772" expanded="true" signature="16126:16210" ph="SELECT COUNT... dbo_operator_application" />
-            <marker date="1513248934772" expanded="true" signature="16311:16376" ph="SELECT COUNT... dbo_operator_application" />
-            <marker date="1513248934772" expanded="true" signature="16475:16563" ph="SELECT COUNT... dbo_application_map_for_pult" />
-            <marker date="1513248934772" expanded="true" signature="16659:16747" ph="SELECT COUNT... dbo_application_map_for_pult" />
-            <marker date="1513248934772" expanded="true" signature="16839:16908" ph="SELECT COUNT... dbo_application_map_for_pult" />
-            <marker date="1513248934772" expanded="true" signature="17410:17576" ph="INSERT INTO `dbo_users`... " />
-            <marker date="1513248934772" expanded="true" signature="18200:18305" ph="INSERT INTO `user_type`... " />
-            <marker date="1513248934772" expanded="true" signature="18532:18580" ph="DELETE FROM " />
-            <marker date="1513248934772" expanded="true" signature="18643:18733" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="57" column="44" lean-forward="true" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#13915#15586#0" expanded="false" />
+            <element signature="e#18272#19132#0" expanded="false" />
+            <element signature="e#19167#19495#0" expanded="false" />
+            <element signature="e#19526#20234#0" expanded="false" />
+            <marker date="1513260919540" expanded="true" signature="515:564" ph="SELECT `data... dbo_settings" />
+            <marker date="1513260919540" expanded="true" signature="601:668" ph="SELECT * FRO... dbo_operator_application" />
+            <marker date="1513260919540" expanded="true" signature="724:854" ph="SELECT * FRO... dbo_electrician_application" />
+            <marker date="1513260919540" expanded="true" signature="891:1025" ph="SELECT * FRO... dbo_no_tests" />
+            <marker date="1513260919540" expanded="true" signature="1115:1273" ph="SELECT * FRO... dbo_no_tests" />
+            <marker date="1513260919540" expanded="true" signature="2091:2227" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="2741:3096" ph="INSERT INTO `dbo_operator_application`... " />
+            <marker date="1513260919540" expanded="true" signature="3698:3975" ph="INSERT INTO `dbo_no_tests`... " />
+            <marker date="1513260919540" expanded="true" signature="4369:4484" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="4555:4688" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="4756:4811" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="5307:5332" ph="SELECT * FRO... user_type" />
+            <marker date="1513260919540" expanded="true" signature="5365:5390" ph="SELECT * FRO... dbo_users" />
+            <marker date="1513260919540" expanded="true" signature="5432:5569" ph="SELECT * FRO... dbo_user_application_pc" />
+            <marker date="1513260919540" expanded="true" signature="6040:6163" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="6470:6908" ph="INSERT INTO `dbo_user_application_pc`... " />
+            <marker date="1513260919540" expanded="true" signature="7511:7555" ph="SELECT * FRO... dbo_application_map_for_pult" />
+            <marker date="1513260919540" expanded="true" signature="7511:7613" ph="SELECT * FRO... dbo_application_map_for_pult" />
+            <marker date="1513260919540" expanded="true" signature="7645:7732" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="7645:7734" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="7802:8448" ph="INSERT INTO `dbo_application_map_for_pult`... " />
+            <marker date="1513260919540" expanded="true" signature="8662:8955" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="8662:8958" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="9710:9853" ph="SELECT * FRO... dbo_reports_no_tets_objects" />
+            <marker date="1513260919540" expanded="true" signature="9710:9854" ph="SELECT * FRO... dbo_reports_no_tets_objects" />
+            <marker date="1513260919540" expanded="true" signature="9907:9950" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
+            <marker date="1513260919540" expanded="true" signature="9907:9955" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
+            <marker date="1513260919540" expanded="true" signature="9907:10187" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
+            <marker date="1513260919540" expanded="true" signature="9907:10188" ph="INSERT INTO `dbo_reports_no_tets_objects`... " />
+            <marker date="1513260919540" expanded="true" signature="10383:10642" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="10383:10644" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="10383:10645" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="10804:10939" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="10804:10941" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="11859:11911" ph="SELECT * FRO... dbo_application_update_users_objects" />
+            <marker date="1513260919540" expanded="true" signature="11859:11942" ph="SELECT * FRO... dbo_application_update_users_objects" />
+            <marker date="1513260919540" expanded="true" signature="11985:12456" ph="INSERT INTO `dbo_application_update_users_objects`... " />
+            <marker date="1513260919540" expanded="true" signature="12710:12985" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="13136:13282" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="14119:14394" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="14687:15031" ph="UPDATE `dbo_... " />
+            <marker date="1513260919540" expanded="true" signature="15652:15719" ph="SELECT * FRO... dbo_operator_application" />
+            <marker date="1513260919540" expanded="true" signature="15837:15920" ph="SELECT COUNT... dbo_user_application_pc" />
+            <marker date="1513260919540" expanded="true" signature="16018:16101" ph="SELECT COUNT... dbo_user_application_pc" />
+            <marker date="1513260919540" expanded="true" signature="16196:16260" ph="SELECT COUNT... dbo_user_application_pc" />
+            <marker date="1513260919540" expanded="true" signature="16391:16475" ph="SELECT COUNT... dbo_operator_application" />
+            <marker date="1513260919540" expanded="true" signature="16580:16664" ph="SELECT COUNT... dbo_operator_application" />
+            <marker date="1513260919540" expanded="true" signature="16765:16830" ph="SELECT COUNT... dbo_operator_application" />
+            <marker date="1513260919540" expanded="true" signature="16951:17039" ph="SELECT COUNT... dbo_application_map_for_pult" />
+            <marker date="1513260919540" expanded="true" signature="17135:17223" ph="SELECT COUNT... dbo_application_map_for_pult" />
+            <marker date="1513260919540" expanded="true" signature="17315:17384" ph="SELECT COUNT... dbo_application_map_for_pult" />
+            <marker date="1513260919540" expanded="true" signature="17515:17611" ph="SELECT COUNT... dbo_application_update_users_objects" />
+            <marker date="1513260919540" expanded="true" signature="17714:17810" ph="SELECT COUNT... dbo_application_update_users_objects" />
+            <marker date="1513260919540" expanded="true" signature="17909:17986" ph="SELECT COUNT... dbo_application_update_users_objects" />
+            <marker date="1513260919540" expanded="true" signature="18486:18652" ph="INSERT INTO `dbo_users`... " />
+            <marker date="1513260919540" expanded="true" signature="19276:19381" ph="INSERT INTO `user_type`... " />
+            <marker date="1513260919540" expanded="true" signature="19608:19656" ph="DELETE FROM " />
+            <marker date="1513260919540" expanded="true" signature="19719:19809" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/base_views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="265" column="48" lean-forward="true" selection-start-line="265" selection-start-column="48" selection-end-line="265" selection-end-column="48" />
+        <state relative-caret-position="3870">
+          <caret line="412" column="0" lean-forward="true" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#2014#2110#0" expanded="false" />
@@ -830,39 +729,63 @@
             <element signature="e#5882#6556#0" expanded="false" />
             <element signature="e#6588#7500#0" expanded="false" />
             <element signature="e#7537#8576#0" expanded="false" />
-            <element signature="e#9659#9779#0" expanded="false" />
-            <element signature="e#9923#11643#0" expanded="false" />
-            <element signature="e#11643#11665#0" expanded="false" />
-            <element signature="e#13652#14555#0" expanded="false" />
-            <element signature="e#14578#15984#0" expanded="false" />
-            <element signature="e#16761#17752#0" expanded="false" />
-            <element signature="e#17796#18504#0" expanded="false" />
-            <element signature="e#18543#19314#0" expanded="false" />
-            <element signature="e#19357#19480#0" expanded="false" />
-            <element signature="e#19742#19838#0" expanded="false" />
-            <element signature="e#19867#22200#0" expanded="false" />
-            <element signature="e#22229#22961#0" expanded="false" />
+            <element signature="e#10057#10177#0" expanded="false" />
+            <element signature="e#10321#12041#0" expanded="false" />
+            <element signature="e#12041#12063#0" expanded="false" />
+            <element signature="e#14050#14953#0" expanded="false" />
+            <element signature="e#16789#17526#0" expanded="false" />
+            <element signature="e#18588#19296#0" expanded="false" />
+            <element signature="e#19335#20106#0" expanded="false" />
+            <element signature="e#20149#20862#0" expanded="false" />
+            <element signature="e#21123#21219#0" expanded="false" />
+            <element signature="e#21248#23581#0" expanded="false" />
+            <element signature="e#23610#24342#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/body.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="61" column="58" lean-forward="false" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
+        <state relative-caret-position="492">
+          <caret line="78" column="66" lean-forward="false" selection-start-line="78" selection-start-column="66" selection-end-line="78" selection-end-column="66" />
           <folding>
+            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/users/users_update_object_users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="75" column="48" lean-forward="true" selection-start-line="75" selection-start-column="48" selection-end-line="75" selection-end-column="48" />
-          <folding>
-            <element signature="e#6817#10407#0#HTML" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3198#3204#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

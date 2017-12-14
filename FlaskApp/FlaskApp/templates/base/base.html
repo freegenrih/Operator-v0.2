@@ -16,7 +16,7 @@
 
 <body>
 
-<footer class="container-fluid text-center">
+<header class="container-fluid text-center">
     {% if type_footer=='Admin' %}
         {% include 'base/base_footer_admin.html' %}
     {% elif type_footer=='Engineer' %}
@@ -28,7 +28,8 @@
     {% endif %}
     {% block footer %}
     {% endblock %}
-</footer>
+</header>
+
 <div class="wraper">
     <div class="left-menu">
         <div class="panel panel-primary">
@@ -37,7 +38,7 @@
                     <script src="{{ url_for('static', filename='js/time.js') }}"></script>
                 </div>
             </div>
-            <div class="panel-body" style="min-height: 850px;">
+            <div class="panel-body" style="min-height: 825px;">
                 {% block leftmenu %}{% endblock leftmenu %}
             </div>
         </div>
@@ -47,7 +48,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 {% block centermenuhead %}{% endblock centermenuhead %}</div>
-            <div class="panel-body" style="min-height: 850px;">
+            <div class="panel-body" style="min-height: 825px;">
                 {% block centermenu %}{% endblock centermenu %}
             </div>
         </div>
@@ -59,7 +60,7 @@
                 {% block rightmenuhead %}
                 {% endblock rightmenuhead %}
             </div>
-            <div class="panel-body" style="min-height: 850px;">
+            <div class="panel-body" style="min-height: 825px;">
                 <div class="text-center">
                     <div class="alert alert-info" title="Имя Пользователя">
                         {% if user %}
@@ -75,10 +76,15 @@
 
 </div>
 
-
-
-
-
+<footer class="container-fluid text-center" style="margin-top: 890px; padding-left: 0px; padding-right: 0px; ">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="container">
+                <p class="m-0  text-white" style="font-size: 20px;">&copy; GHR Control Systems 2017</p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 </body>

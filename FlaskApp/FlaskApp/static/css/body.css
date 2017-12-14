@@ -1,4 +1,6 @@
-
+.body{
+    background-color: #C2CEEE;
+}
 .glyphicon {
     font-size: 30px;
 }
@@ -10,7 +12,7 @@
 .left-menu{
 
     height: 100%;
-    width: 13%;
+    width: 14%;
     float:left;
     border-radius:5px;
 }
@@ -18,7 +20,7 @@
 .center-menu{
 
     height: 100%;
-    width: 74%;
+    width: 73%;
     float:left;
     border-radius:5px;
     padding-left:2px;
@@ -41,7 +43,6 @@
 }
 
 #errors{
-
     border-color:red;
     border-style: solid;
     height: 100%;

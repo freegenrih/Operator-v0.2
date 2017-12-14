@@ -256,16 +256,23 @@ def users_operational_map():
 def users_update_object_users():
     if request.method == 'POST':
         print(request.form['submit'])
-        if request.form['submit']== 'delete':
-            print("delete object data for id=",request.form['optradio'])
-            UpdateObjectsData(id=request.form['optradio']).delete_object_data()
+
+        if request.form['submit']=='create_note':
+            print(request.form['object_number'])
+            print(request.form['object_name'])
+            print(request.form['object_address'])
+            print(request.form['message'])
+            UpdateObjectsData(username=get_sesion_user(),
+                              object_number=request.form['object_number'],
+                              name_object=request.form['object_name'],
+                              address_object=request.form['object_address'],
+                              message_object=request.form['message']
+                              ).create_object_data()
             return redirect(url_for('users_update_object_users'))
 
-        elif request.form['submit']=='create_note':
-            print(request.form['object_number'])
-            # print(request.form['object_name'])
-            # print(request.form['object_address'])
-            # print(request.form['message'])
+        elif request.form['submit']== 'delete':
+            print("delete object data for id=",request.form['optradio'])
+            UpdateObjectsData(id=request.form['optradio']).delete_object_data()
             return redirect(url_for('users_update_object_users'))
         else:
             return redirect(url_for('users_update_object_users'))
@@ -399,6 +406,9 @@ def engineer():
                                count_application_map_no_checked =EngineerGet().count_application_map_no_checked(),
                                count_application_map_checked =EngineerGet().count_application_map_checked(),
                                count_application_map_all =EngineerGet().count_application_map_all(),
+                               count_app_update_data_object_no_checked=EngineerGet().count_app_update_data_object_no_checked(),
+                               count_app_update_data_object_checked=EngineerGet().count_app_update_data_object_checked(),
+                               count_app_update_data_object_all=EngineerGet().count_app_update_data_object_all()
                                )
 
 
@@ -414,8 +424,8 @@ def engineer_application_operator():
     else:
         return render_template('engineer/engineer_application_operaor.html',
                                application_engineer=EngineerGet().get_list_note(),
-                               user=get_sesion_user(),type_footer=get_sesion_user())
-
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user())
 
 def engineer_test():
     if request.method == 'POST':
@@ -477,7 +487,22 @@ def engineer_operational_map():
 
 
 def engineer_update_object_users():
-    return render_template("engineer/engineer_update_object_users.html", user=get_sesion_user(), type_footer=get_sesion_user())
+    if request.method == 'POST':
+        if request.form['submit']=='update':
+            print("update",request.form['optradio'])
+            UpdateObjectsData(id = request.form['optradio'], username = get_sesion_user()).update_object_data()
+            return redirect(url_for('engineer_update_object_users'))
+        else:
+            return redirect(url_for('engineer_update_object_users'))
+
+
+    else:
+        return render_template("engineer/engineer_update_object_users.html",
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user(),
+                               objects_data=UpdateObjectsData().get_object_data()
+                               )
+
 # ---------------------------------------------End Engineer-------------------------------------------------------------
 
 
