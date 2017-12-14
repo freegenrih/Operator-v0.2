@@ -44,30 +44,33 @@
                                 <h4 class="modal-title">Обновление Х.О. На ПЦН </h4>
                             </div>
                             <div class="modal-body">
-                                <form method="post" action="{{ url_for('users_application_pc') }}">
+                                <form method="post" action="{{ url_for('users_update_object_users') }}">
                                     <div class="form-group">
                                         <label for="object_number">Ввести номер объекта:</label>
-                                        <input id="object_number" class="form-control text-center" type="number" min="0" name="object" placeholder="Номер объекта" required>
+                                        <input id="object_number" class="form-control text-center" type="number" min="0"
+                                               name="object" placeholder="Номер объекта " required>
                                     </div>
                                     <div class="form-group">
                                         <label for="object_name">Ввести название объекта:</label>
-                                        <input id="object_name" class="form-control text-center" type="text" name="object_name" placeholder="Название объекта"  size="30" required>
+                                        <input id="object_name" class="form-control text-center" type="text"
+                                               name="object_name" placeholder="Название объекта" size="30" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="object_address">Ввести адрес объекта:</label>
-                                        <input type="text" class="form-control text-center" name="object_address" placeholder="Адрес объекта" size="30"required>
+                                        <input type="text" class="form-control text-center" name="object_address"
+                                               placeholder="Адрес объекта" size="30" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="message">Ввести данные ответственных объекта:</label>
                                         <textarea id="message" type="text" name="message" rows="10" cols="70"
-                                        placeholder="Данные для ПЦН
+                                                  placeholder="Данные для ПЦН
 Фамилия Имя Отчество
 Должность
 к.т.+380670001122"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label style="padding-left: 2px; padding-top: 6px;">
-                                            <input type="radio" name="optradio" value="" required
+                                            <input type="radio"  required
                                                    title="Кликнуть для потверждения">Согласен(а) с
                                             <ins>условиями внесения данных</ins>
                                         </label>
@@ -104,14 +107,75 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% if users_application_pc %}
-                    {% for row in users_application_pc %}
-                        <form method="post" action="{{ url_for('users_application_pc') }}">
+                {% if objects_data %}
+                    {{ objects_data }}
+                    {% for row in objects_data %}
+                        <form method="post" action="{{ url_for('users_update_object_users') }}">
                             <tr class="success">
-                                <td class="text-center" width="12%"><strong>{{ row.date_of_creation }}</strong></td>
-                                <td class="text-center" width="10%"><strong>{{ row.name_user_creation_app }}</strong>
+                                <td class="text-center" width="12%"><strong>
+                                    {{ row.date_of_creation }}
+                                </strong></td>
+                                <td class="text-center" width="10%"><strong>
+                                    {{ row.username_creation }}
+                                </strong>
                                 </td>
-                                <td class="text-center" width="67%"><strong>{{ row.message }}</strong></td>
+                                <td class="text-center" width="67%">
+                                    <btn class="btn btn-warning " data-toggle="modal" data-target="#distally"
+                                         title="Подробнее о заявке...">Подробнее...
+                                    </btn>
+                                    {#       Modal   app objects users #}
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="distally" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                                    </button>
+                                                    <h4 class="modal-title">Обновить информацию по Х.О. на
+                                                        объекте: </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Объект№</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.object_number }}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Название</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.name_object }}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Адрес</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.address_object }}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Новые данные</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.message_object }}
+                                                            </th>
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Закрыть
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {#       End Modal app objects users#}
+                                </td>
                                 <td class="text-center" width="5%">
                                     <label style="padding-left: 2px; padding-top: 6px;">
                                         <input type="radio" name="optradio" value="{{ row.id }}" required
@@ -131,7 +195,6 @@
             </table>
         </div>
     </div>
-
 {% endblock centermenu %}
 
 {% block rightmenuhead %}

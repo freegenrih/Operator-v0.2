@@ -24,7 +24,8 @@ from views.executor import (EngineerGet,
                             UsersDel,
                             UsersCreate,
                             OperMap,
-                            ObjectsNoTests
+                            ObjectsNoTests,
+                            UpdateObjectsData
                             )
 
 from Settings_app import (KEY,
@@ -253,7 +254,29 @@ def users_operational_map():
 
 
 def users_update_object_users():
-    return render_template("users/users_update_object_users.html", user=get_sesion_user(), type_footer=get_sesion_user())
+    if request.method == 'POST':
+        print(request.form['submit'])
+        if request.form['submit']== 'delete':
+            print("delete object data for id=",request.form['optradio'])
+            UpdateObjectsData(id=request.form['optradio']).delete_object_data()
+            return redirect(url_for('users_update_object_users'))
+
+        elif request.form['submit']=='create_note':
+            print(request.form['object_number'])
+            # print(request.form['object_name'])
+            # print(request.form['object_address'])
+            # print(request.form['message'])
+            return redirect(url_for('users_update_object_users'))
+        else:
+            return redirect(url_for('users_update_object_users'))
+
+    else:
+        return render_template("users/users_update_object_users.html",
+                               user=get_sesion_user(),
+                               type_footer=get_sesion_user(),
+                               objects_data=UpdateObjectsData().get_object_data()
+                               )
+
 
 
 # -----------------------------------------------End Users--------------------------------------------------------------

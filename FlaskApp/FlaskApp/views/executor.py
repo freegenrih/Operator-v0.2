@@ -1,3 +1,4 @@
+# тут пипец что начало твориться такой Быдлокодище Июня что повеситься можно :)
 from datetime import datetime
 
 from sqlrw import wraper_write, wraper_read
@@ -269,6 +270,49 @@ class ObjectsNoTests:
     def delete_report_no_test_objects(self):
         return wraper_write(self.sql_delete_report_no_test_object)
 
+# обновление данных ХО на объектах
+class UpdateObjectsData:
+    def __init__(self, id=None, username=None, object_number=None, name_object=None, address_object=None, message_object=None):
+        self.id = id
+        self.username = username
+        self.object_number = object_number
+        self.name_object = name_object
+        self.address_object = address_object
+        self.message_object = message_object
+
+        self.sql_get_object_datas ="SELECT * FROM `dbo_application_update_users_objects`;"
+
+        self.sql_create_object_datas ="INSERT INTO `dbo_application_update_users_objects` (" \
+                                      "`id`, `date_of_creation`, `username_creation`, `object_number`, `name_object`," \
+                                      " `address_object`, `message_object`, `checked_engineer`, `date_of_completion`, " \
+                                      "`name_engineer_completion`) " \
+                                      "VALUES (NULL, '{}', '{}', '{}', '{}', '{}', '{}', '0', '', '');".format(
+            str(datetime.now())[0:-7],
+            self.username,
+            self.object_number,
+            self.name_object,
+            self.address_object,
+            self.message_object
+
+        )
+
+        self.sql_update_object_datas =";"
+
+        self.sql_delete_object_datas ="DELETE FROM `dbo_application_update_users_objects` " \
+                                      "WHERE `dbo_application_update_users_objects`.`id` = {};".format(self.id)
+
+
+    def get_object_data(self):
+        return wraper_read(self.sql_get_object_datas)
+
+    def create_object_data(self):
+        return wraper_write(self.sql_create_object_datas)
+
+    def update_object_data(self):
+        return wraper_write(self.sql_update_object_datas)
+
+    def delete_object_data(self):
+        return wraper_write(self.sql_delete_object_datas)
 
 # ---------------------------------------------------------------------------------------------------------
 
