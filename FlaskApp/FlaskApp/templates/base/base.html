@@ -17,13 +17,13 @@
 <body>
 
 <header class="container-fluid text-center">
-    {% if type_footer=='Admin' %}
+    {% if type_footer=='Администратор' %}
         {% include 'base/base_footer_admin.html' %}
-    {% elif type_footer=='Engineer' %}
+    {% elif type_footer=='Инженер' %}
         {% include 'base/base_footer_engineer.html' %}
-    {% elif type_footer=='Operator' %}
+    {% elif type_footer=='Оператор' %}
         {% include 'base/base_footer_operator.html' %}
-    {% elif type_footer=='User' %}
+    {% elif type_footer=='Пользователь' %}
         {% include 'base/base_footer_user.html' %}
     {% endif %}
     {% block footer %}

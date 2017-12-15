@@ -25,7 +25,8 @@ from views.executor import (EngineerGet,
                             UsersCreate,
                             OperMap,
                             ObjectsNoTests,
-                            UpdateObjectsData
+                            UpdateObjectsData,
+                            ValidateSignIn
                             )
 
 from Settings_app import (KEY,
@@ -57,6 +58,15 @@ def type_user():
     return UsersGet().get_type_user()
 
 
+def get_user_type():
+    # Get user sesion
+    if escape(session['user_type']):
+        user_type = escape(session['user_type'])
+    else:
+        user_type = 'None'
+    return user_type
+
+
 def get_sesion_user():
     # Get user sesion
     if escape(session['username']):
@@ -78,31 +88,45 @@ def logout():
 
 
 def info():
-    return render_template('info/info.html', user=get_sesion_user(), type_footer=get_sesion_user())
+    return render_template('info/info.html', user=get_sesion_user(), type_footer=get_user_type())
 
 
 def semple_page_signin():
     if request.method == 'POST':
+        row=ValidateSignIn(login=request.form['user_name'],
+                       passwprd=request.form['user_password'],
+                       ).validate_form()
+        # print(row)
+        if row != 'False':
+            print(row['user_type'])
+            # redirect page operator
+            if row['user_type'] == 'Оператор':
+                session['username'] = request.form['user_name']
+                session['user_type'] = row['user_type']
+                return redirect(url_for('operator'))
 
-        # redirect page operator
-        if request.form['user_type'] == 'Оператор':
-            session['username'] = request.form['user_name']
-            return redirect(url_for('operator'))
+            # redirect page admin
+            elif row['user_type'] == 'Администратор':
+                session['username'] = request.form['user_name']
+                session['user_type'] = row['user_type']
+                return redirect(url_for('admin'))
 
-        # redirect page admin
-        elif request.form['user_type'] == 'Администратор':
-            session['username'] = request.form['user_name']
-            return redirect(url_for('admin'))
+            # redirect page engineer
+            elif row['user_type'] == 'Инженер':
+                session['username'] = request.form['user_name']
+                session['user_type'] = row['user_type']
+                return redirect(url_for('engineer'))
 
-        # redirect page engineer
-        elif request.form['user_type'] == 'Инженер':
-            session['username'] = request.form['user_name']
-            return redirect(url_for('engineer'))
+            # redirect page users
+            elif row['user_type'] == 'Пользователь':
+                session['username'] = request.form['user_name']
+                session['user_type'] = row['user_type']
+                return  redirect(url_for('users'))
 
-        # redirect page users
-        elif request.form['user_type'] == 'Пользователь':
-            session['username'] = request.form['user_name']
-            return  redirect(url_for('users'))
+            else:
+                redirect(url_for('signin'))
+        else:
+            return redirect(url_for('signin'))
 
     # redirect page signin
     else:
@@ -159,7 +183,7 @@ def semple_page_users():
 
 # -------------------------------------------------Users----------------------------------------------------------------
 def users():
-    return render_template('users/users.html', user=get_sesion_user(), type_footer=get_sesion_user())
+    return render_template('users/users.html', user=get_sesion_user(), type_footer=get_user_type())
 
 
 def users_application_pc():
@@ -177,7 +201,7 @@ def users_application_pc():
     else:
         return render_template('users/users_application_pc.html',
                            user=get_sesion_user(),
-                           type_footer=get_sesion_user(),
+                           type_footer=get_user_type(),
                            users_application_pc=UsersGet().get_application_pc()
                            )
 
@@ -195,7 +219,7 @@ def report_tests():
     else:
         return render_template('users/report_tests.html',
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user(),
+                               type_footer=get_user_type(),
                                list_no_test=ObjectsNoTests().get_report_no_tests_objects(),
                                list_files=os.listdir(UPLOAD_FOLDER_NO_TEST)
                                )
@@ -248,7 +272,7 @@ def users_operational_map():
     else:
         return render_template("users/users_operational_map.html",
                            user=get_sesion_user(),
-                           type_footer=get_sesion_user(),
+                           type_footer=get_user_type(),
                            list_files=os.listdir(app.config['UPLOAD_FOLDER']),
                            list_map=OperMap().get_map()
                            )
@@ -281,7 +305,7 @@ def users_update_object_users():
     else:
         return render_template("users/users_update_object_users.html",
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user(),
+                               type_footer=get_user_type(),
                                objects_data=UpdateObjectsData().get_object_data()
                                )
 
@@ -322,7 +346,7 @@ def operator():
         return render_template('operator/operator.html',
                                application_operator=OperatorGet().get_list_note(),
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user())
+                               type_footer=get_user_type())
 
 
 # def operator_test():
@@ -397,7 +421,7 @@ def engineer():
         return render_template('engineer/engineer.html',
                                application_engineer=EngineerGet().get_list_note(),
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user(),
+                               type_footer=get_user_type(),
                                count_application_pc_no_checed=EngineerGet().get_count_application_pc_no_checed(),
                                count_application_pc_checed=EngineerGet().get_count_application_pc_checed(),
                                operator_application_no_checked=EngineerGet().get_count_operator_application_no_checked(),
@@ -426,7 +450,7 @@ def engineer_application_operator():
         return render_template('engineer/engineer_application_operaor.html',
                                application_engineer=EngineerGet().get_list_note(),
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user())
+                               type_footer=get_user_type())
 
 def engineer_test():
     if request.method == 'POST':
@@ -445,7 +469,7 @@ def engineer_test():
 
     return render_template('engineer/engineer_test.html',
                            user=get_sesion_user(),
-                           type_footer=get_sesion_user(),
+                           type_footer=get_user_type(),
                            list_no_test=ObjectsNoTests().get_report_no_tests_objects(),
                            list_files=os.listdir(UPLOAD_FOLDER_NO_TEST)
                            )
@@ -464,7 +488,7 @@ def engineer_users_application_pc():
     else:
         return render_template('engineer/engineer_application_pc_users.html',
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user(),
+                               type_footer=get_user_type(),
                                users_application_pc=UsersGet().get_application_pc()
                                )
 
@@ -482,7 +506,7 @@ def engineer_operational_map():
     else:
         return render_template("engineer/engineer_operational_map.html",
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user(),
+                               type_footer=get_user_type(),
                                list_files=os.listdir(app.config['UPLOAD_FOLDER']),
                                list_map=OperMap().get_map())
 
@@ -500,7 +524,7 @@ def engineer_update_object_users():
     else:
         return render_template("engineer/engineer_update_object_users.html",
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user(),
+                               type_footer=get_user_type(),
                                objects_data=UpdateObjectsData().get_object_data()
                                )
 
@@ -509,7 +533,7 @@ def engineer_update_object_users():
 
 # -------------------------------------------------Admin----------------------------------------------------------------
 def admin():
-    return render_template('admin/admin.html', user=get_sesion_user(),type_footer=get_sesion_user())
+    return render_template('admin/admin.html', user=get_sesion_user(),type_footer=get_user_type())
 
 
 def settings_users():
@@ -551,9 +575,9 @@ def settings_users():
     else:
         return render_template('admin/settings_users.html',
                                users=UsersGet().get_list_user(),
-                               type_user=type_user(),
+                               type_user=UsersGet().get_type_user(),
                                user=get_sesion_user(),
-                               type_footer=get_sesion_user()
+                               type_footer=get_user_type()
                                )
 
 
@@ -567,5 +591,5 @@ def settings_phone():
                              'full_price': result_price_oil + result_peopl_price}
         return render_template('admin/settings_phone.html', user=get_sesion_user(), price=result_full_price)
     else:
-        return render_template('admin/settings_phone.html', user=get_sesion_user(),type_footer=get_sesion_user())
+        return render_template('admin/settings_phone.html', user=get_sesion_user(),type_footer=get_user_type())
 # -----------------------------------------------End Admin--------------------------------------------------------------
