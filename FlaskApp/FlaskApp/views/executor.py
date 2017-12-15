@@ -3,6 +3,21 @@ from datetime import datetime
 
 from sqlrw import wraper_write, wraper_read
 
+# проверка данных входна на наличие их базе данных
+
+class ValidateSignIn:
+    def __init__(self,login: str, passwprd: str, type_user:str ):
+        self.login = login
+        self.password = passwprd
+        self.type_user = type_user
+
+    def validate_form(self):
+        for row in wraper_read(sql):
+            if row['user_password']==self.password and row['user_name']==self.login and row['user_type']==self.type_user :
+                print('good')
+
+
+
 
 # ----------------------------------------Операторская часть-----------------------------------------------
 

@@ -83,6 +83,7 @@ def info():
 
 def semple_page_signin():
     if request.method == 'POST':
+
         # redirect page operator
         if request.form['user_type'] == 'Оператор':
             session['username'] = request.form['user_name']
