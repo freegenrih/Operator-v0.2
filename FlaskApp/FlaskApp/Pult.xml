@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: localhost:3306
-- Generation Time: Dec 14, 2017 at 06:06 PM
+- Generation Time: Dec 17, 2017 at 10:49 PM
 - Server version: 5.7.20-0ubuntu0.17.10.1
 - PHP Version: 7.1.11-0ubuntu0.17.10.1
 -->
@@ -28,7 +28,7 @@
                   `name_engineer_completion` text NOT NULL,
                   `message` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_application_update_users_objects">
                 CREATE TABLE `dbo_application_update_users_objects` (
@@ -105,6 +105,19 @@
                   PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
             </pma:table>
+            <pma:table name="dbo_sms_activate_deactivate">
+                CREATE TABLE `dbo_sms_activate_deactivate` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `date_of_creation` text NOT NULL,
+                  `username_creation` text NOT NULL,
+                  `object_number` text NOT NULL,
+                  `sms_message` text NOT NULL,
+                  `checked_engineer` text NOT NULL,
+                  `name_engineer_completion` text NOT NULL,
+                  `date_of_completion` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
             <pma:table name="dbo_users">
                 CREATE TABLE `dbo_users` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -113,7 +126,7 @@
                   `user_password` text NOT NULL,
                   `user_type` text NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="dbo_user_application_pc">
                 CREATE TABLE `dbo_user_application_pc` (
@@ -223,7 +236,57 @@ Phone number +38 097 333 22 11 </column>
             <column name="id">1</column>
             <column name="data_search_no_tests">2017-12-10</column>
         </table>
+        <!-- Table dbo_sms_activate_deactivate -->
         <!-- Table dbo_users -->
+        <table name="dbo_users">
+            <column name="id">1</column>
+            <column name="date_register_user">NOW</column>
+            <column name="user_name">Genndiy</column>
+            <column name="user_password">1234562</column>
+            <column name="user_type">Администратор</column>
+        </table>
+        <table name="dbo_users">
+            <column name="id">3</column>
+            <column name="date_register_user">NOW</column>
+            <column name="user_name">Genndiy</column>
+            <column name="user_password">1234561</column>
+            <column name="user_type">Оператор</column>
+        </table>
+        <table name="dbo_users">
+            <column name="id">4</column>
+            <column name="date_register_user">NOW</column>
+            <column name="user_name">Genndiy</column>
+            <column name="user_password">1234563</column>
+            <column name="user_type">Пользователь</column>
+        </table>
+        <table name="dbo_users">
+            <column name="id">5</column>
+            <column name="date_register_user">NOW</column>
+            <column name="user_name">Genndiy</column>
+            <column name="user_password">1234564</column>
+            <column name="user_type">Инженер</column>
+        </table>
+        <table name="dbo_users">
+            <column name="id">6</column>
+            <column name="date_register_user">2017-12-15 18:09:32</column>
+            <column name="user_name">Dima</column>
+            <column name="user_password">02580258</column>
+            <column name="user_type">Оператор</column>
+        </table>
+        <table name="dbo_users">
+            <column name="id">7</column>
+            <column name="date_register_user">2017-12-15 18:21:41</column>
+            <column name="user_name">Харина</column>
+            <column name="user_password">11111111</column>
+            <column name="user_type">Пользователь</column>
+        </table>
+        <table name="dbo_users">
+            <column name="id">8</column>
+            <column name="date_register_user">2017-12-15 18:21:59</column>
+            <column name="user_name">Света</column>
+            <column name="user_password">22222222</column>
+            <column name="user_type">Пользователь</column>
+        </table>
         <!-- Table dbo_user_application_pc -->
         <table name="dbo_user_application_pc">
             <column name="id">1</column>

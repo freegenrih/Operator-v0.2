@@ -163,6 +163,9 @@ def semple_page_engineer():
         elif request.form['submit'] == 'engineer_update_object_users':
             return redirect(url_for('engineer_update_object_users'))
 
+        elif request.form['submit'] == 'engineer_sms':
+            return redirect(url_for('engineer_sms'))
+
     else:
         return redirect(url_for('engineer'))
 
@@ -172,18 +175,25 @@ def semple_page_users():
         if request.form['submit']=='users_application_pc':
             return redirect(url_for('users_application_pc'))
 
-        if request.form['submit']=='report_tests':
+        elif request.form['submit']=='report_tests':
             return redirect(url_for('report_tests'))
 
-        if request.form['submit']=='users_update_object_users':
+        elif request.form['submit']=='users_update_object_users':
             return redirect(url_for('users_update_object_users'))
 
-        if request.form['submit']=='users_operational_map':
+        elif request.form['submit']=='users_operational_map':
             return redirect(url_for('users_operational_map'))
+
+        elif request.form['submit']=='users_sms':
+            return redirect(url_for('users_sms'))
 
 # -------------------------------------------------Users----------------------------------------------------------------
 def users():
     return render_template('users/users.html', user=get_sesion_user(), type_footer=get_user_type())
+
+
+def users_sms():
+    return render_template('users/users_sms.html', user=get_sesion_user(), type_footer=get_user_type())
 
 
 def users_application_pc():
@@ -509,6 +519,12 @@ def engineer_operational_map():
                                type_footer=get_user_type(),
                                list_files=os.listdir(app.config['UPLOAD_FOLDER']),
                                list_map=OperMap().get_map())
+
+def engineer_sms():
+    return render_template("engineer/engineer_sms.html",
+                           user=get_sesion_user(),
+                           type_footer=get_user_type()
+                           )
 
 
 def engineer_update_object_users():

@@ -16,6 +16,7 @@ from views.base_views import (app,
                               users,
                               # upload_file,
                               semple_page_users,
+                              users_sms,
                               users_application_pc,
                               users_operational_map,
                               users_update_object_users,
@@ -24,6 +25,7 @@ from views.base_views import (app,
                               operator,
                               # operator_test,
                               engineer,
+                              engineer_sms,
                               engineer_test,
                               engineer_users_application_pc,
                               engineer_application_operator,
@@ -55,6 +57,7 @@ app.add_url_rule('/users', view_func=users, methods=['GET', 'POST'])
 app.add_url_rule('/users-application-pc', view_func=users_application_pc, methods=['GET', 'POST'])
 app.add_url_rule('/users-report-tests', view_func=report_tests, methods=['GET', 'POST'])
 app.add_url_rule('/users-operational-map', view_func=users_operational_map, methods=['GET', 'POST'])
+app.add_url_rule('/users-sms', view_func=users_sms, methods=['GET', 'POST'])
 app.add_url_rule('/users-update-object-users', view_func=users_update_object_users, methods=['GET', 'POST'])
 app.add_url_rule('/users-upload-file', view_func=users_upload_file, methods=['POST'])
 
@@ -68,6 +71,7 @@ app.add_url_rule('/engineer-upload-file-no-test', view_func=engineer_upload_file
 app.add_url_rule('/engineer-users-application-pc', view_func=engineer_users_application_pc, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-application-operator', view_func=engineer_application_operator, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-operational-map', view_func=engineer_operational_map, methods=['GET', 'POST'])
+app.add_url_rule('/engineer-sms', view_func=engineer_sms, methods=['GET', 'POST'])
 app.add_url_rule('/engineer-update-object-users', view_func=engineer_update_object_users, methods=['GET', 'POST'])
 
 app.add_url_rule('/admin', view_func=admin, methods=['GET', 'POST'])
@@ -90,7 +94,8 @@ app.register_error_handler(500, page_error)
 if __name__ == '__main__':
     app.run(
             # host='localhost',
-            host='192.168.100.74',
+            # host='192.168.100.74',
+            host='localhost',
             port=5001,
             debug=True
             # debug=False
