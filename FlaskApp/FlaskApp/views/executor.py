@@ -4,7 +4,6 @@ from datetime import datetime
 from sqlrw import wraper_write, wraper_read
 
 # проверка данных входна на наличие их базе данных
-
 class ValidateSignIn:
     def __init__(self,login: str, passwprd: str ):
         self.login = login
@@ -21,6 +20,30 @@ class ValidateSignIn:
                 continue
         result = 'False'
         return result
+
+# смс активация/деактивация
+class Sms:
+    def __init__(self, id = None):
+        self.id = id
+
+        self.sql_get_sms = "SELECT * FROM `dbo_sms_activate_deactivate`;"
+
+
+        self.sql_delete_sms = "DELETE FROM `dbo_sms_activate_deactivate` " \
+                              "WHERE `dbo_sms_activate_deactivate`.`id` = {};".format(self.id)
+
+    def get_sms(self):
+        return wraper_read(self.sql_get_sms)
+
+    def create_sms(self):
+        return wraper_write(self.sql_write_sms)
+
+    def update_sms(self):
+        return wraper_write(self.sql_update_sms)
+
+    def delete_sms(self):
+        return wraper_write(self.sql_delete_sms)
+
 
 # ----------------------------------------Операторская часть-----------------------------------------------
 

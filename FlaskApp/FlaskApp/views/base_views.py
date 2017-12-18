@@ -26,7 +26,8 @@ from views.executor import (EngineerGet,
                             OperMap,
                             ObjectsNoTests,
                             UpdateObjectsData,
-                            ValidateSignIn
+                            ValidateSignIn,
+                            Sms
                             )
 
 from Settings_app import (KEY,
@@ -193,7 +194,24 @@ def users():
 
 
 def users_sms():
-    return render_template('users/users_sms.html', user=get_sesion_user(), type_footer=get_user_type())
+    if request.method =='POST':
+        if request.form['submit']=='create_note':
+            print("Object :",request.form['object_number'])
+            print("who add :",request.form['select_operation'])
+            print("sms message :",request.form['add_comment'])
+            return redirect(url_for('users_sms'))
+
+        elif request.form['submit']=='delete':
+
+            Sms(id=request.form['optradio']).delete_sms()
+            return redirect(url_for('users_sms'))
+        else:
+            return redirect(url_for('users_sms'))
+    else:
+        return render_template('users/users_sms.html',
+                               user=get_sesion_user(),
+                               type_footer=get_user_type(),
+                               sms_data=Sms().get_sms())
 
 
 def users_application_pc():
@@ -521,10 +539,17 @@ def engineer_operational_map():
                                list_map=OperMap().get_map())
 
 def engineer_sms():
-    return render_template("engineer/engineer_sms.html",
-                           user=get_sesion_user(),
-                           type_footer=get_user_type()
-                           )
+    if request.method == 'POST':
+        # Sms(id=request.form['optradio']).update_sms()
+        return redirect(url_for('engineer_sms'))
+    else:
+        return render_template("engineer/engineer_sms.html",
+                               user=get_sesion_user(),
+                               type_footer=get_user_type(),
+                               sms_data=Sms().get_sms()
+                               )
+
+
 
 
 def engineer_update_object_users():

@@ -33,9 +33,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% if objects_data %}
+                {% if sms_data %}
 {#                    {{ objects_data }}#}
-                    {% for row in objects_data %}
+                    {% for row in sms_data %}
                         <form method="post" action="{{ url_for('users_update_object_users') }}">
                             <tr class="success">
                                 <td class="text-center" width="12%"><strong>
@@ -50,59 +50,7 @@
                                 </strong>
                                 </td>
                                 <td class="text-center" width="67%">
-                                    <btn class="btn btn-warning " data-toggle="modal" data-target="#distally{{ row.id }}"
-                                         title="Подробнее о заявке...">Подробнее...
-                                    </btn>
-                                    {#       Modal   app objects users #}
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="distally{{ row.id }}" role="dialog">
-                                        <div class="modal-dialog modal-lg">
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;
-                                                    </button>
-                                                    <h4 class="modal-title">Обновить информацию по Х.О. на
-                                                        объекте: </h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th width="20%" class="danger text-center">Объект№</th>
-                                                            <th width="80%"
-                                                                class="info text-center">{{ row.object_number }}</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th width="20%" class="danger text-center">Название</th>
-                                                            <th width="80%"
-                                                                class="info text-center">{{ row.name_object }}</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th width="20%" class="danger text-center">Адрес</th>
-                                                            <th width="80%"
-                                                                class="info text-center">{{ row.address_object }}</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th width="20%" class="danger text-center">Новые данные</th>
-                                                            <th width="80%"
-                                                                class="info text-center">{{ row.message_object }}
-                                                            </th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                        Закрыть
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {#       End Modal app objects users#}
+                                    {{ row.sms_message }}
                                 </td>
                                 <td class="text-center" width="5%">
                                     <label style="padding-left: 2px; padding-top: 6px;">
@@ -111,8 +59,8 @@
                                     </label>
                                 </td>
                                 <td class="text-center" width="5%">
-                                    <button type="submit" name="submit" value="delete" class="btn btn-danger"
-                                            title="Кликнуть для Удаления">Отменить
+                                    <button type="submit" name="submit" value="update" class="btn btn-success"
+                                            title="Кликнуть для Удаления">Отработать
                                     </button>
                                 </td>
                             </tr>
