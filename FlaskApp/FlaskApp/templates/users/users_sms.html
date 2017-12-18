@@ -1,27 +1,196 @@
-{%extends 'base/base.html' %}
-{%block extralink%}
-{%endblock extralink%}
+{% extends 'base/base.html' %}
+{% block extralink %}
+{% endblock extralink %}
 
 
-{%block title%}Пользователь{%endblock title%}
+{% block title %}Пользователь{% endblock title %}
 
 
-{%block leftmenu%}
-{%include 'users/left_users_menu_buttons.html' %}
-{%endblock leftmenu%}
+{% block leftmenu %}
+    {% include 'users/left_users_menu_buttons.html' %}
+{% endblock leftmenu %}
 
 
-{%block centermenuhead%}
-<h4 class="text-center">Активация/Деактивация СМС</h4>
-{%endblock centermenuhead%}
+{% block centermenuhead %}
+    <h4 class="text-center">Активация/Деактивация СМС</h4>
+{% endblock centermenuhead %}
 
-{%block centermenu%}
-{%endblock centermenu%}
+{% block centermenu %}
+    <!------------------------------Блок Актив/Деактив СМС------------------------>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-center">
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"
+                        data-placement="right" title="Нажать левую кнопку мыши для создания заявки инженеру">
+                    Актив./Деактив. СМС
+                </button>
 
-{%block rightmenuhead%}
-<h4 class="text-center">Пользователь</h4>
-{%endblock rightmenuhead%}
+                <a href="{{ url_for('users_sms') }}">
+                    <button type="button" class="btn btn-info btn-lg"
+                            data-placement="right" title="Нажать левую кнопку мыши для обновления информации">
+                        Обновить Информацию
+                    </button>
+                </a>
 
-{%block rightmenu%}
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Актив./Деактив. СМС</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="{{ url_for('users_sms') }}">
+                                    <div class="form-group">
+                                        <label for="object-number">Введите номер объекта:<br></label><br>
+                                        <input id="object-number" type="number"min="0" max="999999" name="object_number" placeholder="0000" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sel1">Выбрать вариант:</label>
+                                        <select class="form-control" name="select_operation" id="sel1">
+                                            <option class="text-center">Активировать-Постановка/Снятие</option>
+                                            <option class="text-center">Активировать-Постановка/Снятие+Тревоги</option>
+                                            <option class="text-center">Деактивировать СМС</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment">На какие номера тл.:</label>
+                                        <textarea class="form-control" name="add_comment" rows="5" id="comment"> </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit" value="create_note" class="btn btn-warning">
+                                            Отправить Заявку
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------Конец Блока Актив/Деактив СМС---------------------->
 
-{%endblock rightmenu%}
+    <div style="padding-top: 10px;">
+        <div style="height:500px;overflow-y:scroll;;">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th width="12%" class="text-center">Дата создания</th>
+                    <th width="10%" class="text-center">Пользователь</th>
+                    <th width="10%" class="text-center">Объект</th>
+                    <th width="62%" class="text-center">Описание</th>
+                    <th width="1%" class="text-center">ОК</th>
+                    <th width="3%" class="text-center">Выполнить</th>
+                    {#                <th width="2%" class="text-center"></th>#}
+                </tr>
+                </thead>
+                <tbody>
+                {% if objects_data %}
+                    {#                    {{ objects_data }}#}
+                    {% for row in objects_data %}
+                        <form method="post" action="{{ url_for('users_update_object_users') }}">
+                            <tr class="success">
+                                <td class="text-center" width="12%"><strong>
+                                    {{ row.date_of_creation }}
+                                </strong></td>
+                                <td class="text-center" width="10%"><strong>
+                                    {{ row.username_creation }}
+                                </strong>
+                                </td>
+                                <td class="text-center" width="10%"><strong>
+                                    {{ row.object_number }}
+                                </strong>
+                                </td>
+                                <td class="text-center" width="67%">
+                                    <btn class="btn btn-warning " data-toggle="modal"
+                                         data-target="#distally{{ row.id }}"
+                                         title="Подробнее о заявке...">Подробнее...
+                                    </btn>
+                                    {#       Modal   app objects users #}
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="distally{{ row.id }}" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                                    </button>
+                                                    <h4 class="modal-title">Обновить информацию по Х.О. на
+                                                        объекте: </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Объект№</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.object_number }}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Название</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.name_object }}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Адрес</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.address_object }}</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="20%" class="danger text-center">Новые данные</th>
+                                                            <th width="80%"
+                                                                class="info text-center">{{ row.message_object }}
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Закрыть
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {#       End Modal app objects users#}
+                                </td>
+                                <td class="text-center" width="5%">
+                                    <label style="padding-left: 2px; padding-top: 6px;">
+                                        <input type="radio" name="optradio" value="{{ row.id }}" required
+                                               title="Кликнуть для потверждения">
+                                    </label>
+                                </td>
+                                <td class="text-center" width="5%">
+                                    <button type="submit" name="submit" value="delete" class="btn btn-danger"
+                                            title="Кликнуть для Удаления">Отменить
+                                    </button>
+                                </td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock centermenu %}
+
+{% block rightmenuhead %}
+    <h4 class="text-center">Пользователь</h4>
+{% endblock rightmenuhead %}
+
+{% block rightmenu %}
+
+{% endblock rightmenu %}

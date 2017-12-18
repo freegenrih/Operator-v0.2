@@ -94,8 +94,7 @@ app.register_error_handler(500, page_error)
 if __name__ == '__main__':
     app.run(
             # host='localhost',
-            # host='192.168.100.74',
-            host='localhost',
+            host='192.168.100.74',
             port=5001,
             debug=True
             # debug=False
