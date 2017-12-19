@@ -17,7 +17,11 @@
 {% endblock centermenuhead %}
 
 {% block centermenu %}
-
+<div class="text-center">
+    <a href="{{ url_for('engineer_sms') }}">
+        <button type="button" class="btn btn-info btn-lg" data-placement="right" title="11">Обновить Информацию</button>
+    </a>
+</div>
     <div style="padding-top: 10px;">
         <div style="height:500px;overflow-y:scroll;;">
             <table class="table">
@@ -36,7 +40,7 @@
                 {% if sms_data %}
 {#                    {{ objects_data }}#}
                     {% for row in sms_data %}
-                        <form method="post" action="{{ url_for('users_update_object_users') }}">
+                        <form method="post" action="{{ url_for('engineer_sms') }}">
                             <tr class="success">
                                 <td class="text-center" width="12%"><strong>
                                     {{ row.date_of_creation }}

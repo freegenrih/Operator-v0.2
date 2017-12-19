@@ -23,20 +23,41 @@ class ValidateSignIn:
 
 # смс активация/деактивация
 class Sms:
-    def __init__(self, id = None):
+    def __init__(self, id = None, username = None, object_number = None, sms_message = None):
         self.id = id
+        self.username = username
+        self.object_number = object_number
+        self.sms_message = sms_message
 
-        self.sql_get_sms = "SELECT * FROM `dbo_sms_activate_deactivate`;"
+        self.sql_get_sms = "SELECT * FROM `dbo_sms_activate_deactivate` WHERE `checked_engineer`= 0;"
 
+        self.sql_create_sms = "INSERT INTO `dbo_sms_activate_deactivate` (`id`, `date_of_creation`, " \
+                              "`username_creation`, `object_number`, `sms_message`, `checked_engineer`, " \
+                              "`name_engineer_completion`, `date_of_completion`) " \
+                              "VALUES (NULL, '{}', '{}', '{}', '{}', '0', '', '');".format(
+            str(datetime.now())[0:-7],
+            self.username,
+            self.object_number,
+            self.sms_message
+        )
+
+        self.sql_update_sms = "UPDATE `dbo_sms_activate_deactivate` " \
+                              "SET `checked_engineer` = '1', `name_engineer_completion` = '{}', `date_of_completion` = '{}' " \
+                              "WHERE `dbo_sms_activate_deactivate`.`id` = {};".format(
+            self.username,
+            str(datetime.now())[0:-7],
+            self.id
+        )
 
         self.sql_delete_sms = "DELETE FROM `dbo_sms_activate_deactivate` " \
                               "WHERE `dbo_sms_activate_deactivate`.`id` = {};".format(self.id)
+
 
     def get_sms(self):
         return wraper_read(self.sql_get_sms)
 
     def create_sms(self):
-        return wraper_write(self.sql_write_sms)
+        return wraper_write(self.sql_create_sms)
 
     def update_sms(self):
         return wraper_write(self.sql_update_sms)
@@ -447,6 +468,19 @@ class EngineerGet:
 
     def count_app_update_data_object_all(self):
         sql = "SELECT COUNT(*) AS `temp` FROM `dbo_application_update_users_objects` WHERE 1;"
+        return wraper_read(sql)
+
+# смс
+    def count_sms_no_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_sms_activate_deactivate` WHERE `checked_engineer`=0;"
+        return wraper_read(sql)
+
+    def count_sms_checked(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_sms_activate_deactivate` WHERE `checked_engineer`=1;"
+        return wraper_read(sql)
+
+    def count_sms_all(self):
+        sql = "SELECT COUNT(*) AS `temp` FROM `dbo_sms_activate_deactivate` WHERE 1;"
         return wraper_read(sql)
 # ---------------------------------------------------------------------------------------------------------
 

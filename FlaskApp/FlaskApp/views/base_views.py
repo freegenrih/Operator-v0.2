@@ -99,33 +99,34 @@ def semple_page_signin():
                        ).validate_form()
         # print(row)
         if row != 'False':
-            print(row['user_type'])
+            # print(row['user_type'])
             # redirect page operator
-            if row['user_type'] == 'Оператор':
+
+            if row['user_type'] == request.form['user_type']:
                 session['username'] = request.form['user_name']
                 session['user_type'] = row['user_type']
                 return redirect(url_for('operator'))
 
             # redirect page admin
-            elif row['user_type'] == 'Администратор':
+            elif row['user_type'] == request.form['user_type']:
                 session['username'] = request.form['user_name']
                 session['user_type'] = row['user_type']
                 return redirect(url_for('admin'))
 
             # redirect page engineer
-            elif row['user_type'] == 'Инженер':
+            elif row['user_type'] == request.form['user_type']:
                 session['username'] = request.form['user_name']
                 session['user_type'] = row['user_type']
                 return redirect(url_for('engineer'))
 
             # redirect page users
-            elif row['user_type'] == 'Пользователь':
+            elif row['user_type'] == request.form['user_type']:
                 session['username'] = request.form['user_name']
                 session['user_type'] = row['user_type']
                 return  redirect(url_for('users'))
 
             else:
-                redirect(url_for('signin'))
+                return redirect(url_for('signin'))
         else:
             return redirect(url_for('signin'))
 
@@ -199,6 +200,9 @@ def users_sms():
             print("Object :",request.form['object_number'])
             print("who add :",request.form['select_operation'])
             print("sms message :",request.form['add_comment'])
+            Sms(username = get_sesion_user(),
+                object_number = request.form['object_number'],
+                sms_message = str(request.form['select_operation'])+" "+str(request.form['add_comment'])).create_sms()
             return redirect(url_for('users_sms'))
 
         elif request.form['submit']=='delete':
@@ -461,7 +465,10 @@ def engineer():
                                count_application_map_all =EngineerGet().count_application_map_all(),
                                count_app_update_data_object_no_checked=EngineerGet().count_app_update_data_object_no_checked(),
                                count_app_update_data_object_checked=EngineerGet().count_app_update_data_object_checked(),
-                               count_app_update_data_object_all=EngineerGet().count_app_update_data_object_all()
+                               count_app_update_data_object_all=EngineerGet().count_app_update_data_object_all(),
+                               count_sms_no_checked=EngineerGet().count_sms_no_checked(),
+                               count_sms_checked=EngineerGet().count_sms_checked(),
+                               count_sms_all=EngineerGet().count_sms_all(),
                                )
 
 
@@ -540,7 +547,7 @@ def engineer_operational_map():
 
 def engineer_sms():
     if request.method == 'POST':
-        # Sms(id=request.form['optradio']).update_sms()
+        Sms(id=request.form['optradio'], username=get_sesion_user()).update_sms()
         return redirect(url_for('engineer_sms'))
     else:
         return render_template("engineer/engineer_sms.html",

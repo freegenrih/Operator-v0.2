@@ -53,7 +53,12 @@
                             {% endfor %}
                         {% endif %}
                         <br>
-                    СМС Актив/Деактив:
+                        СМС Актив/Деактив:
+                        {% if count_sms_no_checked %}
+                            {% for row in count_sms_no_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <br>
                 </div>
@@ -93,6 +98,11 @@
                         {% endif %}
                         <br>
                         СМС Актив/Деактив:
+                        {% if count_sms_checked %}
+                            {% for row in count_sms_checked %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
 
                     </div>
                     <br>
@@ -133,6 +143,11 @@
                         {% endif %}
                         <br>
                         СМС Актив/Деактив:
+                        {% if count_sms_all %}
+                            {% for row in count_sms_all %}
+                                {{ row.temp }}
+                            {% endfor %}
+                        {% endif %}
 
                     </div>
                     <br>
